@@ -1,8 +1,11 @@
+
+import java.awt.Color;
+import javax.swing.*;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author joser
@@ -14,6 +17,12 @@ public class jFPrincipal extends javax.swing.JFrame {
      */
     public jFPrincipal() {
         initComponents();
+        
+        //formate inicial de jb_colorFuente
+    
+//        JLabel label1 = createDraggableLabel("label", 100, 100);
+//        jLayeredPane1.add(label1);
+
     }
 
     /**
@@ -25,21 +34,99 @@ public class jFPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jp_opcionesFuente = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jcb_fuenteFuente = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jb_fuenteColor = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        js_fuenteTamaño = new javax.swing.JSpinner();
+        jLabel4 = new javax.swing.JLabel();
+        jcb_fuenteTipo = new javax.swing.JComboBox<>();
+        jmb_principal = new javax.swing.JMenuBar();
+        jm_principalArchivo = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jmi_archivoNuevo = new javax.swing.JMenuItem();
+        jm_principalExportar = new javax.swing.JMenu();
+        jmi_exportarPDF = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 204));
+
+        jp_opcionesFuente.setBackground(new java.awt.Color(204, 255, 255));
+        jp_opcionesFuente.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel1.setText("Fuente");
+        jp_opcionesFuente.add(jLabel1);
+
+        jcb_fuenteFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_fuenteFuente.setPreferredSize(new java.awt.Dimension(150, 22));
+        jp_opcionesFuente.add(jcb_fuenteFuente);
+
+        jLabel2.setText("     Color");
+        jp_opcionesFuente.add(jLabel2);
+
+        jb_fuenteColor.setText("jButton1");
+        jp_opcionesFuente.add(jb_fuenteColor);
+
+        jLabel3.setText("     Tamaño");
+        jp_opcionesFuente.add(jLabel3);
+        jp_opcionesFuente.add(js_fuenteTamaño);
+
+        jLabel4.setText("     Tipo");
+        jp_opcionesFuente.add(jLabel4);
+
+        jcb_fuenteTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_fuenteTipo.setPreferredSize(new java.awt.Dimension(150, 22));
+        jp_opcionesFuente.add(jcb_fuenteTipo);
+
+        jm_principalArchivo.setText("Archivo");
+
+        jMenuItem1.setText("Guardar");
+        jm_principalArchivo.add(jMenuItem1);
+
+        jMenuItem2.setText("Abrir");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jm_principalArchivo.add(jMenuItem2);
+
+        jmi_archivoNuevo.setText("Nuevo");
+        jm_principalArchivo.add(jmi_archivoNuevo);
+
+        jmb_principal.add(jm_principalArchivo);
+
+        jm_principalExportar.setText("Exportar");
+
+        jmi_exportarPDF.setText("Exportar PDF");
+        jm_principalExportar.add(jmi_exportarPDF);
+
+        jmb_principal.add(jm_principalExportar);
+
+        setJMenuBar(jmb_principal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jp_opcionesFuente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jp_opcionesFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 831, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -76,6 +163,44 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
     }
 
+    // Create a JLabel that supports drag and drop
+    private JLabel createDraggableLabel(String text, int x, int y) {
+        JLabel label = new JLabel(text);
+        label.setBounds(x, y, 100, 30);
+
+        // Set transfer handler to enable dragging
+        label.setTransferHandler(new TransferHandler("text"));
+
+        // Add mouse listener to initiate drag
+        label.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                System.out.println("pressed");
+                JComponent comp = (JComponent) evt.getSource();
+                TransferHandler handler = comp.getTransferHandler();
+                handler.exportAsDrag(comp, evt, TransferHandler.MOVE);
+            }
+        });
+
+        return label;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JButton jb_fuenteColor;
+    private javax.swing.JComboBox<String> jcb_fuenteFuente;
+    private javax.swing.JComboBox<String> jcb_fuenteTipo;
+    private javax.swing.JMenu jm_principalArchivo;
+    private javax.swing.JMenu jm_principalExportar;
+    private javax.swing.JMenuBar jmb_principal;
+    private javax.swing.JMenuItem jmi_archivoNuevo;
+    private javax.swing.JMenuItem jmi_exportarPDF;
+    private javax.swing.JPanel jp_opcionesFuente;
+    private javax.swing.JSpinner js_fuenteTamaño;
     // End of variables declaration//GEN-END:variables
 }
