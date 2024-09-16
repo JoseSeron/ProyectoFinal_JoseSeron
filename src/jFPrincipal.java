@@ -42,7 +42,28 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         js_fuenteTamaño = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
-        jcb_fuenteTipo = new javax.swing.JComboBox<>();
+        jcb_fuenteEstilo = new javax.swing.JComboBox<>();
+        jtp_diagramaCodigo = new javax.swing.JTabbedPane();
+        jp_Diagrama = new javax.swing.JPanel();
+        jlp_diagrama = new javax.swing.JLayeredPane();
+        jp_variables = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jl_variables = new javax.swing.JList<>();
+        jb_agregarVariable = new javax.swing.JButton();
+        jp_diagramaOpciones = new javax.swing.JPanel();
+        jb_opcionesInicio = new javax.swing.JButton();
+        jb_opcionesDeclarar = new javax.swing.JButton();
+        jb_opcionesIf = new javax.swing.JButton();
+        jb_opcionesFor = new javax.swing.JButton();
+        jb_opcionesWhile = new javax.swing.JButton();
+        jb_opcionesSout = new javax.swing.JButton();
+        jb_opcionesFin = new javax.swing.JButton();
+        jb_opcionesConectorX = new javax.swing.JButton();
+        jb_opcionesConectorY = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jp_codigo = new javax.swing.JPanel();
         jmb_principal = new javax.swing.JMenuBar();
         jm_principalArchivo = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -60,7 +81,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Fuente");
         jp_opcionesFuente.add(jLabel1);
 
-        jcb_fuenteFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_fuenteFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segoe", "Times New Roman", "Arial", "Comic Sans" }));
         jcb_fuenteFuente.setPreferredSize(new java.awt.Dimension(150, 22));
         jp_opcionesFuente.add(jcb_fuenteFuente);
 
@@ -72,14 +93,170 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("     Tamaño");
         jp_opcionesFuente.add(jLabel3);
+
+        js_fuenteTamaño.setPreferredSize(new java.awt.Dimension(70, 22));
         jp_opcionesFuente.add(js_fuenteTamaño);
 
-        jLabel4.setText("     Tipo");
+        jLabel4.setText("     Estilo");
         jp_opcionesFuente.add(jLabel4);
 
-        jcb_fuenteTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jcb_fuenteTipo.setPreferredSize(new java.awt.Dimension(150, 22));
-        jp_opcionesFuente.add(jcb_fuenteTipo);
+        jcb_fuenteEstilo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Negrita", "Italica" }));
+        jcb_fuenteEstilo.setPreferredSize(new java.awt.Dimension(150, 22));
+        jp_opcionesFuente.add(jcb_fuenteEstilo);
+
+        jlp_diagrama.setBackground(new java.awt.Color(204, 255, 204));
+        jlp_diagrama.setForeground(new java.awt.Color(255, 255, 255));
+        jlp_diagrama.setOpaque(true);
+
+        javax.swing.GroupLayout jlp_diagramaLayout = new javax.swing.GroupLayout(jlp_diagrama);
+        jlp_diagrama.setLayout(jlp_diagramaLayout);
+        jlp_diagramaLayout.setHorizontalGroup(
+            jlp_diagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jlp_diagramaLayout.setVerticalGroup(
+            jlp_diagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jp_variables.setBackground(new java.awt.Color(204, 204, 255));
+        jp_variables.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("VARIABLES");
+
+        jl_variables.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jl_variables);
+
+        jb_agregarVariable.setText("Agregar Variable");
+
+        javax.swing.GroupLayout jp_variablesLayout = new javax.swing.GroupLayout(jp_variables);
+        jp_variables.setLayout(jp_variablesLayout);
+        jp_variablesLayout.setHorizontalGroup(
+            jp_variablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_variablesLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jb_agregarVariable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jp_variablesLayout.createSequentialGroup()
+                .addGroup(jp_variablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_variablesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5))
+                    .addGroup(jp_variablesLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jp_variablesLayout.setVerticalGroup(
+            jp_variablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_variablesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jb_agregarVariable)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        jp_diagramaOpciones.setBackground(new java.awt.Color(255, 204, 255));
+
+        jb_opcionesInicio.setText("INICIO");
+        jb_opcionesInicio.setPreferredSize(new java.awt.Dimension(118, 118));
+        jp_diagramaOpciones.add(jb_opcionesInicio);
+
+        jb_opcionesDeclarar.setText("DECLARAR OP.");
+        jb_opcionesDeclarar.setPreferredSize(new java.awt.Dimension(118, 118));
+        jp_diagramaOpciones.add(jb_opcionesDeclarar);
+
+        jb_opcionesIf.setText("IF");
+        jb_opcionesIf.setPreferredSize(new java.awt.Dimension(118, 118));
+        jp_diagramaOpciones.add(jb_opcionesIf);
+
+        jb_opcionesFor.setText("FOR");
+        jb_opcionesFor.setPreferredSize(new java.awt.Dimension(118, 118));
+        jp_diagramaOpciones.add(jb_opcionesFor);
+
+        jb_opcionesWhile.setText("WHILE");
+        jb_opcionesWhile.setPreferredSize(new java.awt.Dimension(118, 118));
+        jp_diagramaOpciones.add(jb_opcionesWhile);
+
+        jb_opcionesSout.setText("S.O.U.T");
+        jb_opcionesSout.setPreferredSize(new java.awt.Dimension(118, 118));
+        jp_diagramaOpciones.add(jb_opcionesSout);
+
+        jb_opcionesFin.setText("FIN");
+        jb_opcionesFin.setPreferredSize(new java.awt.Dimension(118, 118));
+        jp_diagramaOpciones.add(jb_opcionesFin);
+
+        jb_opcionesConectorX.setText("CONECTOR X");
+        jb_opcionesConectorX.setPreferredSize(new java.awt.Dimension(118, 118));
+        jp_diagramaOpciones.add(jb_opcionesConectorX);
+
+        jb_opcionesConectorY.setText("CONECTOR Y");
+        jb_opcionesConectorY.setPreferredSize(new java.awt.Dimension(118, 118));
+        jp_diagramaOpciones.add(jb_opcionesConectorY);
+
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton1");
+
+        javax.swing.GroupLayout jp_DiagramaLayout = new javax.swing.GroupLayout(jp_Diagrama);
+        jp_Diagrama.setLayout(jp_DiagramaLayout);
+        jp_DiagramaLayout.setHorizontalGroup(
+            jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_DiagramaLayout.createSequentialGroup()
+                .addGroup(jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_DiagramaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jlp_diagrama))
+                    .addComponent(jp_diagramaOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, 1116, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jp_variables, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
+        );
+        jp_DiagramaLayout.setVerticalGroup(
+            jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_DiagramaLayout.createSequentialGroup()
+                .addGroup(jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jp_DiagramaLayout.createSequentialGroup()
+                        .addComponent(jp_diagramaOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlp_diagrama))
+                    .addGroup(jp_DiagramaLayout.createSequentialGroup()
+                        .addComponent(jp_variables, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
+                .addGap(6, 6, 6))
+        );
+
+        jtp_diagramaCodigo.addTab("Diagrama", jp_Diagrama);
+
+        javax.swing.GroupLayout jp_codigoLayout = new javax.swing.GroupLayout(jp_codigo);
+        jp_codigo.setLayout(jp_codigoLayout);
+        jp_codigoLayout.setHorizontalGroup(
+            jp_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1347, Short.MAX_VALUE)
+        );
+        jp_codigoLayout.setVerticalGroup(
+            jp_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 750, Short.MAX_VALUE)
+        );
+
+        jtp_diagramaCodigo.addTab("Código", jp_codigo);
 
         jm_principalArchivo.setText("Archivo");
 
@@ -113,13 +290,18 @@ public class jFPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jp_opcionesFuente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jtp_diagramaCodigo)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jp_opcionesFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 831, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtp_diagramaCodigo)
+                .addContainerGap())
         );
+
+        jtp_diagramaCodigo.getAccessibleContext().setAccessibleName("Diagrama");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,21 +368,42 @@ public class jFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jb_agregarVariable;
     private javax.swing.JButton jb_fuenteColor;
+    private javax.swing.JButton jb_opcionesConectorX;
+    private javax.swing.JButton jb_opcionesConectorY;
+    private javax.swing.JButton jb_opcionesDeclarar;
+    private javax.swing.JButton jb_opcionesFin;
+    private javax.swing.JButton jb_opcionesFor;
+    private javax.swing.JButton jb_opcionesIf;
+    private javax.swing.JButton jb_opcionesInicio;
+    private javax.swing.JButton jb_opcionesSout;
+    private javax.swing.JButton jb_opcionesWhile;
+    private javax.swing.JComboBox<String> jcb_fuenteEstilo;
     private javax.swing.JComboBox<String> jcb_fuenteFuente;
-    private javax.swing.JComboBox<String> jcb_fuenteTipo;
+    private javax.swing.JList<String> jl_variables;
+    private javax.swing.JLayeredPane jlp_diagrama;
     private javax.swing.JMenu jm_principalArchivo;
     private javax.swing.JMenu jm_principalExportar;
     private javax.swing.JMenuBar jmb_principal;
     private javax.swing.JMenuItem jmi_archivoNuevo;
     private javax.swing.JMenuItem jmi_exportarPDF;
+    private javax.swing.JPanel jp_Diagrama;
+    private javax.swing.JPanel jp_codigo;
+    private javax.swing.JPanel jp_diagramaOpciones;
     private javax.swing.JPanel jp_opcionesFuente;
+    private javax.swing.JPanel jp_variables;
     private javax.swing.JSpinner js_fuenteTamaño;
+    private javax.swing.JTabbedPane jtp_diagramaCodigo;
     // End of variables declaration//GEN-END:variables
 }
