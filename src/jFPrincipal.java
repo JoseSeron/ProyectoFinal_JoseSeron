@@ -1,5 +1,7 @@
 
-import java.awt.Color;
+
+import java.awt.event.*;
+import java.awt.*;
 import javax.swing.*;
 
 /*
@@ -17,12 +19,10 @@ public class jFPrincipal extends javax.swing.JFrame {
      */
     public jFPrincipal() {
         initComponents();
-        
+
         //formate inicial de jb_colorFuente
-    
 //        JLabel label1 = createDraggableLabel("label", 100, 100);
 //        jLayeredPane1.add(label1);
-
     }
 
     /**
@@ -34,6 +34,13 @@ public class jFPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpum_elemDiagramaFlujo = new javax.swing.JPopupMenu();
+        jmi_elemDiagFljCambiarColor = new javax.swing.JMenuItem();
+        jmi_elemDiagFljCambiarTexto = new javax.swing.JMenuItem();
+        jmi_elemDiagFlCopiar = new javax.swing.JMenuItem();
+        jmi_elemDiagFlAgregarPropiedad = new javax.swing.JMenuItem();
+        jmi_elemDiagFljEliminar = new javax.swing.JMenuItem();
+        jmi_elemDiagFlPropiedades = new javax.swing.JMenuItem();
         jp_opcionesFuente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcb_fuenteFuente = new javax.swing.JComboBox<>();
@@ -45,7 +52,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         jcb_fuenteEstilo = new javax.swing.JComboBox<>();
         jtp_diagramaCodigo = new javax.swing.JTabbedPane();
         jp_Diagrama = new javax.swing.JPanel();
-        jlp_diagrama = new javax.swing.JLayeredPane();
         jp_variables = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -62,7 +68,19 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_opcionesConectorX = new javax.swing.JButton();
         jb_opcionesConectorY = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jb_pegarElementoDiagramaFlujo = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jlp_diagramaFlujo = new javax.swing.JLayeredPane();
+        jp_clases = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_clases = new javax.swing.JTree();
+        jLabel6 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jlp_diagramaClases = new javax.swing.JLayeredPane();
         jp_codigo = new javax.swing.JPanel();
         jmb_principal = new javax.swing.JMenuBar();
         jm_principalArchivo = new javax.swing.JMenu();
@@ -71,6 +89,24 @@ public class jFPrincipal extends javax.swing.JFrame {
         jmi_archivoNuevo = new javax.swing.JMenuItem();
         jm_principalExportar = new javax.swing.JMenu();
         jmi_exportarPDF = new javax.swing.JMenuItem();
+
+        jmi_elemDiagFljCambiarColor.setText("Cambiar Color");
+        jpum_elemDiagramaFlujo.add(jmi_elemDiagFljCambiarColor);
+
+        jmi_elemDiagFljCambiarTexto.setText("Cambiar Texto");
+        jpum_elemDiagramaFlujo.add(jmi_elemDiagFljCambiarTexto);
+
+        jmi_elemDiagFlCopiar.setText("jMenuItem6");
+        jpum_elemDiagramaFlujo.add(jmi_elemDiagFlCopiar);
+
+        jmi_elemDiagFlAgregarPropiedad.setText("jMenuItem3");
+        jpum_elemDiagramaFlujo.add(jmi_elemDiagFlAgregarPropiedad);
+
+        jmi_elemDiagFljEliminar.setText("jMenuItem3");
+        jpum_elemDiagramaFlujo.add(jmi_elemDiagFljEliminar);
+
+        jmi_elemDiagFlPropiedades.setText("xasdf");
+        jpum_elemDiagramaFlujo.add(jmi_elemDiagFlPropiedades);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -88,7 +124,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel2.setText("     Color");
         jp_opcionesFuente.add(jLabel2);
 
-        jb_fuenteColor.setText("jButton1");
+        jb_fuenteColor.setText("(click)");
         jp_opcionesFuente.add(jb_fuenteColor);
 
         jLabel3.setText("     Tamaño");
@@ -103,21 +139,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         jcb_fuenteEstilo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Negrita", "Italica" }));
         jcb_fuenteEstilo.setPreferredSize(new java.awt.Dimension(150, 22));
         jp_opcionesFuente.add(jcb_fuenteEstilo);
-
-        jlp_diagrama.setBackground(new java.awt.Color(204, 255, 204));
-        jlp_diagrama.setForeground(new java.awt.Color(255, 255, 255));
-        jlp_diagrama.setOpaque(true);
-
-        javax.swing.GroupLayout jlp_diagramaLayout = new javax.swing.GroupLayout(jlp_diagrama);
-        jlp_diagrama.setLayout(jlp_diagramaLayout);
-        jlp_diagramaLayout.setHorizontalGroup(
-            jlp_diagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jlp_diagramaLayout.setVerticalGroup(
-            jlp_diagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
         jp_variables.setBackground(new java.awt.Color(204, 204, 255));
         jp_variables.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -142,18 +163,15 @@ public class jFPrincipal extends javax.swing.JFrame {
         jp_variablesLayout.setHorizontalGroup(
             jp_variablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_variablesLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jb_agregarVariable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jp_variablesLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jp_variablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
                     .addGroup(jp_variablesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5))
-                    .addGroup(jp_variablesLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jp_variablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_agregarVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jp_variablesLayout.setVerticalGroup(
             jp_variablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,46 +186,94 @@ public class jFPrincipal extends javax.swing.JFrame {
         );
 
         jp_diagramaOpciones.setBackground(new java.awt.Color(255, 204, 255));
+        jp_diagramaOpciones.setMinimumSize(new java.awt.Dimension(1112, 137));
 
+        jb_opcionesInicio.setForeground(new java.awt.Color(0, 0, 0));
+        jb_opcionesInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/inicio.png"))); // NOI18N
         jb_opcionesInicio.setText("INICIO");
+        jb_opcionesInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesInicio.setPreferredSize(new java.awt.Dimension(118, 118));
+        jb_opcionesInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_opcionesInicioActionPerformed(evt);
+            }
+        });
         jp_diagramaOpciones.add(jb_opcionesInicio);
 
+        jb_opcionesDeclarar.setForeground(new java.awt.Color(0, 0, 0));
+        jb_opcionesDeclarar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/declarar.png"))); // NOI18N
         jb_opcionesDeclarar.setText("DECLARAR OP.");
+        jb_opcionesDeclarar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesDeclarar.setPreferredSize(new java.awt.Dimension(118, 118));
+        jb_opcionesDeclarar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_opcionesDeclararActionPerformed(evt);
+            }
+        });
         jp_diagramaOpciones.add(jb_opcionesDeclarar);
 
+        jb_opcionesIf.setForeground(new java.awt.Color(0, 0, 0));
+        jb_opcionesIf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/if.png"))); // NOI18N
         jb_opcionesIf.setText("IF");
+        jb_opcionesIf.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesIf.setPreferredSize(new java.awt.Dimension(118, 118));
         jp_diagramaOpciones.add(jb_opcionesIf);
 
+        jb_opcionesFor.setForeground(new java.awt.Color(0, 0, 0));
+        jb_opcionesFor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/for.png"))); // NOI18N
         jb_opcionesFor.setText("FOR");
+        jb_opcionesFor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesFor.setPreferredSize(new java.awt.Dimension(118, 118));
         jp_diagramaOpciones.add(jb_opcionesFor);
 
+        jb_opcionesWhile.setForeground(new java.awt.Color(0, 0, 0));
+        jb_opcionesWhile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/while.png"))); // NOI18N
         jb_opcionesWhile.setText("WHILE");
+        jb_opcionesWhile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesWhile.setPreferredSize(new java.awt.Dimension(118, 118));
         jp_diagramaOpciones.add(jb_opcionesWhile);
 
+        jb_opcionesSout.setForeground(new java.awt.Color(0, 0, 0));
+        jb_opcionesSout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/sout.png"))); // NOI18N
         jb_opcionesSout.setText("S.O.U.T");
+        jb_opcionesSout.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesSout.setPreferredSize(new java.awt.Dimension(118, 118));
         jp_diagramaOpciones.add(jb_opcionesSout);
 
+        jb_opcionesFin.setForeground(new java.awt.Color(0, 0, 0));
+        jb_opcionesFin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/fin.png"))); // NOI18N
         jb_opcionesFin.setText("FIN");
+        jb_opcionesFin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesFin.setPreferredSize(new java.awt.Dimension(118, 118));
         jp_diagramaOpciones.add(jb_opcionesFin);
 
+        jb_opcionesConectorX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/x.png"))); // NOI18N
         jb_opcionesConectorX.setText("CONECTOR X");
+        jb_opcionesConectorX.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesConectorX.setPreferredSize(new java.awt.Dimension(118, 118));
+        jb_opcionesConectorX.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jp_diagramaOpciones.add(jb_opcionesConectorX);
 
+        jb_opcionesConectorY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/y.png"))); // NOI18N
         jb_opcionesConectorY.setText("CONECTOR Y");
+        jb_opcionesConectorY.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesConectorY.setPreferredSize(new java.awt.Dimension(118, 118));
         jp_diagramaOpciones.add(jb_opcionesConectorY);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Generar Codigo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("jButton1");
+        jb_pegarElementoDiagramaFlujo.setText("Pegar");
+
+        jlp_diagramaFlujo.setBackground(new java.awt.Color(204, 255, 204));
+        jlp_diagramaFlujo.setForeground(new java.awt.Color(255, 255, 255));
+        jlp_diagramaFlujo.setOpaque(true);
+        jScrollPane4.setViewportView(jlp_diagramaFlujo);
+        jlp_diagramaFlujo.getAccessibleContext().setAccessibleParent(this);
 
         javax.swing.GroupLayout jp_DiagramaLayout = new javax.swing.GroupLayout(jp_Diagrama);
         jp_Diagrama.setLayout(jp_DiagramaLayout);
@@ -215,15 +281,14 @@ public class jFPrincipal extends javax.swing.JFrame {
             jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_DiagramaLayout.createSequentialGroup()
                 .addGroup(jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jp_DiagramaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jlp_diagrama))
-                    .addComponent(jp_diagramaOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, 1116, Short.MAX_VALUE))
+                    .addComponent(jp_diagramaOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jp_variables, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jp_variables, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_pegarElementoDiagramaFlujo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
         jp_DiagramaLayout.setVerticalGroup(
@@ -233,23 +298,96 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addGroup(jp_DiagramaLayout.createSequentialGroup()
                         .addComponent(jp_diagramaOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlp_diagrama))
+                        .addComponent(jScrollPane4))
                     .addGroup(jp_DiagramaLayout.createSequentialGroup()
                         .addComponent(jp_variables, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addComponent(jb_pegarElementoDiagramaFlujo, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
 
-        jtp_diagramaCodigo.addTab("Diagrama", jp_Diagrama);
+        jtp_diagramaCodigo.addTab("Diagrama de Flujo", jp_Diagrama);
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 204));
+
+        jScrollPane2.setViewportView(jt_clases);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("CLASES");
+
+        jButton3.setText("Generar Codigo");
+
+        jButton4.setText("Crear Clase");
+
+        jButton5.setText("Definir Herencia");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(144, Short.MAX_VALUE))
+        );
+
+        jlp_diagramaClases.setBackground(new java.awt.Color(204, 255, 204));
+        jlp_diagramaClases.setForeground(new java.awt.Color(255, 255, 255));
+        jlp_diagramaClases.setOpaque(true);
+        jScrollPane3.setViewportView(jlp_diagramaClases);
+
+        javax.swing.GroupLayout jp_clasesLayout = new javax.swing.GroupLayout(jp_clases);
+        jp_clases.setLayout(jp_clasesLayout);
+        jp_clasesLayout.setHorizontalGroup(
+            jp_clasesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_clasesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
+        jp_clasesLayout.setVerticalGroup(
+            jp_clasesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_clasesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jp_clasesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jtp_diagramaCodigo.addTab("Diagrama de Clases", jp_clases);
 
         javax.swing.GroupLayout jp_codigoLayout = new javax.swing.GroupLayout(jp_codigo);
         jp_codigo.setLayout(jp_codigoLayout);
         jp_codigoLayout.setHorizontalGroup(
             jp_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1347, Short.MAX_VALUE)
+            .addGap(0, 1343, Short.MAX_VALUE)
         );
         jp_codigoLayout.setVerticalGroup(
             jp_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,6 +448,69 @@ public class jFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jb_opcionesInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesInicioActionPerformed
+        // TODO add your handling code here:
+        
+        jlp_diagramaFlujo.add(crearBotonArrastrable("INICIO", jb_opcionesInicio.getIcon()));
+        jlp_diagramaFlujo.repaint();
+        
+        
+//        // Crear un nuevo INICIO
+//        JButton nuevoInicio = new JButton();
+//        nuevoInicio.setText("prueba");
+//        nuevoInicio.setBounds(100, 100, 100, 100);
+
+//        final Point[] initialClick = new Point[1];
+//        
+//        nuevoInicio.addMouseListener(new MouseAdapter() {
+//            
+//            public void mouseClicked(MouseEvent e){
+//                
+//                if (e.getButton()==3) {
+//                    
+//                  jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
+//                }
+//            }
+//            
+//            public void mousePressed(MouseEvent e){
+//                initialClick[0] = e.getPoint();
+//                
+//            }
+//        });
+//        
+//        
+//        nuevoInicio.addMouseMotionListener(new MouseMotionAdapter(){
+//            @Override
+//            public void mouseDragged(MouseEvent e){
+//               // Get the button's current position
+//                int thisX = nuevoInicio.getLocation().x;
+//                int thisY = nuevoInicio.getLocation().y;
+//
+//                // Calculate how much the mouse moved
+//                int xMoved = e.getX() - initialClick[0].x;
+//                int yMoved = e.getY() - initialClick[0].y;
+//
+//                // Update the button's location
+//                int newX = thisX + xMoved;
+//                int newY = thisY + yMoved;
+//                nuevoInicio.setLocation(newX, newY);
+//            }
+//        });
+
+       
+    }//GEN-LAST:event_jb_opcionesInicioActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        jpum_elemDiagramaFlujo.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jb_opcionesDeclararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesDeclararActionPerformed
+        // TODO add your handling code here:
+        jlp_diagramaFlujo.add(crearBotonArrastrable("texto", jb_opcionesDeclarar.getIcon()));
+        jlp_diagramaFlujo.repaint();
+    }//GEN-LAST:event_jb_opcionesDeclararActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -366,18 +567,71 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         return label;
     }
+    
+    //crear boton arrastrable
+    private JButton crearBotonArrastrable(String texto, Icon icono){
+    JButton boton = new JButton(texto, icono);
+    boton.setHorizontalTextPosition(SwingConstants.CENTER);
+    boton.setBounds(50, 50, 120, 120);
+    
+            final Point[] initialClick = new Point[1];
+        
+        boton.addMouseListener(new MouseAdapter() {
+            
+            public void mouseClicked(MouseEvent e){
+                
+                if (e.getButton()==3) {
+                    
+                  jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
+            
+            public void mousePressed(MouseEvent e){
+                initialClick[0] = e.getPoint();
+                
+            }
+        });
+        
+        
+        boton.addMouseMotionListener(new MouseMotionAdapter(){
+            @Override
+            public void mouseDragged(MouseEvent e){
+               // Get the button's current position
+                int thisX = boton.getLocation().x;
+                int thisY = boton.getLocation().y;
+
+                // Calculate how much the mouse moved
+                int xMoved = e.getX() - initialClick[0].x;
+                int yMoved = e.getY() - initialClick[0].y;
+
+                // Update the button's location
+                int newX = thisX + xMoved;
+                int newY = thisY + yMoved;
+                boton.setLocation(newX, newY);
+            }
+        });
+    
+    return boton;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton jb_agregarVariable;
     private javax.swing.JButton jb_fuenteColor;
     private javax.swing.JButton jb_opcionesConectorX;
@@ -389,21 +643,32 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_opcionesInicio;
     private javax.swing.JButton jb_opcionesSout;
     private javax.swing.JButton jb_opcionesWhile;
+    private javax.swing.JButton jb_pegarElementoDiagramaFlujo;
     private javax.swing.JComboBox<String> jcb_fuenteEstilo;
     private javax.swing.JComboBox<String> jcb_fuenteFuente;
     private javax.swing.JList<String> jl_variables;
-    private javax.swing.JLayeredPane jlp_diagrama;
+    private javax.swing.JLayeredPane jlp_diagramaClases;
+    private javax.swing.JLayeredPane jlp_diagramaFlujo;
     private javax.swing.JMenu jm_principalArchivo;
     private javax.swing.JMenu jm_principalExportar;
     private javax.swing.JMenuBar jmb_principal;
     private javax.swing.JMenuItem jmi_archivoNuevo;
+    private javax.swing.JMenuItem jmi_elemDiagFlAgregarPropiedad;
+    private javax.swing.JMenuItem jmi_elemDiagFlCopiar;
+    private javax.swing.JMenuItem jmi_elemDiagFlPropiedades;
+    private javax.swing.JMenuItem jmi_elemDiagFljCambiarColor;
+    private javax.swing.JMenuItem jmi_elemDiagFljCambiarTexto;
+    private javax.swing.JMenuItem jmi_elemDiagFljEliminar;
     private javax.swing.JMenuItem jmi_exportarPDF;
     private javax.swing.JPanel jp_Diagrama;
+    private javax.swing.JPanel jp_clases;
     private javax.swing.JPanel jp_codigo;
     private javax.swing.JPanel jp_diagramaOpciones;
     private javax.swing.JPanel jp_opcionesFuente;
     private javax.swing.JPanel jp_variables;
+    private javax.swing.JPopupMenu jpum_elemDiagramaFlujo;
     private javax.swing.JSpinner js_fuenteTamaño;
+    private javax.swing.JTree jt_clases;
     private javax.swing.JTabbedPane jtp_diagramaCodigo;
     // End of variables declaration//GEN-END:variables
 }
