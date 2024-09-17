@@ -3,27 +3,21 @@ import javax.swing.*;
 
 public class BotonInicio extends JButton {
     
-  
-this.
-    @Override
-    public void setBounds(int x, int y, int width, int height) {
-        super.setBounds(50, 50, 120, 120); 
+    private String lineaCodigo = "public static void main(String[] args) {";
+    
+    public String getLineaCodigo() {
+        return this.lineaCodigo;
     }
-
-    @Override
-    public void setIcon(Icon defaultIcon) {
-
-        String rutaIcono = "src/Iconos/inicio.png";
-
+    
+    public BotonInicio() {
+        //super.setBounds(50, 50, 150, 120);
+        this.setBounds(50, 50, 120, 120);
+        this.setText("hola");
+        String rutaIcono = "./Iconos/inicio.png";
         Icon icono = new ImageIcon(rutaIcono);
-
-        super.setIcon(icono);
-
+       // super.setIcon(icono);
+        this.setHorizontalTextPosition(SwingConstants.CENTER); 
     }
 
-    @Override
-    public void setHorizontalTextPosition(int textPosition) {
-        super.setHorizontalTextPosition(CENTER);
-    }
-
+    
 }

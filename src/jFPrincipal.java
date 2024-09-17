@@ -1,7 +1,7 @@
 
-
 import java.awt.event.*;
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /*
@@ -450,16 +450,20 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     private void jb_opcionesInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesInicioActionPerformed
         // TODO add your handling code here:
-        
-        jlp_diagramaFlujo.add(crearBotonArrastrable("INICIO", jb_opcionesInicio.getIcon()));
+
+        JButton nuevoInicio =  convertirABotonArrastrable(new BotonInicio());
+        jlp_diagramaFlujo.add(nuevoInicio); 
         jlp_diagramaFlujo.repaint();
         
+
         
+      //  jlp_diagramaFlujo.add(crearBotonArrastrable("INICIO", jb_opcionesInicio.getIcon()));
+      //  jlp_diagramaFlujo.repaint();
+
 //        // Crear un nuevo INICIO
 //        JButton nuevoInicio = new JButton();
 //        nuevoInicio.setText("prueba");
 //        nuevoInicio.setBounds(100, 100, 100, 100);
-
 //        final Point[] initialClick = new Point[1];
 //        
 //        nuevoInicio.addMouseListener(new MouseAdapter() {
@@ -497,7 +501,6 @@ public class jFPrincipal extends javax.swing.JFrame {
 //            }
 //        });
 
-       
     }//GEN-LAST:event_jb_opcionesInicioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -507,7 +510,12 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     private void jb_opcionesDeclararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesDeclararActionPerformed
         // TODO add your handling code here:
-        jlp_diagramaFlujo.add(crearBotonArrastrable("texto", jb_opcionesDeclarar.getIcon()));
+//        jlp_diagramaFlujo.add(crearBotonArrastrable("texto", jb_opcionesDeclarar.getIcon()));
+//        jlp_diagramaFlujo.repaint();
+
+        BotonInicio InicioNuevo = new BotonInicio();
+       // InicioNuevo = (BotonInicio) convertirABotonArrastrable(InicioNuevo);
+        jlp_diagramaClases.add(InicioNuevo);
         jlp_diagramaFlujo.repaint();
     }//GEN-LAST:event_jb_opcionesDeclararActionPerformed
 
@@ -547,6 +555,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     }
 
     // Create a JLabel that supports drag and drop
+    //BORRAR usa transferhandler
     private JLabel createDraggableLabel(String text, int x, int y) {
         JLabel label = new JLabel(text);
         label.setBounds(x, y, 100, 30);
@@ -567,36 +576,37 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         return label;
     }
-    
+
     //crear boton arrastrable
-    private JButton crearBotonArrastrable(String texto, Icon icono){
-    JButton boton = new JButton(texto, icono);
-    boton.setHorizontalTextPosition(SwingConstants.CENTER);
-    boton.setBounds(50, 50, 120, 120);
-    
-            final Point[] initialClick = new Point[1];
-        
+    private JButton crearBotonArrastrable(String texto, Icon icono) {
+        JButton boton = new JButton(texto, icono);
+        boton.setHorizontalTextPosition(SwingConstants.CENTER);
+        boton.setBounds(50, 50, 120, 120);
+
+        final Point[] initialClick = new Point[1];
+
         boton.addMouseListener(new MouseAdapter() {
-            
-            public void mouseClicked(MouseEvent e){
-                
-                if (e.getButton()==3) {
-                    
-                  jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                if (e.getButton() == 3) {
+
+                    jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
                 }
             }
-            
-            public void mousePressed(MouseEvent e){
+
+            @Override
+            public void mousePressed(MouseEvent e) {
                 initialClick[0] = e.getPoint();
-                
+
             }
         });
-        
-        
-        boton.addMouseMotionListener(new MouseMotionAdapter(){
+
+        boton.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
-            public void mouseDragged(MouseEvent e){
-               // Get the button's current position
+            public void mouseDragged(MouseEvent e) {
+                // Get the button's current position
                 int thisX = boton.getLocation().x;
                 int thisY = boton.getLocation().y;
 
@@ -610,8 +620,50 @@ public class jFPrincipal extends javax.swing.JFrame {
                 boton.setLocation(newX, newY);
             }
         });
-    
-    return boton;
+
+        return boton;
+    }
+
+    //convertir boton arrastrable
+    private JButton convertirABotonArrastrable(JButton boton) {
+
+        final Point[] initialClick = new Point[1];
+
+        boton.addMouseListener(new MouseAdapter() {
+
+            public void mouseClicked(MouseEvent e) {
+
+                if (e.getButton() == 3) {
+
+                    jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
+
+            public void mousePressed(MouseEvent e) {
+                initialClick[0] = e.getPoint();
+
+            }
+        });
+
+        boton.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                // Get the button's current position
+                int thisX = boton.getLocation().x;
+                int thisY = boton.getLocation().y;
+
+                // Calculate how much the mouse moved
+                int xMoved = e.getX() - initialClick[0].x;
+                int yMoved = e.getY() - initialClick[0].y;
+
+                // Update the button's location
+                int newX = thisX + xMoved;
+                int newY = thisY + yMoved;
+                boton.setLocation(newX, newY);
+            }
+        });
+
+        return boton;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -671,4 +723,6 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JTree jt_clases;
     private javax.swing.JTabbedPane jtp_diagramaCodigo;
     // End of variables declaration//GEN-END:variables
+    private ArrayList<JButton> botonesDiagramaFlujo = new ArrayList();
+
 }
