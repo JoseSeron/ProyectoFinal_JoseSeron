@@ -9,6 +9,13 @@ import javax.swing.*;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 /**
+ * ------COMENTARIOS------ Detalles de cosas que se me pueden olvidar
+ *
+ * RellenarLayeredPane() -para poder manejar todo en base al ArrayList botones.
+ * asi
+ *
+ * TODO LOS CONTENEDORES DEBEN TRABAJA EN BASE A LOS ARRAYLIST - para poder
+ * guardar un solo arreglo de arraylist y cargar todo
  *
  * @author joser
  */
@@ -19,8 +26,6 @@ public class jFPrincipal extends javax.swing.JFrame {
      */
     public jFPrincipal() {
         initComponents();
-        
-        contBotonesInicio = 0;
 
         //formate inicial de jb_colorFuente
 //        JLabel label1 = createDraggableLabel("label", 100, 100);
@@ -124,6 +129,7 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jf_ventanaCodigo.setTitle("Codigo Generado");
         jf_ventanaCodigo.setMinimumSize(new java.awt.Dimension(800, 800));
+        jf_ventanaCodigo.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         jf_ventanaCodigo.setPreferredSize(new java.awt.Dimension(800, 900));
         jf_ventanaCodigo.setSize(new java.awt.Dimension(800, 800));
 
@@ -379,6 +385,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_opcionesFin.setText("FIN");
         jb_opcionesFin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesFin.setPreferredSize(new java.awt.Dimension(118, 118));
+        jb_opcionesFin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_opcionesFinActionPerformed(evt);
+            }
+        });
         jp_diagramaOpciones.add(jb_opcionesFin);
 
         jb_opcionesConectorX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/x.png"))); // NOI18N
@@ -583,20 +594,20 @@ public class jFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jb_opcionesInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesInicioActionPerformed
-        // TODO add your handling code here:
+        // BOTON INICIO
 
         if (contBotonesInicio > 0) {
             JOptionPane.showMessageDialog(jlp_diagramaFlujo, "Solo puede existir 1\n"
                     + "inicio por programa");
-            
+
         } else {
             BotonInicio nuevoInicio = (BotonInicio) convertirABotonArrastrable(new BotonInicio());
-            jlp_diagramaFlujo.add(nuevoInicio);
             botonesDiagramaFlujo.add(nuevoInicio);
+            llenarJLayeredPane(jlp_diagramaFlujo);
             contBotonesInicio++;
             jlp_diagramaFlujo.repaint();
         }
-        
+
 
     }//GEN-LAST:event_jb_opcionesInicioActionPerformed
 
@@ -607,7 +618,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jf_ventanaCodigo.setLocationRelativeTo(jp_Diagrama);
         jf_ventanaCodigo.setVisible(true);
         jta_codigoGenerado.setText("");
-        
+
         for (JButton boton : botonesDiagramaFlujo) {
             jta_codigoGenerado.append(boton.toString());
         }
@@ -639,25 +650,35 @@ public class jFPrincipal extends javax.swing.JFrame {
                     + jcb_tipoNuevaVariable.getSelectedItem()
                     + ")"
                     + jtf_nombreNuevaVariable.getText();
-            
+
             listaVariables.add(nuevaVariable);
-            
-            DefaultListModel modeloListaVariables = new DefaultListModel();
-            
-            for (String variable : listaVariables) {
-                modeloListaVariables.addElement(variable);
-            }
-            
+
             jtf_nombreNuevaVariable.setText("");
             jd_crearVariable.setVisible(false);
-            
-            jl_variables.setModel(modeloListaVariables);
+            llenarJList(jl_variables);
             jl_variables.repaint();
-            
+
         }
-        
+
 
     }//GEN-LAST:event_jb_agregarVariableActionPerformed
+
+    private void jb_opcionesFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesFinActionPerformed
+        // BOTON FIN
+
+        if (contBotonesFin > 0) {
+            JOptionPane.showMessageDialog(jlp_diagramaFlujo, "Solo puede existir 1\n"
+                    + "fin por programa");
+
+        } else {
+            BotonFin nuevoFin = (BotonFin) convertirABotonArrastrable(new BotonFin());
+            botonesDiagramaFlujo.add(nuevoFin);
+            contBotonesFin++;
+            llenarJLayeredPane(jlp_diagramaFlujo);
+            jlp_diagramaFlujo.repaint();
+        }
+
+    }//GEN-LAST:event_jb_opcionesFinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -694,6 +715,30 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public JList llenarJList(JList lista) {
+        DefaultListModel modeloLista = new DefaultListModel();
+
+        for (String variable : listaVariables) {
+            modeloLista.addElement(variable);
+        }
+
+        //jtf_nombreNuevaVariable.setText("");
+        //jd_crearVariable.setVisible(false);
+        lista.setModel(modeloLista);
+
+        return lista;
+
+    }
+
+    public JLayeredPane llenarJLayeredPane(JLayeredPane panel) {
+        panel.removeAll();
+        for (JButton jButton : botonesDiagramaFlujo) {
+            panel.add(jButton);
+        }
+
+        return panel;
+    }
+
     // Create a JLabel that supports drag and drop
     //BORRAR usa transferhandler
     private JLabel createDraggableLabel(String text, int x, int y) {
@@ -713,7 +758,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 handler.exportAsDrag(comp, evt, TransferHandler.MOVE);
             }
         });
-        
+
         return label;
     }
 
@@ -722,27 +767,27 @@ public class jFPrincipal extends javax.swing.JFrame {
         JButton boton = new JButton(texto, icono);
         boton.setHorizontalTextPosition(SwingConstants.CENTER);
         boton.setBounds(50, 50, 120, 120);
-        
+
         final Point[] initialClick = new Point[1];
-        
+
         boton.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mouseClicked(MouseEvent e) {
-                
+
                 if (e.getButton() == 3) {
-                    
+
                     jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
                 }
             }
-            
+
             @Override
             public void mousePressed(MouseEvent e) {
                 initialClick[0] = e.getPoint();
-                
+
             }
         });
-        
+
         boton.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -760,31 +805,31 @@ public class jFPrincipal extends javax.swing.JFrame {
                 boton.setLocation(newX, newY);
             }
         });
-        
+
         return boton;
     }
 
     //convertir boton arrastrable
     private JButton convertirABotonArrastrable(JButton boton) {
-        
+
         final Point[] initialClick = new Point[1];
-        
+
         boton.addMouseListener(new MouseAdapter() {
-            
+
             public void mouseClicked(MouseEvent e) {
-                
+
                 if (e.getButton() == 3) {
-                    
+
                     jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
                 }
             }
-            
+
             public void mousePressed(MouseEvent e) {
                 initialClick[0] = e.getPoint();
-                
+
             }
         });
-        
+
         boton.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -802,7 +847,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 boton.setLocation(newX, newY);
             }
         });
-        
+
         return boton;
     }
 
@@ -877,6 +922,8 @@ public class jFPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private ArrayList<JButton> botonesDiagramaFlujo = new ArrayList();
     private ArrayList<String> listaVariables = new ArrayList();
-    private int contBotonesInicio;
-    
+    private int contBotonesInicio = 0;
+    ;
+    private int contBotonesFin = 0;
+
 }

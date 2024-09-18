@@ -1,12 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author joser
- */
-public class BotonFin {
-    
+import java.awt.Color;
+import javax.swing.*;
+
+
+public class BotonFin extends JButton{
+
+    public BotonFin() {
+       
+        this.setBounds(50, 50, 120, 120);
+        this.setText("FIN");
+        String rutaIcono = "./Iconos/fin.png";
+        Icon icono = new ImageIcon(rutaIcono);
+        this.setIcon(icono);
+        this.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.setBackground(Color.red);
+    }
+
+    @Override
+    public String toString() {
+        return "}\n";
+    }
+
 }
