@@ -5,24 +5,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 /**
  *
  * @author joser
  */
 public class BotonFor extends JButton {
-//        for (int i = 0; i < 10; i++) {
-//            
-//        }
 
-    private String tipo, inicio, limite, comparador, factor;
+    private String  inicio, limite, comparador, factor;
 
-    public BotonFor(String tipo, String inicio, String limite, String comparador, String factor) {
+    public BotonFor( String inicio, String limite, String comparador, String factor) {
         //Datos
-        this.tipo = tipo;
+        
         this.inicio = inicio;
         this.limite = limite;
         this.comparador = comparador;
@@ -44,13 +37,12 @@ public class BotonFor extends JButton {
         this.setHorizontalTextPosition(SwingConstants.CENTER);
     }
 
-    public String getTipo() {
-        return tipo;
+    @Override
+    public String toString() {
+        return "for ( int i = "+inicio+" ; i "+comparador+" "+limite+" ; i "+factor+") {}\n";
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+
 
     public String getInicio() {
         return inicio;
