@@ -11,11 +11,11 @@ public class BotonIf extends JButton {
 
     @Override
     public String toString() {
-        return "if ("+variable1+comparador+variable2+") {}\n";
+        return "if ("+variable1.split("\\)")[1]+comparador+variable2.split("\\)")[1]+") {}\n";
     }
 
     
-    public BotonIf(String variable, String comparador, String variable2) {
+    public BotonIf(String variable1, String comparador, String variable2) {
         this.variable1 = variable1;
         this.comparador = comparador;
         this.variable2 = variable2;

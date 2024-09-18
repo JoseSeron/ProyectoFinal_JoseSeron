@@ -83,7 +83,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jcb_crearIfVar1 = new javax.swing.JComboBox<>();
         jcb_crearIfComparador = new javax.swing.JComboBox<>();
         jcb_crearIfVar2 = new javax.swing.JComboBox<>();
-        jb_dialogCrearOperacion1 = new javax.swing.JButton();
+        jb_dialogAgregarIf = new javax.swing.JButton();
         jp_opcionesFuente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcb_fuenteFuente = new javax.swing.JComboBox<>();
@@ -392,10 +392,10 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jcb_crearIfComparador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "=", "!=", "<", ">" }));
 
-        jb_dialogCrearOperacion1.setText("Agregar");
-        jb_dialogCrearOperacion1.addActionListener(new java.awt.event.ActionListener() {
+        jb_dialogAgregarIf.setText("Agregar");
+        jb_dialogAgregarIf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_dialogCrearOperacion1ActionPerformed(evt);
+                jb_dialogAgregarIfActionPerformed(evt);
             }
         });
 
@@ -426,7 +426,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                                 .addComponent(jLabel16))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
-                        .addComponent(jb_dialogCrearOperacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jb_dialogAgregarIf, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -443,7 +443,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel15)
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jb_dialogCrearOperacion1)
+                .addComponent(jb_dialogAgregarIf)
                 .addContainerGap(59, Short.MAX_VALUE))
         );
 
@@ -820,7 +820,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         } else {
             BotonInicio nuevoInicio = (BotonInicio) convertirABotonArrastrable(new BotonInicio());
             botonesDiagramaFlujo.add(nuevoInicio);
-            llenarJLayeredPane(jlp_diagramaFlujo);
+            llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
             contBotonesInicio++;
             jlp_diagramaFlujo.repaint();
         }
@@ -854,9 +854,10 @@ public class jFPrincipal extends javax.swing.JFrame {
         if (listaVariables.size() <= 0) {
             JOptionPane.showMessageDialog(this, "No hay variables");
         } else {
-            // mostrar dialog de crear operacion
+
             jd_crearOperacion.setLocationRelativeTo(this);
 
+            //limpiar cbs
             jcb_crearOperacionResultado.removeAllItems();
             jcb_crearOperacionVar1.removeAllItems();
             jcb_crearOperacionVar2.removeAllItems();
@@ -867,10 +868,13 @@ public class jFPrincipal extends javax.swing.JFrame {
                 jcb_crearOperacionVar2.addItem(variable);
                 jcb_crearOperacionResultado.addItem(variable);
             }
+
+            //actualizar cbs 
             jcb_crearOperacionVar1.repaint();
             jcb_crearOperacionVar2.repaint();
             jcb_crearOperacionResultado.repaint();
 
+            // mostrar dialog de crear operacion
             jd_crearOperacion.setVisible(true);
         }
 
@@ -922,7 +926,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             BotonFin nuevoFin = (BotonFin) convertirABotonArrastrable(new BotonFin());
             botonesDiagramaFlujo.add(nuevoFin);
             contBotonesFin++;
-            llenarJLayeredPane(jlp_diagramaFlujo);
+            llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
             jlp_diagramaFlujo.repaint();
         }
 
@@ -944,7 +948,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 (String) jcb_crearOperacionResultado.getSelectedItem()));
 
         botonesDiagramaFlujo.add(nuevaOperacion);
-        llenarJLayeredPane(jlp_diagramaFlujo);
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
         jlp_diagramaFlujo.repaint();
         jd_crearOperacion.setVisible(false);
 
@@ -955,32 +959,47 @@ public class jFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcb_crearIfVar1ActionPerformed
 
-    private void jb_dialogCrearOperacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogCrearOperacion1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jb_dialogCrearOperacion1ActionPerformed
+    private void jb_dialogAgregarIfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogAgregarIfActionPerformed
+
+        //nuevo boton If
+        BotonIf nuevoIf = (BotonIf) convertirABotonArrastrable(new BotonIf(
+                (String)jcb_crearIfVar1.getSelectedItem(),
+                (String)jcb_crearIfComparador.getSelectedItem(),
+                (String)jcb_crearIfVar2.getSelectedItem()));
+        
+        //añadir a lista
+        botonesDiagramaFlujo.add(nuevoIf);
+        
+        //añadir al diagrama
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+        jlp_diagramaFlujo.repaint();
+        
+        //esconder dialog
+        jd_crearIf.setVisible(false);
+        
+    }//GEN-LAST:event_jb_dialogAgregarIfActionPerformed
 
     private void jb_opcionesIfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesIfActionPerformed
         // TODO add your handling code here:
-        if (listaVariables.size()>=2) {
+        if (listaVariables.size() >= 2) {
             jd_crearIf.setLocationRelativeTo(this);
-            
+
             //limpiar cbs
             jcb_crearIfVar1.removeAllItems();
             jcb_crearIfVar2.removeAllItems();
-            
-            
+
             //llenar cbs
             for (String variable : listaVariables) {
                 jcb_crearIfVar1.addItem(variable);
                 jcb_crearIfVar2.addItem(variable);
             }
-            
+
             jcb_crearIfVar1.repaint();
             jcb_crearIfVar2.repaint();
-            
+
             jd_crearIf.setVisible(true);
-        }else{
-        JOptionPane.showMessageDialog(this, "No hay suficiente variables");
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay suficiente variables");
         }
     }//GEN-LAST:event_jb_opcionesIfActionPerformed
 
@@ -1034,10 +1053,19 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     }
 
-    public JLayeredPane llenarJLayeredPane(JLayeredPane panel) {
+//    public JLayeredPane llenarJLayeredPane(JLayeredPane panel) {
+//        panel.removeAll();
+//        for (JButton jButton : botonesDiagramaFlujo) {
+//            panel.add(jButton);
+//        }
+//
+//        return panel;
+//    }
+    
+        public JLayeredPane llenarJLayeredPane(JLayeredPane panel, ArrayList lista) {
         panel.removeAll();
-        for (JButton jButton : botonesDiagramaFlujo) {
-            panel.add(jButton);
+        for (Object objeto : lista) {
+            panel.add((Component) objeto);
         }
 
         return panel;
@@ -1188,8 +1216,8 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton jb_agregarVariable;
+    private javax.swing.JButton jb_dialogAgregarIf;
     private javax.swing.JButton jb_dialogCrearOperacion;
-    private javax.swing.JButton jb_dialogCrearOperacion1;
     private javax.swing.JButton jb_fuenteColor;
     private javax.swing.JButton jb_generarCodigoFlujo;
     private javax.swing.JButton jb_mostrarDialogAgregarVariable;
