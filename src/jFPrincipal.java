@@ -19,6 +19,8 @@ public class jFPrincipal extends javax.swing.JFrame {
      */
     public jFPrincipal() {
         initComponents();
+        
+        contBotonesInicio = 0;
 
         //formate inicial de jb_colorFuente
 //        JLabel label1 = createDraggableLabel("label", 100, 100);
@@ -41,6 +43,18 @@ public class jFPrincipal extends javax.swing.JFrame {
         jmi_elemDiagFlAgregarPropiedad = new javax.swing.JMenuItem();
         jmi_elemDiagFljEliminar = new javax.swing.JMenuItem();
         jmi_elemDiagFlPropiedades = new javax.swing.JMenuItem();
+        jf_ventanaCodigo = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jta_codigoGenerado = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        jd_crearVariable = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jtf_nombreNuevaVariable = new javax.swing.JTextField();
+        jcb_tipoNuevaVariable = new javax.swing.JComboBox<>();
+        jb_agregarVariable = new javax.swing.JButton();
         jp_opcionesFuente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcb_fuenteFuente = new javax.swing.JComboBox<>();
@@ -56,7 +70,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jl_variables = new javax.swing.JList<>();
-        jb_agregarVariable = new javax.swing.JButton();
+        jb_mostrarDialogAgregarVariable = new javax.swing.JButton();
         jp_diagramaOpciones = new javax.swing.JPanel();
         jb_opcionesInicio = new javax.swing.JButton();
         jb_opcionesDeclarar = new javax.swing.JButton();
@@ -67,7 +81,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_opcionesFin = new javax.swing.JButton();
         jb_opcionesConectorX = new javax.swing.JButton();
         jb_opcionesConectorY = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jb_generarCodigoFlujo = new javax.swing.JButton();
         jb_pegarElementoDiagramaFlujo = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jlp_diagramaFlujo = new javax.swing.JLayeredPane();
@@ -107,6 +121,126 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jmi_elemDiagFlPropiedades.setText("xasdf");
         jpum_elemDiagramaFlujo.add(jmi_elemDiagFlPropiedades);
+
+        jf_ventanaCodigo.setTitle("Codigo Generado");
+        jf_ventanaCodigo.setMinimumSize(new java.awt.Dimension(800, 800));
+        jf_ventanaCodigo.setPreferredSize(new java.awt.Dimension(800, 900));
+        jf_ventanaCodigo.setSize(new java.awt.Dimension(800, 800));
+
+        jta_codigoGenerado.setEditable(false);
+        jta_codigoGenerado.setColumns(20);
+        jta_codigoGenerado.setRows(5);
+        jScrollPane5.setViewportView(jta_codigoGenerado);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("CODIGO");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(309, 309, 309)
+                .addComponent(jLabel7)
+                .addContainerGap(309, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+
+        javax.swing.GroupLayout jf_ventanaCodigoLayout = new javax.swing.GroupLayout(jf_ventanaCodigo.getContentPane());
+        jf_ventanaCodigo.getContentPane().setLayout(jf_ventanaCodigoLayout);
+        jf_ventanaCodigoLayout.setHorizontalGroup(
+            jf_ventanaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jf_ventanaCodigoLayout.setVerticalGroup(
+            jf_ventanaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_crearVariable.setTitle("Agregar Variable");
+        jd_crearVariable.setMinimumSize(new java.awt.Dimension(350, 300));
+        jd_crearVariable.setModal(true);
+        jd_crearVariable.setResizable(false);
+
+        jPanel3.setMinimumSize(new java.awt.Dimension(350, 300));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel8.setText("Tipo:");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel9.setText("Nombre:");
+
+        jcb_tipoNuevaVariable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "int", "char", "string", "short", "double", "boolean" }));
+
+        jb_agregarVariable.setText("Agregar");
+        jb_agregarVariable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_agregarVariableActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtf_nombreNuevaVariable)
+                            .addComponent(jcb_tipoNuevaVariable, 0, 175, Short.MAX_VALUE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jb_agregarVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jtf_nombreNuevaVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jcb_tipoNuevaVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(jb_agregarVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
+        );
+
+        javax.swing.GroupLayout jd_crearVariableLayout = new javax.swing.GroupLayout(jd_crearVariable.getContentPane());
+        jd_crearVariable.getContentPane().setLayout(jd_crearVariableLayout);
+        jd_crearVariableLayout.setHorizontalGroup(
+            jd_crearVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_crearVariableLayout.setVerticalGroup(
+            jd_crearVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_crearVariable.getAccessibleContext().setAccessibleDescription("");
+        jd_crearVariable.getAccessibleContext().setAccessibleParent(this);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -149,14 +283,14 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("VARIABLES");
 
-        jl_variables.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jl_variables);
 
-        jb_agregarVariable.setText("Agregar Variable");
+        jb_mostrarDialogAgregarVariable.setText("Agregar Variable");
+        jb_mostrarDialogAgregarVariable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_mostrarDialogAgregarVariableActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_variablesLayout = new javax.swing.GroupLayout(jp_variables);
         jp_variables.setLayout(jp_variablesLayout);
@@ -169,7 +303,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addGroup(jp_variablesLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jp_variablesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jb_agregarVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_mostrarDialogAgregarVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -181,7 +315,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jb_agregarVariable)
+                .addComponent(jb_mostrarDialogAgregarVariable)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -260,10 +394,10 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_opcionesConectorY.setPreferredSize(new java.awt.Dimension(118, 118));
         jp_diagramaOpciones.add(jb_opcionesConectorY);
 
-        jButton1.setText("Generar Codigo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jb_generarCodigoFlujo.setText("Generar Codigo");
+        jb_generarCodigoFlujo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jb_generarCodigoFlujoActionPerformed(evt);
             }
         });
 
@@ -285,7 +419,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_generarCodigoFlujo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jp_DiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jp_variables, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jb_pegarElementoDiagramaFlujo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -304,7 +438,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(jb_pegarElementoDiagramaFlujo, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
+                        .addComponent(jb_generarCodigoFlujo, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
 
@@ -451,73 +585,79 @@ public class jFPrincipal extends javax.swing.JFrame {
     private void jb_opcionesInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesInicioActionPerformed
         // TODO add your handling code here:
 
-        JButton nuevoInicio =  convertirABotonArrastrable(new BotonInicio());
-        jlp_diagramaFlujo.add(nuevoInicio); 
-        jlp_diagramaFlujo.repaint();
+        if (contBotonesInicio > 0) {
+            JOptionPane.showMessageDialog(jlp_diagramaFlujo, "Solo puede existir 1\n"
+                    + "inicio por programa");
+            
+        } else {
+            BotonInicio nuevoInicio = (BotonInicio) convertirABotonArrastrable(new BotonInicio());
+            jlp_diagramaFlujo.add(nuevoInicio);
+            botonesDiagramaFlujo.add(nuevoInicio);
+            contBotonesInicio++;
+            jlp_diagramaFlujo.repaint();
+        }
         
-
-        
-      //  jlp_diagramaFlujo.add(crearBotonArrastrable("INICIO", jb_opcionesInicio.getIcon()));
-      //  jlp_diagramaFlujo.repaint();
-
-//        // Crear un nuevo INICIO
-//        JButton nuevoInicio = new JButton();
-//        nuevoInicio.setText("prueba");
-//        nuevoInicio.setBounds(100, 100, 100, 100);
-//        final Point[] initialClick = new Point[1];
-//        
-//        nuevoInicio.addMouseListener(new MouseAdapter() {
-//            
-//            public void mouseClicked(MouseEvent e){
-//                
-//                if (e.getButton()==3) {
-//                    
-//                  jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
-//                }
-//            }
-//            
-//            public void mousePressed(MouseEvent e){
-//                initialClick[0] = e.getPoint();
-//                
-//            }
-//        });
-//        
-//        
-//        nuevoInicio.addMouseMotionListener(new MouseMotionAdapter(){
-//            @Override
-//            public void mouseDragged(MouseEvent e){
-//               // Get the button's current position
-//                int thisX = nuevoInicio.getLocation().x;
-//                int thisY = nuevoInicio.getLocation().y;
-//
-//                // Calculate how much the mouse moved
-//                int xMoved = e.getX() - initialClick[0].x;
-//                int yMoved = e.getY() - initialClick[0].y;
-//
-//                // Update the button's location
-//                int newX = thisX + xMoved;
-//                int newY = thisY + yMoved;
-//                nuevoInicio.setLocation(newX, newY);
-//            }
-//        });
 
     }//GEN-LAST:event_jb_opcionesInicioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        jpum_elemDiagramaFlujo.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jb_generarCodigoFlujoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_generarCodigoFlujoActionPerformed
+
+        //1. Añadir todas las lineas de codigo al jta basandose en el arraylist
+        //2. mostrar la ventana con el texto lleno
+        jf_ventanaCodigo.setLocationRelativeTo(jp_Diagrama);
+        jf_ventanaCodigo.setVisible(true);
+        jta_codigoGenerado.setText("");
+        
+        for (JButton boton : botonesDiagramaFlujo) {
+            jta_codigoGenerado.append(boton.toString());
+        }
+    }//GEN-LAST:event_jb_generarCodigoFlujoActionPerformed
 
     private void jb_opcionesDeclararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesDeclararActionPerformed
         // TODO add your handling code here:
-//        jlp_diagramaFlujo.add(crearBotonArrastrable("texto", jb_opcionesDeclarar.getIcon()));
-//        jlp_diagramaFlujo.repaint();
 
-        BotonInicio InicioNuevo = new BotonInicio();
-       // InicioNuevo = (BotonInicio) convertirABotonArrastrable(InicioNuevo);
-        jlp_diagramaClases.add(InicioNuevo);
-        jlp_diagramaFlujo.repaint();
     }//GEN-LAST:event_jb_opcionesDeclararActionPerformed
+
+    private void jb_mostrarDialogAgregarVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarDialogAgregarVariableActionPerformed
+
+        //mostrar ventana de agregar variable
+        jd_crearVariable.setLocationRelativeTo(this);
+        jd_crearVariable.setVisible(true);
+
+    }//GEN-LAST:event_jb_mostrarDialogAgregarVariableActionPerformed
+
+    private void jb_agregarVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarVariableActionPerformed
+        // AGREGAR VARIABLE
+        // Crear String variable
+        // Agregar a arrayList variables
+        // actualizar modelo
+
+        if (jtf_nombreNuevaVariable.getText().isBlank()) {
+            JOptionPane.showMessageDialog(jd_crearVariable, "Llenar todos los campos");
+        } else {
+            String nuevaVariable = "("
+                    + jcb_tipoNuevaVariable.getSelectedItem()
+                    + ")"
+                    + jtf_nombreNuevaVariable.getText();
+            
+            listaVariables.add(nuevaVariable);
+            
+            DefaultListModel modeloListaVariables = new DefaultListModel();
+            
+            for (String variable : listaVariables) {
+                modeloListaVariables.addElement(variable);
+            }
+            
+            jtf_nombreNuevaVariable.setText("");
+            jd_crearVariable.setVisible(false);
+            
+            jl_variables.setModel(modeloListaVariables);
+            jl_variables.repaint();
+            
+        }
+        
+
+    }//GEN-LAST:event_jb_agregarVariableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -573,7 +713,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 handler.exportAsDrag(comp, evt, TransferHandler.MOVE);
             }
         });
-
+        
         return label;
     }
 
@@ -582,27 +722,27 @@ public class jFPrincipal extends javax.swing.JFrame {
         JButton boton = new JButton(texto, icono);
         boton.setHorizontalTextPosition(SwingConstants.CENTER);
         boton.setBounds(50, 50, 120, 120);
-
+        
         final Point[] initialClick = new Point[1];
-
+        
         boton.addMouseListener(new MouseAdapter() {
-
+            
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                
                 if (e.getButton() == 3) {
-
+                    
                     jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
                 }
             }
-
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 initialClick[0] = e.getPoint();
-
+                
             }
         });
-
+        
         boton.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -620,31 +760,31 @@ public class jFPrincipal extends javax.swing.JFrame {
                 boton.setLocation(newX, newY);
             }
         });
-
+        
         return boton;
     }
 
     //convertir boton arrastrable
     private JButton convertirABotonArrastrable(JButton boton) {
-
+        
         final Point[] initialClick = new Point[1];
-
+        
         boton.addMouseListener(new MouseAdapter() {
-
+            
             public void mouseClicked(MouseEvent e) {
-
+                
                 if (e.getButton() == 3) {
-
+                    
                     jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
                 }
             }
-
+            
             public void mousePressed(MouseEvent e) {
                 initialClick[0] = e.getPoint();
-
+                
             }
         });
-
+        
         boton.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -662,12 +802,11 @@ public class jFPrincipal extends javax.swing.JFrame {
                 boton.setLocation(newX, newY);
             }
         });
-
+        
         return boton;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -677,15 +816,23 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton jb_agregarVariable;
     private javax.swing.JButton jb_fuenteColor;
+    private javax.swing.JButton jb_generarCodigoFlujo;
+    private javax.swing.JButton jb_mostrarDialogAgregarVariable;
     private javax.swing.JButton jb_opcionesConectorX;
     private javax.swing.JButton jb_opcionesConectorY;
     private javax.swing.JButton jb_opcionesDeclarar;
@@ -698,6 +845,9 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_pegarElementoDiagramaFlujo;
     private javax.swing.JComboBox<String> jcb_fuenteEstilo;
     private javax.swing.JComboBox<String> jcb_fuenteFuente;
+    private javax.swing.JComboBox<String> jcb_tipoNuevaVariable;
+    private javax.swing.JDialog jd_crearVariable;
+    private javax.swing.JFrame jf_ventanaCodigo;
     private javax.swing.JList<String> jl_variables;
     private javax.swing.JLayeredPane jlp_diagramaClases;
     private javax.swing.JLayeredPane jlp_diagramaFlujo;
@@ -721,8 +871,12 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jpum_elemDiagramaFlujo;
     private javax.swing.JSpinner js_fuenteTamaño;
     private javax.swing.JTree jt_clases;
+    private javax.swing.JTextArea jta_codigoGenerado;
+    private javax.swing.JTextField jtf_nombreNuevaVariable;
     private javax.swing.JTabbedPane jtp_diagramaCodigo;
     // End of variables declaration//GEN-END:variables
     private ArrayList<JButton> botonesDiagramaFlujo = new ArrayList();
-
+    private ArrayList<String> listaVariables = new ArrayList();
+    private int contBotonesInicio;
+    
 }
