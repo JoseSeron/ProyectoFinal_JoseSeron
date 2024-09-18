@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import javax.swing.*;
 
 /**
@@ -11,7 +12,7 @@ public class BotonIf extends JButton {
 
     @Override
     public String toString() {
-        return "if ("+variable1.split("\\)")[1]+comparador+variable2.split("\\)")[1]+") {}\n";
+        return "if ("+variable1.split("\\)")[1]+" "+comparador+" "+variable2.split("\\)")[1]+") {}\n";
     }
 
     
@@ -21,15 +22,16 @@ public class BotonIf extends JButton {
         this.variable2 = variable2;
         this.setBounds(50, 50, 120, 120);
         this.setText("<html>If<br>"
-                + variable1
+                + variable1.split("\\)")[1]
                 + "<br>"
                 + comparador
                 + "<br>"
-                + variable2
+                + variable2.split("\\)")[1]
                 + "</html>");
         String rutaIcono = "./Iconos/if.png";
         Icon icono = new ImageIcon(rutaIcono);
         this.setIcon(icono);
+        this.setBackground(Color.CYAN);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
     }
 

@@ -963,20 +963,20 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         //nuevo boton If
         BotonIf nuevoIf = (BotonIf) convertirABotonArrastrable(new BotonIf(
-                (String)jcb_crearIfVar1.getSelectedItem(),
-                (String)jcb_crearIfComparador.getSelectedItem(),
-                (String)jcb_crearIfVar2.getSelectedItem()));
-        
+                (String) jcb_crearIfVar1.getSelectedItem(),
+                (String) jcb_crearIfComparador.getSelectedItem(),
+                (String) jcb_crearIfVar2.getSelectedItem()));
+
         //añadir a lista
         botonesDiagramaFlujo.add(nuevoIf);
-        
+
         //añadir al diagrama
         llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
         jlp_diagramaFlujo.repaint();
-        
+
         //esconder dialog
         jd_crearIf.setVisible(false);
-        
+
     }//GEN-LAST:event_jb_dialogAgregarIfActionPerformed
 
     private void jb_opcionesIfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesIfActionPerformed
@@ -1050,9 +1050,10 @@ public class jFPrincipal extends javax.swing.JFrame {
         lista.setModel(modeloLista);
 
         return lista;
-
+    
     }
 
+    //antigua version llenarJLayeredPane|
 //    public JLayeredPane llenarJLayeredPane(JLayeredPane panel) {
 //        panel.removeAll();
 //        for (JButton jButton : botonesDiagramaFlujo) {
@@ -1061,8 +1062,7 @@ public class jFPrincipal extends javax.swing.JFrame {
 //
 //        return panel;
 //    }
-    
-        public JLayeredPane llenarJLayeredPane(JLayeredPane panel, ArrayList lista) {
+    public JLayeredPane llenarJLayeredPane(JLayeredPane panel, ArrayList lista) {
         panel.removeAll();
         for (Object objeto : lista) {
             panel.add((Component) objeto);

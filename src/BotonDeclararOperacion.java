@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import javax.swing.*;
 
 public class BotonDeclararOperacion extends JButton {
@@ -22,6 +23,7 @@ public class BotonDeclararOperacion extends JButton {
         Icon icono = new ImageIcon(rutaIcono);
         this.setIcon(icono);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.setBackground(Color.BLUE);
 
     }
 
