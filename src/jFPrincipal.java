@@ -17,6 +17,10 @@ import javax.swing.*;
  * TODO LOS CONTENEDORES DEBEN TRABAJA EN BASE A LOS ARRAYLIST - para poder
  * guardar un solo arreglo de arraylist y cargar todo
  *
+ *
+ * forma de poner texto multilinea en botones es con html
+ * "<html>linea1<br>linea2</html>"
+ *
  * @author joser
  */
 public class jFPrincipal extends javax.swing.JFrame {
@@ -60,6 +64,17 @@ public class jFPrincipal extends javax.swing.JFrame {
         jtf_nombreNuevaVariable = new javax.swing.JTextField();
         jcb_tipoNuevaVariable = new javax.swing.JComboBox<>();
         jb_agregarVariable = new javax.swing.JButton();
+        jd_crearOperacion = new javax.swing.JDialog();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jcb_crearOperacionVar1 = new javax.swing.JComboBox<>();
+        jcb_crearOperacionOperador = new javax.swing.JComboBox<>();
+        jcb_crearOperacionVar2 = new javax.swing.JComboBox<>();
+        jcb_crearOperacionResultado = new javax.swing.JComboBox<>();
+        jb_dialogCrearOperacion = new javax.swing.JButton();
         jp_opcionesFuente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcb_fuenteFuente = new javax.swing.JComboBox<>();
@@ -247,6 +262,104 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jd_crearVariable.getAccessibleContext().setAccessibleDescription("");
         jd_crearVariable.getAccessibleContext().setAccessibleParent(this);
+
+        jd_crearOperacion.setTitle("Operacion");
+        jd_crearOperacion.setMinimumSize(new java.awt.Dimension(530, 160));
+        jd_crearOperacion.setModal(true);
+        jd_crearOperacion.setPreferredSize(new java.awt.Dimension(530, 160));
+
+        jPanel4.setMinimumSize(new java.awt.Dimension(530, 150));
+        jPanel4.setName(""); // NOI18N
+        jPanel4.setPreferredSize(new java.awt.Dimension(530, 150));
+
+        jLabel10.setText("Variable 1");
+
+        jLabel11.setText("Operacion");
+
+        jLabel12.setText("Variable 2");
+
+        jLabel13.setText("Resultado");
+
+        jcb_crearOperacionVar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_crearOperacionVar1ActionPerformed(evt);
+            }
+        });
+
+        jcb_crearOperacionOperador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+", "-", "/", "*" }));
+
+        jb_dialogCrearOperacion.setText("Crear Operacion");
+        jb_dialogCrearOperacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_dialogCrearOperacionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jcb_crearOperacionVar1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jLabel10)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jcb_crearOperacionOperador, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcb_crearOperacionVar2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcb_crearOperacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel12)
+                                .addGap(92, 92, 92)
+                                .addComponent(jLabel13))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(jb_dialogCrearOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcb_crearOperacionVar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_crearOperacionOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_crearOperacionVar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_crearOperacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_dialogCrearOperacion)
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jd_crearOperacionLayout = new javax.swing.GroupLayout(jd_crearOperacion.getContentPane());
+        jd_crearOperacion.getContentPane().setLayout(jd_crearOperacionLayout);
+        jd_crearOperacionLayout.setHorizontalGroup(
+            jd_crearOperacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_crearOperacionLayout.setVerticalGroup(
+            jd_crearOperacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+        );
+
+        jd_crearOperacion.getAccessibleContext().setAccessibleParent(this);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -625,8 +738,24 @@ public class jFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_generarCodigoFlujoActionPerformed
 
     private void jb_opcionesDeclararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesDeclararActionPerformed
-        // TODO add your handling code here:
+        // mostrar dialog de crear operacion
+        jd_crearOperacion.setLocationRelativeTo(this);
 
+        jcb_crearOperacionResultado.removeAllItems();
+        jcb_crearOperacionVar1.removeAllItems();
+        jcb_crearOperacionVar2.removeAllItems();
+
+        //llenar cb
+        for (String variable : listaVariables) {
+            jcb_crearOperacionVar1.addItem(variable);
+            jcb_crearOperacionVar2.addItem(variable);
+            jcb_crearOperacionResultado.addItem(variable);
+        }
+        jcb_crearOperacionVar1.repaint();
+        jcb_crearOperacionVar2.repaint();
+        jcb_crearOperacionResultado.repaint();
+
+        jd_crearOperacion.setVisible(true);
     }//GEN-LAST:event_jb_opcionesDeclararActionPerformed
 
     private void jb_mostrarDialogAgregarVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarDialogAgregarVariableActionPerformed
@@ -679,6 +808,18 @@ public class jFPrincipal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jb_opcionesFinActionPerformed
+
+    private void jcb_crearOperacionVar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_crearOperacionVar1ActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jcb_crearOperacionVar1ActionPerformed
+
+    private void jb_dialogCrearOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogCrearOperacionActionPerformed
+        // CREAR NUEVA OPERACION
+
+
+    }//GEN-LAST:event_jb_dialogCrearOperacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -810,7 +951,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     }
 
     //convertir boton arrastrable
-    private JButton convertirABotonArrastrable(JButton boton) {
+    public JButton convertirABotonArrastrable(JButton boton) {
 
         final Point[] initialClick = new Point[1];
 
@@ -856,6 +997,10 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -869,12 +1014,14 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton jb_agregarVariable;
+    private javax.swing.JButton jb_dialogCrearOperacion;
     private javax.swing.JButton jb_fuenteColor;
     private javax.swing.JButton jb_generarCodigoFlujo;
     private javax.swing.JButton jb_mostrarDialogAgregarVariable;
@@ -888,9 +1035,14 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_opcionesSout;
     private javax.swing.JButton jb_opcionesWhile;
     private javax.swing.JButton jb_pegarElementoDiagramaFlujo;
+    private javax.swing.JComboBox<String> jcb_crearOperacionOperador;
+    private javax.swing.JComboBox<String> jcb_crearOperacionResultado;
+    private javax.swing.JComboBox<String> jcb_crearOperacionVar1;
+    private javax.swing.JComboBox<String> jcb_crearOperacionVar2;
     private javax.swing.JComboBox<String> jcb_fuenteEstilo;
     private javax.swing.JComboBox<String> jcb_fuenteFuente;
     private javax.swing.JComboBox<String> jcb_tipoNuevaVariable;
+    private javax.swing.JDialog jd_crearOperacion;
     private javax.swing.JDialog jd_crearVariable;
     private javax.swing.JFrame jf_ventanaCodigo;
     private javax.swing.JList<String> jl_variables;
@@ -923,7 +1075,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private ArrayList<JButton> botonesDiagramaFlujo = new ArrayList();
     private ArrayList<String> listaVariables = new ArrayList();
     private int contBotonesInicio = 0;
-    ;
+
     private int contBotonesFin = 0;
 
 }
