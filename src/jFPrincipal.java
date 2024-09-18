@@ -75,6 +75,15 @@ public class jFPrincipal extends javax.swing.JFrame {
         jcb_crearOperacionVar2 = new javax.swing.JComboBox<>();
         jcb_crearOperacionResultado = new javax.swing.JComboBox<>();
         jb_dialogCrearOperacion = new javax.swing.JButton();
+        jd_crearIf = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jcb_crearIfVar1 = new javax.swing.JComboBox<>();
+        jcb_crearIfComparador = new javax.swing.JComboBox<>();
+        jcb_crearIfVar2 = new javax.swing.JComboBox<>();
+        jb_dialogCrearOperacion1 = new javax.swing.JButton();
         jp_opcionesFuente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcb_fuenteFuente = new javax.swing.JComboBox<>();
@@ -361,6 +370,96 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jd_crearOperacion.getAccessibleContext().setAccessibleParent(this);
 
+        jd_crearIf.setTitle("Decision If");
+        jd_crearIf.setMinimumSize(new java.awt.Dimension(390, 160));
+        jd_crearIf.setModal(true);
+        jd_crearIf.setPreferredSize(new java.awt.Dimension(390, 160));
+
+        jPanel5.setMinimumSize(new java.awt.Dimension(530, 150));
+        jPanel5.setName(""); // NOI18N
+
+        jLabel14.setText("Variable 1");
+
+        jLabel15.setText("Comparador");
+
+        jLabel16.setText("Variable 2");
+
+        jcb_crearIfVar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_crearIfVar1ActionPerformed(evt);
+            }
+        });
+
+        jcb_crearIfComparador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "=", "!=", "<", ">" }));
+
+        jb_dialogCrearOperacion1.setText("Agregar");
+        jb_dialogCrearOperacion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_dialogCrearOperacion1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jcb_crearIfVar1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel14)
+                                .addGap(54, 54, 54)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jcb_crearIfComparador, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcb_crearIfVar2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel16))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jb_dialogCrearOperacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcb_crearIfVar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_crearIfComparador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_crearIfVar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_dialogCrearOperacion1)
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jd_crearIfLayout = new javax.swing.GroupLayout(jd_crearIf.getContentPane());
+        jd_crearIf.getContentPane().setLayout(jd_crearIfLayout);
+        jd_crearIfLayout.setHorizontalGroup(
+            jd_crearIfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_crearIfLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jd_crearIfLayout.setVerticalGroup(
+            jd_crearIfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -470,6 +569,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_opcionesIf.setText("IF");
         jb_opcionesIf.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesIf.setPreferredSize(new java.awt.Dimension(118, 118));
+        jb_opcionesIf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_opcionesIfActionPerformed(evt);
+            }
+        });
         jp_diagramaOpciones.add(jb_opcionesIf);
 
         jb_opcionesFor.setForeground(new java.awt.Color(0, 0, 0));
@@ -847,6 +951,39 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jb_dialogCrearOperacionActionPerformed
 
+    private void jcb_crearIfVar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_crearIfVar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcb_crearIfVar1ActionPerformed
+
+    private void jb_dialogCrearOperacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogCrearOperacion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_dialogCrearOperacion1ActionPerformed
+
+    private void jb_opcionesIfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesIfActionPerformed
+        // TODO add your handling code here:
+        if (listaVariables.size()>=2) {
+            jd_crearIf.setLocationRelativeTo(this);
+            
+            //limpiar cbs
+            jcb_crearIfVar1.removeAllItems();
+            jcb_crearIfVar2.removeAllItems();
+            
+            
+            //llenar cbs
+            for (String variable : listaVariables) {
+                jcb_crearIfVar1.addItem(variable);
+                jcb_crearIfVar2.addItem(variable);
+            }
+            
+            jcb_crearIfVar1.repaint();
+            jcb_crearIfVar2.repaint();
+            
+            jd_crearIf.setVisible(true);
+        }else{
+        JOptionPane.showMessageDialog(this, "No hay suficiente variables");
+        }
+    }//GEN-LAST:event_jb_opcionesIfActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1027,6 +1164,9 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1041,6 +1181,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1048,6 +1189,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton jb_agregarVariable;
     private javax.swing.JButton jb_dialogCrearOperacion;
+    private javax.swing.JButton jb_dialogCrearOperacion1;
     private javax.swing.JButton jb_fuenteColor;
     private javax.swing.JButton jb_generarCodigoFlujo;
     private javax.swing.JButton jb_mostrarDialogAgregarVariable;
@@ -1061,6 +1203,9 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_opcionesSout;
     private javax.swing.JButton jb_opcionesWhile;
     private javax.swing.JButton jb_pegarElementoDiagramaFlujo;
+    private javax.swing.JComboBox<String> jcb_crearIfComparador;
+    private javax.swing.JComboBox<String> jcb_crearIfVar1;
+    private javax.swing.JComboBox<String> jcb_crearIfVar2;
     private javax.swing.JComboBox<String> jcb_crearOperacionOperador;
     private javax.swing.JComboBox<String> jcb_crearOperacionResultado;
     private javax.swing.JComboBox<String> jcb_crearOperacionVar1;
@@ -1068,6 +1213,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcb_fuenteEstilo;
     private javax.swing.JComboBox<String> jcb_fuenteFuente;
     private javax.swing.JComboBox<String> jcb_tipoNuevaVariable;
+    private javax.swing.JDialog jd_crearIf;
     private javax.swing.JDialog jd_crearOperacion;
     private javax.swing.JDialog jd_crearVariable;
     private javax.swing.JFrame jf_ventanaCodigo;
