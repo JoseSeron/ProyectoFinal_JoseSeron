@@ -732,30 +732,45 @@ public class jFPrincipal extends javax.swing.JFrame {
         jf_ventanaCodigo.setVisible(true);
         jta_codigoGenerado.setText("");
 
+        jta_codigoGenerado.append("//Declaracion Variables\n");
+        for (String variable : listaVariables) {
+            String tipo = variable.split("\\)")[0].substring(1);
+            String nombre = variable.split("\\)")[1];
+            jta_codigoGenerado.append(tipo + " ");
+            jta_codigoGenerado.append(nombre + " ;\n");
+        }
+        jta_codigoGenerado.append("\n\n");
         for (JButton boton : botonesDiagramaFlujo) {
             jta_codigoGenerado.append(boton.toString());
         }
     }//GEN-LAST:event_jb_generarCodigoFlujoActionPerformed
 
     private void jb_opcionesDeclararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesDeclararActionPerformed
-        // mostrar dialog de crear operacion
-        jd_crearOperacion.setLocationRelativeTo(this);
 
-        jcb_crearOperacionResultado.removeAllItems();
-        jcb_crearOperacionVar1.removeAllItems();
-        jcb_crearOperacionVar2.removeAllItems();
+        if (listaVariables.size() <= 0) {
+            JOptionPane.showMessageDialog(this, "No hay variables");
+        } else {
+            // mostrar dialog de crear operacion
+            jd_crearOperacion.setLocationRelativeTo(this);
 
-        //llenar cb
-        for (String variable : listaVariables) {
-            jcb_crearOperacionVar1.addItem(variable);
-            jcb_crearOperacionVar2.addItem(variable);
-            jcb_crearOperacionResultado.addItem(variable);
+            jcb_crearOperacionResultado.removeAllItems();
+            jcb_crearOperacionVar1.removeAllItems();
+            jcb_crearOperacionVar2.removeAllItems();
+
+            //llenar cb
+            for (String variable : listaVariables) {
+                jcb_crearOperacionVar1.addItem(variable);
+                jcb_crearOperacionVar2.addItem(variable);
+                jcb_crearOperacionResultado.addItem(variable);
+            }
+            jcb_crearOperacionVar1.repaint();
+            jcb_crearOperacionVar2.repaint();
+            jcb_crearOperacionResultado.repaint();
+
+            jd_crearOperacion.setVisible(true);
         }
-        jcb_crearOperacionVar1.repaint();
-        jcb_crearOperacionVar2.repaint();
-        jcb_crearOperacionResultado.repaint();
 
-        jd_crearOperacion.setVisible(true);
+
     }//GEN-LAST:event_jb_opcionesDeclararActionPerformed
 
     private void jb_mostrarDialogAgregarVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarDialogAgregarVariableActionPerformed
@@ -817,6 +832,17 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     private void jb_dialogCrearOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogCrearOperacionActionPerformed
         // CREAR NUEVA OPERACION
+        //nuevo boton usando los datos del dialog
+        BotonDeclararOperacion nuevaOperacion = (BotonDeclararOperacion) convertirABotonArrastrable(new BotonDeclararOperacion(
+                (String) jcb_crearOperacionVar1.getSelectedItem(),
+                (String) jcb_crearOperacionVar2.getSelectedItem(),
+                (String) jcb_crearOperacionOperador.getSelectedItem(),
+                (String) jcb_crearOperacionResultado.getSelectedItem()));
+
+        botonesDiagramaFlujo.add(nuevaOperacion);
+        llenarJLayeredPane(jlp_diagramaFlujo);
+        jlp_diagramaFlujo.repaint();
+        jd_crearOperacion.setVisible(false);
 
 
     }//GEN-LAST:event_jb_dialogCrearOperacionActionPerformed
