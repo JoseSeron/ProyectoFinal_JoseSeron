@@ -11,11 +11,11 @@ import javax.swing.SwingConstants;
  */
 public class BotonFor extends JButton {
 
-    private String  inicio, limite, comparador, factor;
+    private String inicio, limite, comparador, factor;
 
-    public BotonFor( String inicio, String limite, String comparador, String factor) {
+    public BotonFor(String inicio, String limite, String comparador, String factor) {
         //Datos
-        
+
         this.inicio = inicio;
         this.limite = limite;
         this.comparador = comparador;
@@ -39,10 +39,8 @@ public class BotonFor extends JButton {
 
     @Override
     public String toString() {
-        return "for ( int i = "+inicio+" ; i "+comparador+" "+limite+" ; i "+factor+") {}\n";
+        return "for ( int i = " + inicio + " ; i " + comparador + " " + limite + " ; i " + factor + ") {}\n";
     }
-
-
 
     public String getInicio() {
         return inicio;

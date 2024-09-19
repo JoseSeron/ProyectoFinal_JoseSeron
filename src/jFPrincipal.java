@@ -185,6 +185,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jpum_elemDiagramaFlujo.add(jmi_elemDiagFlujoEliminarBoton);
 
         jmi_elemDiagFlCopiar.setText("Copiar");
+        jmi_elemDiagFlCopiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_elemDiagFlCopiarActionPerformed(evt);
+            }
+        });
         jpum_elemDiagramaFlujo.add(jmi_elemDiagFlCopiar);
 
         jmi_elemDiagFlujoModificarFuente.setText("Modificar Fuente");
@@ -946,6 +951,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
 
         jb_pegarElementoDiagramaFlujo.setText("Pegar");
+        jb_pegarElementoDiagramaFlujo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_pegarElementoDiagramaFlujoActionPerformed(evt);
+            }
+        });
 
         jlp_diagramaFlujo.setBackground(new java.awt.Color(204, 255, 204));
         jlp_diagramaFlujo.setForeground(new java.awt.Color(255, 255, 255));
@@ -1405,7 +1415,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private void jb_opcionesSoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesSoutActionPerformed
         // mostrar dialog sout
         if (listaVariables.size() < 1) {
-            JOptionPane.showMessageDialog(this, "No hay suficientes ");
+            JOptionPane.showMessageDialog(this, "No hay suficientes variables");
 
         } else {
             jd_crearSout.setLocationRelativeTo(this);
@@ -1488,6 +1498,71 @@ public class jFPrincipal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jmi_elemDiagFlujoEliminarBotonActionPerformed
+
+    private void jmi_elemDiagFlCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_elemDiagFlCopiarActionPerformed
+        // TODO add your handling code here:
+        botonParaPegar = null;
+        // JButton botonPop es el boton original
+
+        if (botonPop instanceof BotonDeclararOperacion) {
+            BotonDeclararOperacion copiaOperacion = (BotonDeclararOperacion) botonPop;
+            BotonDeclararOperacion copiaOperacionNueva = new BotonDeclararOperacion(
+                    copiaOperacion.getVariable1(),
+                    copiaOperacion.getVariable2(),
+                    copiaOperacion.getOperacion(),
+                    copiaOperacion.getResultado());
+            botonParaPegar = copiaOperacionNueva;
+        } else if (botonPop instanceof BotonIf) {
+            BotonIf copiaIf = (BotonIf) botonPop;
+            BotonIf copiaIfNuevo = new BotonIf(
+                    copiaIf.getVariable1(),
+                    copiaIf.getComparador(),
+                    copiaIf.getVariable2());
+            botonParaPegar = copiaIfNuevo;
+        } else if (botonPop instanceof BotonWhile) {
+            BotonWhile copiaWhile = (BotonWhile) botonPop;
+            BotonWhile copiaWhileNuevo = new BotonWhile(
+                    copiaWhile.getVariable1(),
+                    copiaWhile.getVariable2(),
+                    copiaWhile.getComparador());
+            botonParaPegar = copiaWhileNuevo;
+        } else if (botonPop instanceof BotonFor) {
+            BotonFor copiaFor = (BotonFor) botonPop;
+            BotonFor copiaForNuevo = new BotonFor(
+                    copiaFor.getInicio(),
+                    copiaFor.getLimite(),
+                    copiaFor.getComparador(),
+                    copiaFor.getFactor());
+            botonParaPegar = copiaForNuevo;
+        } else if (botonPop instanceof BotonSout) {
+            BotonSout copiaSout = (BotonSout) botonPop;
+            BotonSout copiaSoutNuevo = new BotonSout(copiaSout.getVariable());
+            botonParaPegar = copiaSoutNuevo;
+        }
+
+        botonParaPegar.setBounds(botonPop.getX() + 15, botonPop.getY() + 15, botonPop.getWidth(), botonPop.getHeight());
+        botonParaPegar.setText(botonPop.getText());
+        botonParaPegar.setIcon(botonPop.getIcon());
+        botonParaPegar.setBackground(botonPop.getBackground());
+        botonParaPegar.setHorizontalTextPosition(botonPop.getHorizontalTextPosition());
+        
+      
+
+        //al final botonParaPegar debe tener todo
+    }//GEN-LAST:event_jmi_elemDiagFlCopiarActionPerformed
+
+    private void jb_pegarElementoDiagramaFlujoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_pegarElementoDiagramaFlujoActionPerformed
+        // añadir botonParaPegar
+        if (botonParaPegar != null) {
+
+            botonesDiagramaFlujo.add(convertirABotonArrastrable(botonParaPegar));
+            llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+            jlp_diagramaFlujo.repaint();
+            botonParaPegar = null;
+        }
+
+
+    }//GEN-LAST:event_jb_pegarElementoDiagramaFlujoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1637,7 +1712,13 @@ public class jFPrincipal extends javax.swing.JFrame {
             public void mouseClicked(MouseEvent e) {
 
                 if (e.getButton() == 3) {
+                    botonPop=null;
                     botonPop = boton;
+                    if (boton instanceof BotonInicio || boton instanceof BotonFin) {
+                        jmi_elemDiagFlCopiar.setEnabled(false);
+                    }else{
+                    jmi_elemDiagFlCopiar.setEnabled(true);
+                    }
                     jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
 
                 }
@@ -1789,5 +1870,6 @@ public class jFPrincipal extends javax.swing.JFrame {
     private int contBotonesInicio = 0;
     private int contBotonesFin = 0;
     private JButton botonPop;
+    private JButton botonParaPegar;
 
 }

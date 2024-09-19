@@ -27,6 +27,10 @@ public class BotonDeclararOperacion extends JButton {
 
     }
 
+    BotonDeclararOperacion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
     public String toString() {
         return resultado.split("\\)")[1] + " = " + variable1.split("\\)")[1] + " " + operacion + " " + variable2.split("\\)")[1] + ";\n";

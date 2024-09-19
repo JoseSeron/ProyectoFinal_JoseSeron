@@ -31,6 +31,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Copiar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_elemDiagFlCopiarActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmi_elemDiagFlujoModificarFuente">
           <Properties>
@@ -1567,6 +1570,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pegar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_pegarElementoDiagramaFlujoActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane4">
 
