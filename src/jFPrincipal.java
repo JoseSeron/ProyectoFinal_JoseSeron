@@ -96,6 +96,15 @@ public class jFPrincipal extends javax.swing.JFrame {
         jtf_crearForLimite = new javax.swing.JTextField();
         jtf_crearForInicio = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        jd_crearWhile = new javax.swing.JDialog();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jcb_crearWhileVar1 = new javax.swing.JComboBox<>();
+        jcb_crearWhileComparador = new javax.swing.JComboBox<>();
+        jcb_crearWhileVar2 = new javax.swing.JComboBox<>();
+        jb_dialogAgregarWhile = new javax.swing.JButton();
         jp_opcionesFuente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcb_fuenteFuente = new javax.swing.JComboBox<>();
@@ -472,7 +481,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jd_crearFor.setTitle("For");
+        jd_crearFor.setTitle("Ciclo For");
         jd_crearFor.setMinimumSize(new java.awt.Dimension(400, 180));
         jd_crearFor.setModal(true);
 
@@ -574,6 +583,96 @@ public class jFPrincipal extends javax.swing.JFrame {
         );
 
         jd_crearFor.getAccessibleContext().setAccessibleParent(this);
+
+        jd_crearWhile.setTitle("Ciclo While");
+        jd_crearWhile.setMinimumSize(new java.awt.Dimension(390, 160));
+        jd_crearWhile.setModal(true);
+        jd_crearWhile.setPreferredSize(new java.awt.Dimension(390, 160));
+
+        jPanel7.setMinimumSize(new java.awt.Dimension(530, 150));
+        jPanel7.setName(""); // NOI18N
+
+        jLabel18.setText("Variable 1");
+
+        jLabel19.setText("Comparador");
+
+        jLabel20.setText("Variable 2");
+
+        jcb_crearWhileVar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_crearWhileVar1ActionPerformed(evt);
+            }
+        });
+
+        jcb_crearWhileComparador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<", ">", "<=", ">=" }));
+
+        jb_dialogAgregarWhile.setText("Agregar");
+        jb_dialogAgregarWhile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_dialogAgregarWhileActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jcb_crearWhileVar1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel18)
+                                .addGap(54, 54, 54)))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jcb_crearWhileComparador, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcb_crearWhileVar2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel20))))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jb_dialogAgregarWhile, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcb_crearWhileVar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_crearWhileComparador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_crearWhileVar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_dialogAgregarWhile)
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jd_crearWhileLayout = new javax.swing.GroupLayout(jd_crearWhile.getContentPane());
+        jd_crearWhile.getContentPane().setLayout(jd_crearWhileLayout);
+        jd_crearWhileLayout.setHorizontalGroup(
+            jd_crearWhileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_crearWhileLayout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jd_crearWhileLayout.setVerticalGroup(
+            jd_crearWhileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -708,6 +807,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_opcionesWhile.setText("WHILE");
         jb_opcionesWhile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_opcionesWhile.setPreferredSize(new java.awt.Dimension(118, 118));
+        jb_opcionesWhile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_opcionesWhileActionPerformed(evt);
+            }
+        });
         jp_diagramaOpciones.add(jb_opcionesWhile);
 
         jb_opcionesSout.setForeground(new java.awt.Color(0, 0, 0));
@@ -1128,19 +1232,19 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         //nuevo boton for
         BotonFor nuevoFor;
-        nuevoFor = (BotonFor)convertirABotonArrastrable(
+        nuevoFor = (BotonFor) convertirABotonArrastrable(
                 new BotonFor(jtf_crearForInicio.getText(),
                         jtf_crearForLimite.getText(),
-                        (String)jcb_crearForComparador.getSelectedItem(),
-                        (String)jcb_crearForFactor.getSelectedItem()));
-        
+                        (String) jcb_crearForComparador.getSelectedItem(),
+                        (String) jcb_crearForFactor.getSelectedItem()));
+
         //añadir a array
         botonesDiagramaFlujo.add(nuevoFor);
-        
+
         //añadir a diagrama
         llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
         jlp_diagramaFlujo.repaint();
-        
+
         //esconder dialog
         jd_crearFor.setVisible(false);
 
@@ -1152,6 +1256,55 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_crearFor.setLocationRelativeTo(this);
         jd_crearFor.setVisible(true);
     }//GEN-LAST:event_jb_opcionesForActionPerformed
+
+    private void jcb_crearWhileVar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_crearWhileVar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcb_crearWhileVar1ActionPerformed
+
+    private void jb_dialogAgregarWhileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogAgregarWhileActionPerformed
+        // Crear botonwhile nuevo
+        BotonWhile nuevoWhile = (BotonWhile) convertirABotonArrastrable(new BotonWhile(
+                (String)jcb_crearWhileVar1.getSelectedItem(),
+                (String)jcb_crearWhileVar2.getSelectedItem(),
+                (String)jcb_crearWhileComparador.getSelectedItem()));
+        
+        //añadir a lista
+        botonesDiagramaFlujo.add(nuevoWhile);
+        
+        //añadir a diagrama
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+        jlp_diagramaFlujo.repaint();
+        
+        //esconder dialog
+        jd_crearWhile.setVisible(false);
+        
+    }//GEN-LAST:event_jb_dialogAgregarWhileActionPerformed
+
+    private void jb_opcionesWhileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesWhileActionPerformed
+        // While
+        if (listaVariables.size() >= 2) {
+            jd_crearIf.setLocationRelativeTo(this);
+
+            //limpiar cbs
+            jcb_crearWhileVar1.removeAllItems();
+            jcb_crearWhileVar2.removeAllItems();
+
+            //llenar cbs
+            for (String variable : listaVariables) {
+                jcb_crearWhileVar1.addItem(variable);
+                jcb_crearWhileVar2.addItem(variable);
+            }
+
+            jcb_crearWhileVar1.repaint();
+            jcb_crearWhileVar2.repaint();
+
+            jd_crearWhile.setLocationRelativeTo(this);
+            jd_crearWhile.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay suficiente variables");
+        }
+
+    }//GEN-LAST:event_jb_opcionesWhileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1346,7 +1499,10 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1366,6 +1522,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1374,6 +1531,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_agregarVariable;
     private javax.swing.JButton jb_dialogAgregarFor;
     private javax.swing.JButton jb_dialogAgregarIf;
+    private javax.swing.JButton jb_dialogAgregarWhile;
     private javax.swing.JButton jb_dialogCrearOperacion;
     private javax.swing.JButton jb_fuenteColor;
     private javax.swing.JButton jb_generarCodigoFlujo;
@@ -1397,6 +1555,9 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcb_crearOperacionResultado;
     private javax.swing.JComboBox<String> jcb_crearOperacionVar1;
     private javax.swing.JComboBox<String> jcb_crearOperacionVar2;
+    private javax.swing.JComboBox<String> jcb_crearWhileComparador;
+    private javax.swing.JComboBox<String> jcb_crearWhileVar1;
+    private javax.swing.JComboBox<String> jcb_crearWhileVar2;
     private javax.swing.JComboBox<String> jcb_fuenteEstilo;
     private javax.swing.JComboBox<String> jcb_fuenteFuente;
     private javax.swing.JComboBox<String> jcb_tipoNuevaVariable;
@@ -1404,6 +1565,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crearIf;
     private javax.swing.JDialog jd_crearOperacion;
     private javax.swing.JDialog jd_crearVariable;
+    private javax.swing.JDialog jd_crearWhile;
     private javax.swing.JFrame jf_ventanaCodigo;
     private javax.swing.JList<String> jl_variables;
     private javax.swing.JLayeredPane jlp_diagramaClases;

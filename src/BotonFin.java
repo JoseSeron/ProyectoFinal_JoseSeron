@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import javax.swing.*;
+import javax.swing.JButton;
 
 
 public class BotonFin extends JButton{

@@ -2,15 +2,17 @@
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
+
+
 
 /**
  *
  * @author joser
  */
-public class BotonWhile extends JButton {
-
+public class BotonWhile extends JButton{
+    
     private String variable1, variable2, comparador;
 
     public BotonWhile(String variable1, String variable2, String comparador) {
@@ -33,7 +35,7 @@ public class BotonWhile extends JButton {
         this.setIcon(icono);
         this.setBackground(Color.MAGENTA);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
-    }
+}
 
     @Override
     public String toString() {

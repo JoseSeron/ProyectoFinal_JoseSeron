@@ -2,6 +2,7 @@
 import java.awt.Color;
 import javax.swing.*;
 
+
 /**
  *
  * @author joser
@@ -17,6 +18,7 @@ public class BotonIf extends JButton {
 
     
     public BotonIf(String variable1, String comparador, String variable2) {
+       
         this.variable1 = variable1;
         this.comparador = comparador;
         this.variable2 = variable2;
