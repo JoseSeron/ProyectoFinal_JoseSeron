@@ -5,14 +5,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-
-
 /**
  *
  * @author joser
  */
-public class BotonWhile extends JButton{
-    
+public class BotonWhile extends JButton {
+
     private String variable1, variable2, comparador;
 
     public BotonWhile(String variable1, String variable2, String comparador) {
@@ -35,11 +33,11 @@ public class BotonWhile extends JButton{
         this.setIcon(icono);
         this.setBackground(Color.MAGENTA);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
-}
+    }
 
     @Override
     public String toString() {
-        return "while ( " + variable1.split("\\)")[1] + " " + comparador + " " + variable2.split("\\)")[1] + " ) {}";
+        return "while ( " + variable1.split("\\)")[1] + " " + comparador + " " + variable2.split("\\)")[1] + " ) {}\n";
     }
 
     public String getVariable1() {

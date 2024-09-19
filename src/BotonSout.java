@@ -2,7 +2,6 @@
 import java.awt.Color;
 import javax.swing.*;
 
-
 /**
  *
  * @author joser
@@ -25,13 +24,16 @@ public class BotonSout extends JButton {
         this.setIcon(icono);
         this.setBackground(Color.ORANGE);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
+        
+        
     }
 
     @Override
     public String toString() {
-        return "BotonSout{" + "variable=" + variable + '}';
+        return "System.out.print("+variable.split("\\)")[1]+");\n";
     }
 
+    
     public String getVariable() {
         return variable;
     }

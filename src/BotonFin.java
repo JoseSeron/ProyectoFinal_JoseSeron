@@ -3,11 +3,10 @@ import java.awt.Color;
 import javax.swing.*;
 import javax.swing.JButton;
 
-
-public class BotonFin extends JButton{
+public class BotonFin extends JButton {
 
     public BotonFin() {
-       
+
         this.setBounds(50, 50, 120, 120);
         this.setText("FIN");
         String rutaIcono = "./Iconos/fin.png";

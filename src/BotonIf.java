@@ -2,7 +2,6 @@
 import java.awt.Color;
 import javax.swing.*;
 
-
 /**
  *
  * @author joser
@@ -13,12 +12,11 @@ public class BotonIf extends JButton {
 
     @Override
     public String toString() {
-        return "if ("+variable1.split("\\)")[1]+" "+comparador+" "+variable2.split("\\)")[1]+") {}\n";
+        return "if (" + variable1.split("\\)")[1] + " " + comparador + " " + variable2.split("\\)")[1] + ") {}\n";
     }
 
-    
     public BotonIf(String variable1, String comparador, String variable2) {
-       
+
         this.variable1 = variable1;
         this.comparador = comparador;
         this.variable2 = variable2;
@@ -60,7 +58,5 @@ public class BotonIf extends JButton {
     public void setVariable2(String variable2) {
         this.variable2 = variable2;
     }
-    
-    
 
 }

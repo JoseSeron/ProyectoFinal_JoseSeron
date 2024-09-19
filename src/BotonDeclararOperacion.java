@@ -2,7 +2,6 @@
 import java.awt.Color;
 import javax.swing.*;
 
-
 public class BotonDeclararOperacion extends JButton {
 
     private String variable1, variable2, operacion, resultado;
