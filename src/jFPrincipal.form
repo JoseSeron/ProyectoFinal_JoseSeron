@@ -3,6 +3,9 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JPopupMenu" name="jpum_elemDiagramaFlujo">
+      <Events>
+        <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="jpum_elemDiagramaFlujoAncestorAdded"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="true"/>
@@ -12,30 +15,31 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cambiar Color"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_elemDiagFljCambiarColorActionPerformed"/>
+          </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jmi_elemDiagFljCambiarTexto">
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_elemDiagFlujoEliminarBoton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cambiar Texto"/>
+            <Property name="text" type="java.lang.String" value="Eliminar Boton"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_elemDiagFlujoEliminarBotonActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmi_elemDiagFlCopiar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem6"/>
+            <Property name="text" type="java.lang.String" value="Copiar"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jmi_elemDiagFlAgregarPropiedad">
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_elemDiagFlujoModificarFuente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem3"/>
+            <Property name="text" type="java.lang.String" value="Modificar Fuente"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jmi_elemDiagFljEliminar">
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_elemDiagFlujoEditarPropiedades">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem3"/>
-          </Properties>
-        </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jmi_elemDiagFlPropiedades">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="xasdf"/>
+            <Property name="text" type="java.lang.String" value="Editar Propiedades"/>
           </Properties>
         </MenuItem>
       </SubComponents>
