@@ -674,10 +674,10 @@
                                       <Component id="jtf_crearForInicio" min="-2" pref="47" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jcb_crearForComparador" min="-2" pref="50" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jta_crearForLimite" min="-2" pref="47" max="-2" attributes="0"/>
+                                      <Component id="jtf_crearForLimite" min="-2" pref="47" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -688,7 +688,7 @@
                               <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <EmptySpace pref="7" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -703,7 +703,7 @@
                           <Component id="jcb_crearForComparador" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jcb_crearForFactor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jta_crearForLimite" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtf_crearForLimite" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jtf_crearForInicio" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -752,10 +752,10 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
-                    <StringItem index="0" value="&lt;"/>
-                    <StringItem index="1" value="&gt;"/>
-                    <StringItem index="2" value="&gt;="/>
-                    <StringItem index="3" value="&lt;="/>
+                    <StringItem index="0" value="&lt; "/>
+                    <StringItem index="1" value="&gt; "/>
+                    <StringItem index="2" value="&gt;= "/>
+                    <StringItem index="3" value="&lt;= "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -784,7 +784,7 @@
                 <Property name="text" type="java.lang.String" value=")"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jta_crearForLimite">
+            <Component class="javax.swing.JTextField" name="jtf_crearForLimite">
               <Properties>
                 <Property name="text" type="java.lang.String" value="10"/>
               </Properties>

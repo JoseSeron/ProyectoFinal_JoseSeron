@@ -93,7 +93,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jcb_crearForComparador = new javax.swing.JComboBox<>();
         jcb_crearForFactor = new javax.swing.JComboBox<>();
         jLabel24 = new javax.swing.JLabel();
-        jta_crearForLimite = new javax.swing.JTextField();
+        jtf_crearForLimite = new javax.swing.JTextField();
         jtf_crearForInicio = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jp_opcionesFuente = new javax.swing.JPanel();
@@ -496,14 +496,14 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel23.setText("; i");
 
-        jcb_crearForComparador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<", ">", ">=", "<=" }));
+        jcb_crearForComparador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< ", "> ", ">= ", "<= " }));
 
         jcb_crearForFactor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "++", "--" }));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel24.setText(")");
 
-        jta_crearForLimite.setText("10");
+        jtf_crearForLimite.setText("10");
 
         jtf_crearForInicio.setText("0");
 
@@ -528,17 +528,17 @@ public class jFPrincipal extends javax.swing.JFrame {
                                 .addComponent(jtf_crearForInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jcb_crearForComparador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jta_crearForLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jtf_crearForLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcb_crearForFactor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel24)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -551,7 +551,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addComponent(jcb_crearForComparador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcb_crearForFactor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24)
-                    .addComponent(jta_crearForLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtf_crearForLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtf_crearForInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel17)
@@ -1124,14 +1124,33 @@ public class jFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_opcionesIfActionPerformed
 
     private void jb_dialogAgregarForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogAgregarForActionPerformed
-        // TODO add your handling code here:
+        //FUNCIONALIDAD AÑADIR FOR  
+
+        //nuevo boton for
+        BotonFor nuevoFor;
+        nuevoFor = (BotonFor)convertirABotonArrastrable(
+                new BotonFor(jtf_crearForInicio.getText(),
+                        jtf_crearForLimite.getText(),
+                        (String)jcb_crearForComparador.getSelectedItem(),
+                        (String)jcb_crearForFactor.getSelectedItem()));
+        
+        //añadir a array
+        botonesDiagramaFlujo.add(nuevoFor);
+        
+        //añadir a diagrama
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+        jlp_diagramaFlujo.repaint();
+        
+        //esconder dialog
+        jd_crearFor.setVisible(false);
+
     }//GEN-LAST:event_jb_dialogAgregarForActionPerformed
 
     private void jb_opcionesForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesForActionPerformed
         // MOSTRAR DIALOG CREAR FOR
-        
-       jd_crearFor.setLocationRelativeTo(this);
-       jd_crearFor.setVisible(true);
+
+        jd_crearFor.setLocationRelativeTo(this);
+        jd_crearFor.setVisible(true);
     }//GEN-LAST:event_jb_opcionesForActionPerformed
 
     /**
@@ -1181,7 +1200,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         lista.setModel(modeloLista);
 
         return lista;
-    
+
     }
 
     //antigua version llenarJLayeredPane|
@@ -1410,8 +1429,8 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner js_fuenteTamaño;
     private javax.swing.JTree jt_clases;
     private javax.swing.JTextArea jta_codigoGenerado;
-    private javax.swing.JTextField jta_crearForLimite;
     private javax.swing.JTextField jtf_crearForInicio;
+    private javax.swing.JTextField jtf_crearForLimite;
     private javax.swing.JTextField jtf_nombreNuevaVariable;
     private javax.swing.JTabbedPane jtp_diagramaCodigo;
     // End of variables declaration//GEN-END:variables

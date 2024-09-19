@@ -26,7 +26,7 @@ public class BotonFor extends JButton {
         this.setText("<html>For<br>"
                 + "i"
                 + "<br>"
-                + comparador
+                + this.comparador
                 + "<br>"
                 + limite
                 + "</html>");
