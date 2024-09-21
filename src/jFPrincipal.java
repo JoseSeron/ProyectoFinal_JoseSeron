@@ -806,13 +806,39 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel29.setText("Estilo:");
 
-        jcb_tipoDeFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segoe UI", "Comic Sans", "Consolas", "Times New Roman" }));
+        jcb_tipoDeFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segoe UI", "Comic Sans MS", "Consolas", "Times New Roman" }));
+        jcb_tipoDeFuente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcb_tipoDeFuenteItemStateChanged(evt);
+            }
+        });
+
+        js_tamanioFuente.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                js_tamanioFuenteStateChanged(evt);
+            }
+        });
+        js_tamanioFuente.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                js_tamanioFuentePropertyChange(evt);
+            }
+        });
 
         jcb_estiloFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Negrita", "Italica" }));
+        jcb_estiloFuente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcb_estiloFuenteItemStateChanged(evt);
+            }
+        });
 
         jtf_ejemploFuente.setText("Lorem ipsum dolor sit amet");
 
         jb_aceptarCambioFuente.setText("Aceptar");
+        jb_aceptarCambioFuente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_aceptarCambioFuenteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1651,17 +1677,59 @@ public class jFPrincipal extends javax.swing.JFrame {
     private void jmi_elemDiagFlujoModificarFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_elemDiagFlujoModificarFuenteActionPerformed
         // Actualizar componente de jd_ModFuente
         // Mostrar jd_modFuente
-        
+
         Font fuenteActual = botonPop.getFont();
         jcb_tipoDeFuente.setSelectedItem(fuenteActual.getFontName());
         js_tamanioFuente.setValue(fuenteActual.getSize());
         jcb_estiloFuente.setSelectedIndex(fuenteActual.getStyle());
-        
+
         jd_modificarFuenteBoton.setLocationRelativeTo(this);
         jd_modificarFuenteBoton.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_jmi_elemDiagFlujoModificarFuenteActionPerformed
+
+    private void jcb_tipoDeFuenteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcb_tipoDeFuenteItemStateChanged
+        // state changed tipo de fuente, modificar jtf ejemplo
+        Font fuente = new Font(
+                (String) jcb_tipoDeFuente.getSelectedItem(),
+                jcb_estiloFuente.getSelectedIndex(),
+                (int) js_tamanioFuente.getValue());
+
+        jtf_ejemploFuente.setFont(fuente);
+        jtf_ejemploFuente.repaint();
+    }//GEN-LAST:event_jcb_tipoDeFuenteItemStateChanged
+
+    private void js_tamanioFuentePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_js_tamanioFuentePropertyChange
+
+
+    }//GEN-LAST:event_js_tamanioFuentePropertyChange
+
+    private void js_tamanioFuenteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_js_tamanioFuenteStateChanged
+        // cambiar tamaño de fuente en el jtf ejemplo
+        Font fuenteActual = jtf_ejemploFuente.getFont();
+        int tamañoNuevo = (int) js_tamanioFuente.getValue();
+        Font fuenteNueva = fuenteActual.deriveFont((float) tamañoNuevo);
+        jtf_ejemploFuente.setFont(fuenteNueva);
+        jtf_ejemploFuente.repaint();
+    }//GEN-LAST:event_js_tamanioFuenteStateChanged
+
+    private void jcb_estiloFuenteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcb_estiloFuenteItemStateChanged
+        // cambia estilo de fuente del ejemplo
+
+        Font fuenteActual = jtf_ejemploFuente.getFont();
+        Font fuenteNueva = fuenteActual.deriveFont(jcb_estiloFuente.getSelectedIndex());
+        jtf_ejemploFuente.setFont(fuenteNueva);
+        jtf_ejemploFuente.repaint();
+
+    }//GEN-LAST:event_jcb_estiloFuenteItemStateChanged
+
+    private void jb_aceptarCambioFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_aceptarCambioFuenteActionPerformed
+        // setear fuente del ejemplo al boton
+        botonPop.setFont(jtf_ejemploFuente.getFont());
+        jd_modificarFuenteBoton.setVisible(false);
+        
+    }//GEN-LAST:event_jb_aceptarCambioFuenteActionPerformed
 
     /**
      * @param args the command line arguments
