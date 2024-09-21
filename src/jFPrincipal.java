@@ -80,6 +80,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jtf_crearForLimite = new javax.swing.JTextField();
         jtf_crearForInicio = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        jb_dialogCrearForModPropiedades = new javax.swing.JButton();
         jd_crearWhile = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -520,15 +521,19 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jLabel17.setText("Ejemplo:   for( int i = 0  ;  i < 10 ; i ++ )");
 
+        jb_dialogCrearForModPropiedades.setText("Aceptar");
+        jb_dialogCrearForModPropiedades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_dialogCrearForModPropiedadesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jb_dialogAgregarFor, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -548,7 +553,12 @@ public class jFPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcb_crearForFactor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel24)))
+                        .addComponent(jLabel24))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jb_dialogCrearForModPropiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_dialogAgregarFor, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -566,8 +576,10 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addComponent(jtf_crearForInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel17)
-                .addGap(18, 18, 18)
-                .addComponent(jb_dialogAgregarFor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_dialogAgregarFor)
+                    .addComponent(jb_dialogCrearForModPropiedades))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1500,6 +1512,10 @@ public class jFPrincipal extends javax.swing.JFrame {
     private void jb_opcionesForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesForActionPerformed
         // MOSTRAR DIALOG CREAR FOR
 
+        //confi botoncillos
+        jb_dialogAgregarFor.setVisible(true);
+        jb_dialogCrearForModPropiedades.setVisible(false);
+
         jd_crearFor.setLocationRelativeTo(this);
         jd_crearFor.setVisible(true);
     }//GEN-LAST:event_jb_opcionesForActionPerformed
@@ -1794,6 +1810,19 @@ public class jFPrincipal extends javax.swing.JFrame {
             jd_crearIf.setVisible(true);
 
         } else if (botonPop instanceof BotonFor) {
+            //mostrar boton
+            jb_dialogCrearForModPropiedades.setVisible(true);
+            jb_dialogAgregarFor.setVisible(false);
+
+            //actualizar datos
+            BotonFor botonTemp = (BotonFor) botonPop;
+            jcb_crearForComparador.setSelectedItem(botonTemp.getComparador());
+            jcb_crearForFactor.setSelectedItem(botonTemp.getFactor());
+            jtf_crearForInicio.setText(botonTemp.getInicio());
+            jtf_crearForLimite.setText(botonTemp.getLimite());
+
+            //mostrar dialog
+            jd_crearFor.setVisible(true);
 
         } else if (botonPop instanceof BotonWhile) {
 
@@ -1829,7 +1858,7 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     private void jb_dialogCrearIfModPropiedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogCrearIfModPropiedadesActionPerformed
         // mod propiedades boton if
-        
+
         //castear botonPop
         BotonIf botonTemp = (BotonIf) botonPop;
 
@@ -1849,6 +1878,31 @@ public class jFPrincipal extends javax.swing.JFrame {
         llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
         jlp_diagramaFlujo.repaint();
     }//GEN-LAST:event_jb_dialogCrearIfModPropiedadesActionPerformed
+
+    private void jb_dialogCrearForModPropiedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogCrearForModPropiedadesActionPerformed
+        // mod propiedades boton for
+
+        //castear botonPop
+        BotonFor botonTemp = (BotonFor) botonPop;
+
+        //asignar datos
+        botonTemp.setComparador((String) jcb_crearForComparador.getSelectedItem());
+        botonTemp.setFactor((String) jcb_crearForFactor.getSelectedItem());
+        botonTemp.setInicio(jtf_crearForInicio.getText());
+        botonTemp.setLimite(jtf_crearForLimite.getText());
+        botonTemp.setText(
+                jtf_crearForInicio.getText(),
+                jtf_crearForLimite.getText(),
+                (String) jcb_crearForComparador.getSelectedItem(),
+                (String) jcb_crearForFactor.getSelectedItem());
+
+        //ocultar dialog
+        jd_crearFor.setVisible(false);
+        
+        //actualizar panel
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+        jlp_diagramaFlujo.repaint();
+    }//GEN-LAST:event_jb_dialogCrearForModPropiedadesActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2079,6 +2133,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_dialogAgregarFor;
     private javax.swing.JButton jb_dialogAgregarIf;
     private javax.swing.JButton jb_dialogAgregarWhile;
+    private javax.swing.JButton jb_dialogCrearForModPropiedades;
     private javax.swing.JButton jb_dialogCrearIfModPropiedades;
     private javax.swing.JButton jb_dialogCrearOperacion;
     private javax.swing.JButton jb_dialogCrearOperacionModPropiedades;
