@@ -52,10 +52,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         jmi_elemDiagFlujoModificarFuente = new javax.swing.JMenuItem();
         jmi_elemDiagFlujoEditarPropiedades = new javax.swing.JMenuItem();
         jf_ventanaCodigo = new javax.swing.JFrame();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jta_codigoGenerado = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
         jd_crearVariable = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -109,6 +105,12 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jcb_crearSoutVariable = new javax.swing.JComboBox<>();
         jb_dialogCrearSoutAgregar = new javax.swing.JButton();
+        jd_codigo = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jta_codigoGenerado = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        jb_salirDialogCodigo = new javax.swing.JButton();
         jp_opcionesFuente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcb_fuenteFuente = new javax.swing.JComboBox<>();
@@ -204,47 +206,15 @@ public class jFPrincipal extends javax.swing.JFrame {
         jf_ventanaCodigo.setPreferredSize(new java.awt.Dimension(800, 900));
         jf_ventanaCodigo.setSize(new java.awt.Dimension(800, 800));
 
-        jta_codigoGenerado.setEditable(false);
-        jta_codigoGenerado.setColumns(20);
-        jta_codigoGenerado.setRows(5);
-        jScrollPane5.setViewportView(jta_codigoGenerado);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("CODIGO");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(309, 309, 309)
-                .addComponent(jLabel7)
-                .addContainerGap(309, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
-        );
-
         javax.swing.GroupLayout jf_ventanaCodigoLayout = new javax.swing.GroupLayout(jf_ventanaCodigo.getContentPane());
         jf_ventanaCodigo.getContentPane().setLayout(jf_ventanaCodigoLayout);
         jf_ventanaCodigoLayout.setHorizontalGroup(
             jf_ventanaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jf_ventanaCodigoLayout.setVerticalGroup(
             jf_ventanaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
 
         jd_crearVariable.setTitle("Agregar Variable");
@@ -420,7 +390,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_crearIf.setTitle("Decision If");
         jd_crearIf.setMinimumSize(new java.awt.Dimension(390, 160));
         jd_crearIf.setModal(true);
-        jd_crearIf.setPreferredSize(new java.awt.Dimension(390, 160));
 
         jPanel5.setMinimumSize(new java.awt.Dimension(530, 150));
         jPanel5.setName(""); // NOI18N
@@ -613,7 +582,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_crearWhile.setTitle("Ciclo While");
         jd_crearWhile.setMinimumSize(new java.awt.Dimension(390, 160));
         jd_crearWhile.setModal(true);
-        jd_crearWhile.setPreferredSize(new java.awt.Dimension(390, 160));
 
         jPanel7.setMinimumSize(new java.awt.Dimension(530, 150));
         jPanel7.setName(""); // NOI18N
@@ -703,7 +671,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_crearSout.setTitle("Imprimir Variable");
         jd_crearSout.setMinimumSize(new java.awt.Dimension(310, 130));
         jd_crearSout.setModal(true);
-        jd_crearSout.setPreferredSize(new java.awt.Dimension(310, 130));
         jd_crearSout.setResizable(false);
 
         jPanel8.setMinimumSize(new java.awt.Dimension(300, 100));
@@ -764,6 +731,76 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_crearSoutLayout.setVerticalGroup(
             jd_crearSoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_codigo.setMinimumSize(new java.awt.Dimension(600, 600));
+        jd_codigo.setModal(true);
+        jd_codigo.setPreferredSize(new java.awt.Dimension(600, 600));
+
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setMinimumSize(new java.awt.Dimension(550, 600));
+        jPanel2.setPreferredSize(new java.awt.Dimension(550, 600));
+        jPanel2.setVerifyInputWhenFocusTarget(false);
+
+        jScrollPane5.setMinimumSize(new java.awt.Dimension(234, 100));
+        jScrollPane5.setPreferredSize(new java.awt.Dimension(234, 100));
+
+        jta_codigoGenerado.setEditable(false);
+        jta_codigoGenerado.setColumns(20);
+        jta_codigoGenerado.setRows(5);
+        jScrollPane5.setViewportView(jta_codigoGenerado);
+
+        jLabel7.setFont(new java.awt.Font("Consolas", 0, 48)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("CODIGO");
+
+        jb_salirDialogCodigo.setText("Salir");
+        jb_salirDialogCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_salirDialogCodigoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jb_salirDialogCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jb_salirDialogCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(288, 288, 288))
+        );
+
+        javax.swing.GroupLayout jd_codigoLayout = new javax.swing.GroupLayout(jd_codigo.getContentPane());
+        jd_codigo.getContentPane().setLayout(jd_codigoLayout);
+        jd_codigoLayout.setHorizontalGroup(
+            jd_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+        );
+        jd_codigoLayout.setVerticalGroup(
+            jd_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1163,8 +1200,7 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         //1. Añadir todas las lineas de codigo al jta basandose en el arraylist
         //2. mostrar la ventana con el texto lleno
-        jf_ventanaCodigo.setLocationRelativeTo(jp_Diagrama);
-        jf_ventanaCodigo.setVisible(true);
+        jd_codigo.setLocationRelativeTo(this);
         jta_codigoGenerado.setText("");
 
         jta_codigoGenerado.append("//Declaracion Variables\n");
@@ -1178,6 +1214,9 @@ public class jFPrincipal extends javax.swing.JFrame {
         for (JButton boton : botonesDiagramaFlujo) {
             jta_codigoGenerado.append(boton.toString());
         }
+        jd_codigo.setVisible(true);
+
+
     }//GEN-LAST:event_jb_generarCodigoFlujoActionPerformed
 
     private void jb_opcionesDeclararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesDeclararActionPerformed
@@ -1545,8 +1584,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         botonParaPegar.setIcon(botonPop.getIcon());
         botonParaPegar.setBackground(botonPop.getBackground());
         botonParaPegar.setHorizontalTextPosition(botonPop.getHorizontalTextPosition());
-        
-      
 
         //al final botonParaPegar debe tener todo
     }//GEN-LAST:event_jmi_elemDiagFlCopiarActionPerformed
@@ -1563,6 +1600,11 @@ public class jFPrincipal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jb_pegarElementoDiagramaFlujoActionPerformed
+
+    private void jb_salirDialogCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_salirDialogCodigoActionPerformed
+        // TODO add your handling code here:
+        jd_codigo.setVisible(false);
+    }//GEN-LAST:event_jb_salirDialogCodigoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1712,12 +1754,12 @@ public class jFPrincipal extends javax.swing.JFrame {
             public void mouseClicked(MouseEvent e) {
 
                 if (e.getButton() == 3) {
-                    botonPop=null;
+                    botonPop = null;
                     botonPop = boton;
                     if (boton instanceof BotonInicio || boton instanceof BotonFin) {
                         jmi_elemDiagFlCopiar.setEnabled(false);
-                    }else{
-                    jmi_elemDiagFlCopiar.setEnabled(true);
+                    } else {
+                        jmi_elemDiagFlCopiar.setEnabled(true);
                     }
                     jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
 
@@ -1814,6 +1856,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_opcionesSout;
     private javax.swing.JButton jb_opcionesWhile;
     private javax.swing.JButton jb_pegarElementoDiagramaFlujo;
+    private javax.swing.JButton jb_salirDialogCodigo;
     private javax.swing.JComboBox<String> jcb_crearForComparador;
     private javax.swing.JComboBox<String> jcb_crearForFactor;
     private javax.swing.JComboBox<String> jcb_crearIfComparador;
@@ -1830,6 +1873,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcb_fuenteEstilo;
     private javax.swing.JComboBox<String> jcb_fuenteFuente;
     private javax.swing.JComboBox<String> jcb_tipoNuevaVariable;
+    private javax.swing.JDialog jd_codigo;
     private javax.swing.JDialog jd_crearFor;
     private javax.swing.JDialog jd_crearIf;
     private javax.swing.JDialog jd_crearOperacion;
