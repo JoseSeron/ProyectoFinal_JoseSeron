@@ -111,15 +111,18 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jb_salirDialogCodigo = new javax.swing.JButton();
         jd_modificarFuenteBoton = new javax.swing.JDialog();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jcb_tipoDeFuente = new javax.swing.JComboBox<>();
+        jb_colorFuente = new javax.swing.JButton();
+        js_tamanioFuente = new javax.swing.JSpinner();
+        jcb_estiloFuente = new javax.swing.JComboBox<>();
+        jtf_ejemploFuente = new javax.swing.JTextField();
+        jb_aceptarCambioFuente = new javax.swing.JButton();
         jp_opcionesFuente = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jcb_fuenteFuente = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jb_fuenteColor = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        js_fuenteTamaño = new javax.swing.JSpinner();
-        jLabel4 = new javax.swing.JLabel();
-        jcb_fuenteEstilo = new javax.swing.JComboBox<>();
         jtp_diagramaCodigo = new javax.swing.JTabbedPane();
         jp_Diagrama = new javax.swing.JPanel();
         jp_variables = new javax.swing.JPanel();
@@ -195,6 +198,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jpum_elemDiagramaFlujo.add(jmi_elemDiagFlCopiar);
 
         jmi_elemDiagFlujoModificarFuente.setText("Modificar Fuente");
+        jmi_elemDiagFlujoModificarFuente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_elemDiagFlujoModificarFuenteActionPerformed(evt);
+            }
+        });
         jpum_elemDiagramaFlujo.add(jmi_elemDiagFlujoModificarFuente);
 
         jmi_elemDiagFlujoEditarPropiedades.setText("Editar Propiedades");
@@ -786,15 +794,92 @@ public class jFPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
         );
 
+        jd_modificarFuenteBoton.setTitle("Modificar Fuente");
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel26.setText("Color:");
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel27.setText("Tipo de Fuente:");
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel28.setText("Tamaño:");
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel29.setText("Estilo:");
+
+        jcb_tipoDeFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jb_colorFuente.setText(" ");
+
+        jcb_estiloFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jtf_ejemploFuente.setText("Lorem ipsum dolor sit amet");
+
+        jb_aceptarCambioFuente.setText("Aceptar");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtf_ejemploFuente)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel29)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel28))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jcb_tipoDeFuente, 0, 129, Short.MAX_VALUE)
+                            .addComponent(jcb_estiloFuente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jb_colorFuente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(js_tamanioFuente, javax.swing.GroupLayout.Alignment.LEADING)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addComponent(jb_aceptarCambioFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(jcb_tipoDeFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_colorFuente)
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(js_tamanioFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(jcb_estiloFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jtf_ejemploFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_aceptarCambioFuente, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+
         javax.swing.GroupLayout jd_modificarFuenteBotonLayout = new javax.swing.GroupLayout(jd_modificarFuenteBoton.getContentPane());
         jd_modificarFuenteBoton.getContentPane().setLayout(jd_modificarFuenteBotonLayout);
         jd_modificarFuenteBotonLayout.setHorizontalGroup(
             jd_modificarFuenteBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jd_modificarFuenteBotonLayout.setVerticalGroup(
             jd_modificarFuenteBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -802,32 +887,6 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jp_opcionesFuente.setBackground(new java.awt.Color(204, 255, 255));
         jp_opcionesFuente.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-
-        jLabel1.setText("Fuente");
-        jp_opcionesFuente.add(jLabel1);
-
-        jcb_fuenteFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segoe", "Times New Roman", "Arial", "Comic Sans" }));
-        jcb_fuenteFuente.setPreferredSize(new java.awt.Dimension(150, 22));
-        jp_opcionesFuente.add(jcb_fuenteFuente);
-
-        jLabel2.setText("     Color");
-        jp_opcionesFuente.add(jLabel2);
-
-        jb_fuenteColor.setText("(click)");
-        jp_opcionesFuente.add(jb_fuenteColor);
-
-        jLabel3.setText("     Tamaño");
-        jp_opcionesFuente.add(jLabel3);
-
-        js_fuenteTamaño.setPreferredSize(new java.awt.Dimension(70, 22));
-        jp_opcionesFuente.add(js_fuenteTamaño);
-
-        jLabel4.setText("     Estilo");
-        jp_opcionesFuente.add(jLabel4);
-
-        jcb_fuenteEstilo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Negrita", "Italica" }));
-        jcb_fuenteEstilo.setPreferredSize(new java.awt.Dimension(150, 22));
-        jp_opcionesFuente.add(jcb_fuenteEstilo);
 
         jp_variables.setBackground(new java.awt.Color(204, 204, 255));
         jp_variables.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1021,9 +1080,9 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addGroup(jp_DiagramaLayout.createSequentialGroup()
                         .addComponent(jp_variables, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(jb_pegarElementoDiagramaFlujo, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addComponent(jb_pegarElementoDiagramaFlujo, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_generarCodigoFlujo, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
+                        .addComponent(jb_generarCodigoFlujo, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
 
@@ -1071,7 +1130,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         jlp_diagramaClases.setBackground(new java.awt.Color(204, 255, 204));
@@ -1110,7 +1169,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         );
         jp_codigoLayout.setVerticalGroup(
             jp_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 773, Short.MAX_VALUE)
         );
 
         jtp_diagramaCodigo.addTab("Código", jp_codigo);
@@ -1600,6 +1659,13 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_codigo.setVisible(false);
     }//GEN-LAST:event_jb_salirDialogCodigoActionPerformed
 
+    private void jmi_elemDiagFlujoModificarFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_elemDiagFlujoModificarFuenteActionPerformed
+        // Actualizar componente de jd_ModFuente
+        // Mostrar jd_modFuente
+        
+        
+    }//GEN-LAST:event_jmi_elemDiagFlujoModificarFuenteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1791,7 +1857,6 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1802,15 +1867,16 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1826,18 +1892,20 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JButton jb_aceptarCambioFuente;
     private javax.swing.JButton jb_agregarVariable;
+    private javax.swing.JButton jb_colorFuente;
     private javax.swing.JButton jb_dialogAgregarFor;
     private javax.swing.JButton jb_dialogAgregarIf;
     private javax.swing.JButton jb_dialogAgregarWhile;
     private javax.swing.JButton jb_dialogCrearOperacion;
     private javax.swing.JButton jb_dialogCrearSoutAgregar;
-    private javax.swing.JButton jb_fuenteColor;
     private javax.swing.JButton jb_generarCodigoFlujo;
     private javax.swing.JButton jb_mostrarDialogAgregarVariable;
     private javax.swing.JButton jb_opcionesConectorX;
@@ -1864,8 +1932,8 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcb_crearWhileComparador;
     private javax.swing.JComboBox<String> jcb_crearWhileVar1;
     private javax.swing.JComboBox<String> jcb_crearWhileVar2;
-    private javax.swing.JComboBox<String> jcb_fuenteEstilo;
-    private javax.swing.JComboBox<String> jcb_fuenteFuente;
+    private javax.swing.JComboBox<String> jcb_estiloFuente;
+    private javax.swing.JComboBox<String> jcb_tipoDeFuente;
     private javax.swing.JComboBox<String> jcb_tipoNuevaVariable;
     private javax.swing.JDialog jd_codigo;
     private javax.swing.JDialog jd_crearFor;
@@ -1895,11 +1963,12 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_opcionesFuente;
     private javax.swing.JPanel jp_variables;
     private javax.swing.JPopupMenu jpum_elemDiagramaFlujo;
-    private javax.swing.JSpinner js_fuenteTamaño;
+    private javax.swing.JSpinner js_tamanioFuente;
     private javax.swing.JTree jt_clases;
     private javax.swing.JTextArea jta_codigoGenerado;
     private javax.swing.JTextField jtf_crearForInicio;
     private javax.swing.JTextField jtf_crearForLimite;
+    private javax.swing.JTextField jtf_ejemploFuente;
     private javax.swing.JTextField jtf_nombreNuevaVariable;
     private javax.swing.JTabbedPane jtp_diagramaCodigo;
     // End of variables declaration//GEN-END:variables
