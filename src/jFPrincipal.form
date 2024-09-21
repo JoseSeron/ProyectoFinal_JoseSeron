@@ -392,6 +392,9 @@
           <Dimension value="[390, 160]"/>
         </Property>
         <Property name="modal" type="boolean" value="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[390, 160]"/>
+        </Property>
       </Properties>
 
       <Layout>
@@ -423,7 +426,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -450,7 +453,9 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="jb_dialogCrearIfModPropiedades" min="-2" pref="148" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jb_dialogAgregarIf" min="-2" pref="148" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -474,7 +479,10 @@
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jb_dialogAgregarIf" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jb_dialogAgregarIf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jb_dialogCrearIfModPropiedades" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace pref="59" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -540,6 +548,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_dialogAgregarIfActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jb_dialogCrearIfModPropiedades">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Aceptar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_dialogCrearIfModPropiedadesActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

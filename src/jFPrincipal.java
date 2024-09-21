@@ -67,6 +67,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jcb_crearIfComparador = new javax.swing.JComboBox<>();
         jcb_crearIfVar2 = new javax.swing.JComboBox<>();
         jb_dialogAgregarIf = new javax.swing.JButton();
+        jb_dialogCrearIfModPropiedades = new javax.swing.JButton();
         jd_crearFor = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jb_dialogAgregarFor = new javax.swing.JButton();
@@ -384,6 +385,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_crearIf.setTitle("Decision If");
         jd_crearIf.setMinimumSize(new java.awt.Dimension(390, 160));
         jd_crearIf.setModal(true);
+        jd_crearIf.setPreferredSize(new java.awt.Dimension(390, 160));
 
         jPanel5.setMinimumSize(new java.awt.Dimension(530, 150));
         jPanel5.setName(""); // NOI18N
@@ -406,6 +408,13 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_dialogAgregarIf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_dialogAgregarIfActionPerformed(evt);
+            }
+        });
+
+        jb_dialogCrearIfModPropiedades.setText("Aceptar");
+        jb_dialogCrearIfModPropiedades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_dialogCrearIfModPropiedadesActionPerformed(evt);
             }
         });
 
@@ -435,7 +444,9 @@ public class jFPrincipal extends javax.swing.JFrame {
                                 .addGap(36, 36, 36)
                                 .addComponent(jLabel16))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
+                        .addGap(44, 44, 44)
+                        .addComponent(jb_dialogCrearIfModPropiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jb_dialogAgregarIf, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -453,7 +464,9 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel15)
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jb_dialogAgregarIf)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_dialogAgregarIf)
+                    .addComponent(jb_dialogCrearIfModPropiedades))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
 
@@ -1434,6 +1447,11 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     private void jb_opcionesIfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesIfActionPerformed
         // TODO add your handling code here:
+
+        //botoncillo
+        jb_dialogAgregarIf.setVisible(true);
+        jb_dialogCrearIfModPropiedades.setVisible(false);
+
         if (listaVariables.size() >= 2) {
             jd_crearIf.setLocationRelativeTo(this);
 
@@ -1762,6 +1780,18 @@ public class jFPrincipal extends javax.swing.JFrame {
             jd_crearOperacion.setVisible(true);
 
         } else if (botonPop instanceof BotonIf) {
+            //mostrar boton
+            jb_dialogAgregarIf.setVisible(false);
+            jb_dialogCrearIfModPropiedades.setVisible(true);
+
+            //actualizar datos
+            BotonIf botonTemp = (BotonIf) botonPop;
+            jcb_crearIfVar1.setSelectedItem(botonTemp.getVariable1());
+            jcb_crearIfVar2.setSelectedItem(botonTemp.getVariable2());
+            jcb_crearIfComparador.setSelectedItem(botonTemp.getComparador());
+
+            //mostrar dialog
+            jd_crearIf.setVisible(true);
 
         } else if (botonPop instanceof BotonFor) {
 
@@ -1770,47 +1800,55 @@ public class jFPrincipal extends javax.swing.JFrame {
         } else if (botonPop instanceof BotonSout) {
 
         }
-        
+
 
     }//GEN-LAST:event_jmi_elemDiagFlujoEditarPropiedadesActionPerformed
 
     private void jb_dialogCrearOperacionModPropiedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogCrearOperacionModPropiedadesActionPerformed
         // TODO add your handling code here:
 
-        if (botonPop instanceof BotonDeclararOperacion) {
-            //castear botonPop
-            BotonDeclararOperacion botontemp = (BotonDeclararOperacion) botonPop;
-            
-            
-            //setear propiedades
-            botontemp.setVariable1((String)jcb_crearOperacionVar1.getSelectedItem());
-            botontemp.setVariable2((String)jcb_crearOperacionVar2.getSelectedItem());
-            botontemp.setOperacion((String)jcb_crearOperacionOperador.getSelectedItem());
-            botontemp.setResultado((String)jcb_crearOperacionResultado.getSelectedItem());
-            botontemp.setText(
-                    (String)jcb_crearOperacionVar1.getSelectedItem(), 
-                    (String)jcb_crearOperacionVar2.getSelectedItem(), 
-                    (String)jcb_crearOperacionOperador.getSelectedItem(), 
-                    (String)jcb_crearOperacionResultado.getSelectedItem());
-            
-            
-            llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
-            jlp_diagramaFlujo.repaint();
-            jd_crearOperacion.setVisible(false);
-            
+        //castear botonPop
+        BotonDeclararOperacion botontemp = (BotonDeclararOperacion) botonPop;
 
-        } else if (botonPop instanceof BotonIf) {
+        //setear propiedades
+        botontemp.setVariable1((String) jcb_crearOperacionVar1.getSelectedItem());
+        botontemp.setVariable2((String) jcb_crearOperacionVar2.getSelectedItem());
+        botontemp.setOperacion((String) jcb_crearOperacionOperador.getSelectedItem());
+        botontemp.setResultado((String) jcb_crearOperacionResultado.getSelectedItem());
+        botontemp.setText(
+                (String) jcb_crearOperacionVar1.getSelectedItem(),
+                (String) jcb_crearOperacionVar2.getSelectedItem(),
+                (String) jcb_crearOperacionOperador.getSelectedItem(),
+                (String) jcb_crearOperacionResultado.getSelectedItem());
 
-        } else if (botonPop instanceof BotonFor) {
+        jd_crearOperacion.setVisible(false);
 
-        } else if (botonPop instanceof BotonWhile) {
-
-        } else if (botonPop instanceof BotonSout) {
-
-        }
-
-            jlp_diagramaFlujo.repaint();
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+        jlp_diagramaFlujo.repaint();
     }//GEN-LAST:event_jb_dialogCrearOperacionModPropiedadesActionPerformed
+
+    private void jb_dialogCrearIfModPropiedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogCrearIfModPropiedadesActionPerformed
+        // mod propiedades boton if
+        
+        //castear botonPop
+        BotonIf botonTemp = (BotonIf) botonPop;
+
+        //asiganar datos
+        botonTemp.setVariable1((String) jcb_crearIfVar1.getSelectedItem());
+        botonTemp.setVariable2((String) jcb_crearIfVar2.getSelectedItem());
+        botonTemp.setComparador((String) jcb_crearIfComparador.getSelectedItem());
+        botonTemp.setText(
+                (String) jcb_crearIfVar1.getSelectedItem(),
+                (String) jcb_crearIfComparador.getSelectedItem(),
+                (String) jcb_crearIfVar2.getSelectedItem());
+
+        //ocultar dialog
+        jd_crearIf.setVisible(false);
+
+        //actualizar panel
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+        jlp_diagramaFlujo.repaint();
+    }//GEN-LAST:event_jb_dialogCrearIfModPropiedadesActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2041,6 +2079,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_dialogAgregarFor;
     private javax.swing.JButton jb_dialogAgregarIf;
     private javax.swing.JButton jb_dialogAgregarWhile;
+    private javax.swing.JButton jb_dialogCrearIfModPropiedades;
     private javax.swing.JButton jb_dialogCrearOperacion;
     private javax.swing.JButton jb_dialogCrearOperacionModPropiedades;
     private javax.swing.JButton jb_dialogCrearSoutAgregar;
