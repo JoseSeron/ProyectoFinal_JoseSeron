@@ -14,6 +14,16 @@ public class BotonIf extends JButton {
     public String toString() {
         return "if (" + variable1.split("\\)")[1] + " " + comparador + " " + variable2.split("\\)")[1] + ") {}\n";
     }
+    
+    public void setText(String variable1, String comparador, String variable2){
+     this.setText("<html>If<br>"
+                + variable1.split("\\)")[1]
+                + "<br>"
+                + comparador
+                + "<br>"
+                + variable2.split("\\)")[1]
+                + "</html>");
+    }
 
     public BotonIf(String variable1, String comparador, String variable2) {
 
@@ -21,13 +31,7 @@ public class BotonIf extends JButton {
         this.comparador = comparador;
         this.variable2 = variable2;
         this.setBounds(50, 50, 120, 120);
-        this.setText("<html>If<br>"
-                + variable1.split("\\)")[1]
-                + "<br>"
-                + comparador
-                + "<br>"
-                + variable2.split("\\)")[1]
-                + "</html>");
+        this.setText(variable1, comparador, variable2);
         String rutaIcono = "./Iconos/if.png";
         Icon icono = new ImageIcon(rutaIcono);
         this.setIcon(icono);

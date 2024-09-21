@@ -12,14 +12,9 @@ public class BotonDeclararOperacion extends JButton {
         this.variable2 = variable2;
         this.operacion = operacion;
         this.setBounds(50, 50, 120, 120);
-        this.setText("<html>Decl. Ope.<br>"
-                + variable1.split("\\)")[1]
-                + "<br>"
-                + operacion
-                + "<br>"
-                + variable2.split("\\)")[1]
-                + "</html>");
+
         String rutaIcono = "./Iconos/declarar.png";
+        setText(variable1, variable2, operacion, resultado);
         Icon icono = new ImageIcon(rutaIcono);
         this.setIcon(icono);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -27,8 +22,14 @@ public class BotonDeclararOperacion extends JButton {
 
     }
 
-    BotonDeclararOperacion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setText(String variable1, String variable2, String operacion, String resultado) {
+        this.setText("<html>Decl. Ope.<br>"
+                + variable1.split("\\)")[1]
+                + "<br>"
+                + operacion
+                + "<br>"
+                + variable2.split("\\)")[1]
+                + "</html>");
     }
 
     @Override

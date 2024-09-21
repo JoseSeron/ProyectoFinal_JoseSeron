@@ -23,13 +23,7 @@ public class BotonFor extends JButton {
 
         //Config formato boton
         this.setBounds(50, 50, 120, 120);
-        this.setText("<html>For<br>"
-                + "i"
-                + "<br>"
-                + this.comparador
-                + "<br>"
-                + limite
-                + "</html>");
+        this.setText(inicio, limite, comparador, factor);
         String rutaIcono = "./Iconos/for.png";
         Icon icono = new ImageIcon(rutaIcono);
         this.setIcon(icono);
@@ -40,6 +34,17 @@ public class BotonFor extends JButton {
     @Override
     public String toString() {
         return "for ( int i = " + inicio + " ; i " + comparador + " " + limite + " ; i " + factor + ") {}\n";
+    }
+    
+    
+    public void setText(String inicio, String limite, String comparador, String factor){
+    this.setText("<html>For<br>"
+                + "i"
+                + "<br>"
+                + this.comparador
+                + "<br>"
+                + limite
+                + "</html>");
     }
 
     public String getInicio() {
