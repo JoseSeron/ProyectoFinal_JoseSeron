@@ -112,12 +112,10 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_salirDialogCodigo = new javax.swing.JButton();
         jd_modificarFuenteBoton = new javax.swing.JDialog();
         jPanel9 = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jcb_tipoDeFuente = new javax.swing.JComboBox<>();
-        jb_colorFuente = new javax.swing.JButton();
         js_tamanioFuente = new javax.swing.JSpinner();
         jcb_estiloFuente = new javax.swing.JComboBox<>();
         jtf_ejemploFuente = new javax.swing.JTextField();
@@ -795,9 +793,9 @@ public class jFPrincipal extends javax.swing.JFrame {
         );
 
         jd_modificarFuenteBoton.setTitle("Modificar Fuente");
-
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel26.setText("Color:");
+        jd_modificarFuenteBoton.setMinimumSize(new java.awt.Dimension(290, 283));
+        jd_modificarFuenteBoton.setModal(true);
+        jd_modificarFuenteBoton.setPreferredSize(new java.awt.Dimension(290, 283));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel27.setText("Tipo de Fuente:");
@@ -808,11 +806,9 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel29.setText("Estilo:");
 
-        jcb_tipoDeFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_tipoDeFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segoe UI", "Comic Sans", "Consolas", "Times New Roman" }));
 
-        jb_colorFuente.setText(" ");
-
-        jcb_estiloFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_estiloFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Negrita", "Italica" }));
 
         jtf_ejemploFuente.setText("Lorem ipsum dolor sit amet");
 
@@ -829,16 +825,13 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel29)
-                            .addComponent(jLabel26)
                             .addComponent(jLabel27)
                             .addComponent(jLabel28))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jcb_tipoDeFuente, 0, 129, Short.MAX_VALUE)
-                            .addComponent(jcb_estiloFuente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jb_colorFuente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(js_tamanioFuente, javax.swing.GroupLayout.Alignment.LEADING)))))
+                            .addComponent(jcb_tipoDeFuente, 0, 1, Short.MAX_VALUE)
+                            .addComponent(jcb_estiloFuente, 0, 129, Short.MAX_VALUE)
+                            .addComponent(js_tamanioFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap(51, Short.MAX_VALUE)
@@ -854,10 +847,6 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addComponent(jcb_tipoDeFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_colorFuente)
-                    .addComponent(jLabel26))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(js_tamanioFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
@@ -867,7 +856,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jtf_ejemploFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jb_aceptarCambioFuente, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(jb_aceptarCambioFuente, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
 
@@ -1663,6 +1652,14 @@ public class jFPrincipal extends javax.swing.JFrame {
         // Actualizar componente de jd_ModFuente
         // Mostrar jd_modFuente
         
+        Font fuenteActual = botonPop.getFont();
+        jcb_tipoDeFuente.setSelectedItem(fuenteActual.getFontName());
+        js_tamanioFuente.setValue(fuenteActual.getSize());
+        jcb_estiloFuente.setSelectedIndex(fuenteActual.getStyle());
+        
+        jd_modificarFuenteBoton.setLocationRelativeTo(this);
+        jd_modificarFuenteBoton.setVisible(true);
+        
         
     }//GEN-LAST:event_jmi_elemDiagFlujoModificarFuenteActionPerformed
 
@@ -1873,7 +1870,6 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -1900,7 +1896,6 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton jb_aceptarCambioFuente;
     private javax.swing.JButton jb_agregarVariable;
-    private javax.swing.JButton jb_colorFuente;
     private javax.swing.JButton jb_dialogAgregarFor;
     private javax.swing.JButton jb_dialogAgregarIf;
     private javax.swing.JButton jb_dialogAgregarWhile;
