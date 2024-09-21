@@ -20,7 +20,7 @@ import javax.swing.*;
  * @author joser
  */
 public class jFPrincipal extends javax.swing.JFrame {
-    
+
     public jFPrincipal() {
         initComponents();
 
@@ -28,7 +28,7 @@ public class jFPrincipal extends javax.swing.JFrame {
 //        JLabel label1 = createDraggableLabel("label", 100, 100);
 //        jLayeredPane1.add(label1);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1292,7 +1292,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 break;
             }
         }
-        
+
         if (!inicioExiste) {
             BotonInicio nuevoInicio = (BotonInicio) convertirABotonArrastrable(new BotonInicio());
             botonesDiagramaFlujo.add(nuevoInicio);
@@ -1300,7 +1300,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             contBotonesInicio++;
             jlp_diagramaFlujo.repaint();
         }
-        
+
 
     }//GEN-LAST:event_jb_opcionesInicioActionPerformed
 
@@ -1310,7 +1310,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         //2. mostrar la ventana con el texto lleno
         jd_codigo.setLocationRelativeTo(this);
         jta_codigoGenerado.setText("");
-        
+
         jta_codigoGenerado.append("//Declaracion Variables\n");
         for (String variable : listaVariables) {
             String tipo = variable.split("\\)")[0].substring(1);
@@ -1323,19 +1323,19 @@ public class jFPrincipal extends javax.swing.JFrame {
             jta_codigoGenerado.append(boton.toString());
         }
         jd_codigo.setVisible(true);
-        
+
 
     }//GEN-LAST:event_jb_generarCodigoFlujoActionPerformed
 
     private void jb_opcionesDeclararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesDeclararActionPerformed
-        
+
         jb_dialogCrearOperacion.setVisible(true);
         jb_dialogCrearOperacionModPropiedades.setVisible(false);
-        
+
         if (listaVariables.size() <= 0) {
             JOptionPane.showMessageDialog(this, "No hay variables");
         } else {
-            
+
             jd_crearOperacion.setLocationRelativeTo(this);
 
             //limpiar cbs
@@ -1358,7 +1358,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             // mostrar dialog de crear operacion
             jd_crearOperacion.setVisible(true);
         }
-        
+
 
     }//GEN-LAST:event_jb_opcionesDeclararActionPerformed
 
@@ -1383,16 +1383,16 @@ public class jFPrincipal extends javax.swing.JFrame {
                     + jcb_tipoNuevaVariable.getSelectedItem()
                     + ")"
                     + jtf_nombreNuevaVariable.getText();
-            
+
             listaVariables.add(nuevaVariable);
-            
+
             jtf_nombreNuevaVariable.setText("");
             jd_crearVariable.setVisible(false);
             llenarJList(jl_variables);
             jl_variables.repaint();
-            
+
         }
-        
+
 
     }//GEN-LAST:event_jb_agregarVariableActionPerformed
 
@@ -1408,7 +1408,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 break;
             }
         }
-        
+
         if (!finExiste) {
             BotonFin nuevoFin = (BotonFin) convertirABotonArrastrable(new BotonFin());
             botonesDiagramaFlujo.add(nuevoFin);
@@ -1416,7 +1416,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
             jlp_diagramaFlujo.repaint();
         }
-        
+
 
     }//GEN-LAST:event_jb_opcionesFinActionPerformed
 
@@ -1434,12 +1434,12 @@ public class jFPrincipal extends javax.swing.JFrame {
                 (String) jcb_crearOperacionVar2.getSelectedItem(),
                 (String) jcb_crearOperacionOperador.getSelectedItem(),
                 (String) jcb_crearOperacionResultado.getSelectedItem()));
-        
+
         botonesDiagramaFlujo.add(nuevaOperacion);
         llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
         jlp_diagramaFlujo.repaint();
         jd_crearOperacion.setVisible(false);
-        
+
 
     }//GEN-LAST:event_jb_dialogCrearOperacionActionPerformed
 
@@ -1473,7 +1473,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         //botoncillo
         jb_dialogAgregarIf.setVisible(true);
         jb_dialogCrearIfModPropiedades.setVisible(false);
-        
+
         if (listaVariables.size() >= 2) {
             jd_crearIf.setLocationRelativeTo(this);
 
@@ -1486,10 +1486,10 @@ public class jFPrincipal extends javax.swing.JFrame {
                 jcb_crearIfVar1.addItem(variable);
                 jcb_crearIfVar2.addItem(variable);
             }
-            
+
             jcb_crearIfVar1.repaint();
             jcb_crearIfVar2.repaint();
-            
+
             jd_crearIf.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "No hay suficiente variables");
@@ -1525,7 +1525,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         //confi botoncillos
         jb_dialogAgregarFor.setVisible(true);
         jb_dialogCrearForModPropiedades.setVisible(false);
-        
+
         jd_crearFor.setLocationRelativeTo(this);
         jd_crearFor.setVisible(true);
     }//GEN-LAST:event_jb_opcionesForActionPerformed
@@ -1561,12 +1561,12 @@ public class jFPrincipal extends javax.swing.JFrame {
         // crear boton
         BotonSout nuevoSout = (BotonSout) convertirABotonArrastrable(new BotonSout(
                 (String) jcb_crearSoutVariable.getSelectedItem()));
-        
+
         botonesDiagramaFlujo.add(nuevoSout);
-        
+
         llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
         jlp_diagramaFlujo.repaint();
-        
+
         jd_crearSout.setVisible(false);
 
     }//GEN-LAST:event_jb_dialogCrearSoutAgregarActionPerformed
@@ -1577,10 +1577,10 @@ public class jFPrincipal extends javax.swing.JFrame {
         //botoncillos
         jb_dialogCrearSoutAgregar.setVisible(true);
         jb_dialogCrearSoutModPropiedades.setVisible(false);
-        
+
         if (listaVariables.size() < 1) {
             JOptionPane.showMessageDialog(this, "No hay suficientes variables");
-            
+
         } else {
             jd_crearSout.setLocationRelativeTo(this);
             jcb_crearSoutVariable.removeAllItems();
@@ -1597,7 +1597,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         //botoncillos
         jb_dialogAgregarWhile.setVisible(true);
         jb_dialogCrearWhileModPropiedades.setVisible(false);
-        
+
         if (listaVariables.size() >= 2) {
             jd_crearIf.setLocationRelativeTo(this);
             //limpiar cbs
@@ -1624,7 +1624,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             System.out.println(evt.getSource().toString());
             if (botonPop.equals(jButton)) {
                 Color nuevoColor = JColorChooser.showDialog(this, "Color Boton", jButton.getBackground());
-                
+
                 if (nuevoColor != null) {
                     jButton.setBackground(nuevoColor);
                 }
@@ -1645,22 +1645,22 @@ public class jFPrincipal extends javax.swing.JFrame {
         //1 = no
         int index = -1;
         if (JOptionPane.showConfirmDialog(this, "Seguro?") == 0) {
-            
+
             for (JButton boton : botonesDiagramaFlujo) {
                 if (botonPop.equals(boton)) {
                     index = botonesDiagramaFlujo.indexOf(boton);
                     break;
                 }
             }
-            
+
             if (index != -1) {
                 botonesDiagramaFlujo.remove(index);
                 llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
                 jlp_diagramaFlujo.repaint();
-                
+
                 JOptionPane.showMessageDialog(this, "Boton eliminado.");
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "Boton no encontrado");
         }
@@ -1707,7 +1707,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             BotonSout copiaSoutNuevo = new BotonSout(copiaSout.getVariable());
             botonParaPegar = copiaSoutNuevo;
         }
-        
+
         botonParaPegar.setBounds(botonPop.getX() + 15, botonPop.getY() + 15, botonPop.getWidth(), botonPop.getHeight());
         botonParaPegar.setText(botonPop.getText());
         botonParaPegar.setIcon(botonPop.getIcon());
@@ -1720,13 +1720,13 @@ public class jFPrincipal extends javax.swing.JFrame {
     private void jb_pegarElementoDiagramaFlujoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_pegarElementoDiagramaFlujoActionPerformed
         // añadir botonParaPegar
         if (botonParaPegar != null) {
-            
+
             botonesDiagramaFlujo.add(convertirABotonArrastrable(botonParaPegar));
             llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
             jlp_diagramaFlujo.repaint();
             botonParaPegar = null;
         }
-        
+
 
     }//GEN-LAST:event_jb_pegarElementoDiagramaFlujoActionPerformed
 
@@ -1743,10 +1743,10 @@ public class jFPrincipal extends javax.swing.JFrame {
         jcb_tipoDeFuente.setSelectedItem(fuenteActual.getFontName());
         js_tamanioFuente.setValue(fuenteActual.getSize());
         jcb_estiloFuente.setSelectedIndex(fuenteActual.getStyle());
-        
+
         jd_modificarFuenteBoton.setLocationRelativeTo(this);
         jd_modificarFuenteBoton.setVisible(true);
-        
+
 
     }//GEN-LAST:event_jmi_elemDiagFlujoModificarFuenteActionPerformed
 
@@ -1756,13 +1756,13 @@ public class jFPrincipal extends javax.swing.JFrame {
                 (String) jcb_tipoDeFuente.getSelectedItem(),
                 jcb_estiloFuente.getSelectedIndex(),
                 (int) js_tamanioFuente.getValue());
-        
+
         jtf_ejemploFuente.setFont(fuente);
         jtf_ejemploFuente.repaint();
     }//GEN-LAST:event_jcb_tipoDeFuenteItemStateChanged
 
     private void js_tamanioFuentePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_js_tamanioFuentePropertyChange
-        
+
 
     }//GEN-LAST:event_js_tamanioFuentePropertyChange
 
@@ -1813,7 +1813,7 @@ public class jFPrincipal extends javax.swing.JFrame {
 
             //mostrar dialog
             jd_crearOperacion.setVisible(true);
-            
+
         } else if (botonPop instanceof BotonIf) {
             //mostrar boton
             jb_dialogAgregarIf.setVisible(false);
@@ -1827,7 +1827,7 @@ public class jFPrincipal extends javax.swing.JFrame {
 
             //mostrar dialog
             jd_crearIf.setVisible(true);
-            
+
         } else if (botonPop instanceof BotonFor) {
             //mostrar boton
             jb_dialogCrearForModPropiedades.setVisible(true);
@@ -1842,7 +1842,7 @@ public class jFPrincipal extends javax.swing.JFrame {
 
             //mostrar dialog
             jd_crearFor.setVisible(true);
-            
+
         } else if (botonPop instanceof BotonWhile) {
             //mostrar boton
             jb_dialogAgregarWhile.setVisible(false);
@@ -1856,7 +1856,7 @@ public class jFPrincipal extends javax.swing.JFrame {
 
             //mostrar dialog
             jd_crearWhile.setVisible(true);
-            
+
         } else if (botonPop instanceof BotonSout) {
             //mostrar boton
             jb_dialogCrearSoutAgregar.setVisible(false);
@@ -1869,7 +1869,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             //mostrar dialog
             jd_crearSout.setVisible(true);
         }
-        
+
 
     }//GEN-LAST:event_jmi_elemDiagFlujoEditarPropiedadesActionPerformed
 
@@ -1889,9 +1889,9 @@ public class jFPrincipal extends javax.swing.JFrame {
                 (String) jcb_crearOperacionVar2.getSelectedItem(),
                 (String) jcb_crearOperacionOperador.getSelectedItem(),
                 (String) jcb_crearOperacionResultado.getSelectedItem());
-        
+
         jd_crearOperacion.setVisible(false);
-        
+
         llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
         jlp_diagramaFlujo.repaint();
     }//GEN-LAST:event_jb_dialogCrearOperacionModPropiedadesActionPerformed
@@ -1975,15 +1975,15 @@ public class jFPrincipal extends javax.swing.JFrame {
         //asignar datos
         botonTemp.setVariable((String) jcb_crearSoutVariable.getSelectedItem());
         botonTemp.setText((String) jcb_crearSoutVariable.getSelectedItem());
-        
+
         //ocultar dialog
         jd_crearSout.setVisible(false);
-        
+
         //actualizar panel
         llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
         jlp_diagramaFlujo.repaint();
     }//GEN-LAST:event_jb_dialogCrearSoutModPropiedadesActionPerformed
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2015,10 +2015,10 @@ public class jFPrincipal extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public JList llenarJList(JList lista) {
         DefaultListModel modeloLista = new DefaultListModel();
-        
+
         for (String variable : listaVariables) {
             modeloLista.addElement(variable);
         }
@@ -2026,99 +2026,29 @@ public class jFPrincipal extends javax.swing.JFrame {
         //jtf_nombreNuevaVariable.setText("");
         //jd_crearVariable.setVisible(false);
         lista.setModel(modeloLista);
-        
+
         return lista;
-        
+
     }
-    
+
     public JLayeredPane llenarJLayeredPane(JLayeredPane panel, ArrayList lista) {
         panel.removeAll();
         for (Object objeto : lista) {
             panel.add((Component) objeto);
         }
-        
+
         return panel;
-    }
-
-    // Create a JLabel that supports drag and drop
-    //BORRAR usa transferhandler
-    private JLabel createDraggableLabel(String text, int x, int y) {
-        JLabel label = new JLabel(text);
-        label.setBounds(x, y, 100, 30);
-
-        // Set transfer handler to enable dragging
-        label.setTransferHandler(new TransferHandler("text"));
-
-        // Add mouse listener to initiate drag
-        label.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                System.out.println("pressed");
-                JComponent comp = (JComponent) evt.getSource();
-                TransferHandler handler = comp.getTransferHandler();
-                handler.exportAsDrag(comp, evt, TransferHandler.MOVE);
-            }
-        });
-        
-        return label;
-    }
-
-    //crear boton arrastrable
-    private JButton crearBotonArrastrable(String texto, Icon icono) {
-        JButton boton = new JButton(texto, icono);
-        boton.setHorizontalTextPosition(SwingConstants.CENTER);
-        boton.setBounds(50, 50, 120, 120);
-        
-        final Point[] initialClick = new Point[1];
-        
-        boton.addMouseListener(new MouseAdapter() {
-            
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                
-                if (e.getButton() == 3) {
-                    
-                    jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
-                }
-            }
-            
-            @Override
-            public void mousePressed(MouseEvent e) {
-                initialClick[0] = e.getPoint();
-                
-            }
-        });
-        
-        boton.addMouseMotionListener(new MouseMotionAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                // Get the button's current position
-                int thisX = boton.getLocation().x;
-                int thisY = boton.getLocation().y;
-
-                // Calculate how much the mouse moved
-                int xMoved = e.getX() - initialClick[0].x;
-                int yMoved = e.getY() - initialClick[0].y;
-
-                // Update the button's location
-                int newX = thisX + xMoved;
-                int newY = thisY + yMoved;
-                boton.setLocation(newX, newY);
-            }
-        });
-        
-        return boton;
     }
 
     //convertir boton arrastrable
     public JButton convertirABotonArrastrable(JButton boton) {
-        
+
         final Point[] initialClick = new Point[1];
-        
+
         boton.addMouseListener(new MouseAdapter() {
-            
+
             public void mouseClicked(MouseEvent e) {
-                
+
                 if (e.getButton() == 3) {
                     botonPop = null;
                     botonPop = boton;
@@ -2127,22 +2057,22 @@ public class jFPrincipal extends javax.swing.JFrame {
                         //se desahabilitan las opciones correspondientes
                         jmi_elemDiagFlCopiar.setEnabled(false);
                         jmi_elemDiagFlujoEditarPropiedades.setEnabled(false);
-                        
+
                     } else {
                         jmi_elemDiagFlCopiar.setEnabled(true);
                         jmi_elemDiagFlujoEditarPropiedades.setEnabled(true);
                     }
                     jpum_elemDiagramaFlujo.show(e.getComponent(), e.getX(), e.getY());
-                    
+
                 }
             }
-            
+
             public void mousePressed(MouseEvent e) {
                 initialClick[0] = e.getPoint();
-                
+
             }
         });
-        
+
         boton.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -2160,7 +2090,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 boton.setLocation(newX, newY);
             }
         });
-        
+
         return boton;
     }
 
@@ -2291,5 +2221,5 @@ public class jFPrincipal extends javax.swing.JFrame {
     private int contBotonesFin = 0;
     private JButton botonPop;
     private JButton botonParaPegar;
-    
+
 }
