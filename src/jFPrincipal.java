@@ -51,7 +51,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         jmi_elemDiagFlCopiar = new javax.swing.JMenuItem();
         jmi_elemDiagFlujoModificarFuente = new javax.swing.JMenuItem();
         jmi_elemDiagFlujoEditarPropiedades = new javax.swing.JMenuItem();
-        jf_ventanaCodigo = new javax.swing.JFrame();
         jd_crearVariable = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -111,6 +110,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jta_codigoGenerado = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jb_salirDialogCodigo = new javax.swing.JButton();
+        jd_modificarFuenteBoton = new javax.swing.JDialog();
         jp_opcionesFuente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcb_fuenteFuente = new javax.swing.JComboBox<>();
@@ -199,23 +199,6 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jmi_elemDiagFlujoEditarPropiedades.setText("Editar Propiedades");
         jpum_elemDiagramaFlujo.add(jmi_elemDiagFlujoEditarPropiedades);
-
-        jf_ventanaCodigo.setTitle("Codigo Generado");
-        jf_ventanaCodigo.setMinimumSize(new java.awt.Dimension(800, 800));
-        jf_ventanaCodigo.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        jf_ventanaCodigo.setPreferredSize(new java.awt.Dimension(800, 900));
-        jf_ventanaCodigo.setSize(new java.awt.Dimension(800, 800));
-
-        javax.swing.GroupLayout jf_ventanaCodigoLayout = new javax.swing.GroupLayout(jf_ventanaCodigo.getContentPane());
-        jf_ventanaCodigo.getContentPane().setLayout(jf_ventanaCodigoLayout);
-        jf_ventanaCodigoLayout.setHorizontalGroup(
-            jf_ventanaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        jf_ventanaCodigoLayout.setVerticalGroup(
-            jf_ventanaCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
 
         jd_crearVariable.setTitle("Agregar Variable");
         jd_crearVariable.setMinimumSize(new java.awt.Dimension(350, 300));
@@ -801,6 +784,17 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_codigoLayout.setVerticalGroup(
             jd_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_modificarFuenteBotonLayout = new javax.swing.GroupLayout(jd_modificarFuenteBoton.getContentPane());
+        jd_modificarFuenteBoton.getContentPane().setLayout(jd_modificarFuenteBotonLayout);
+        jd_modificarFuenteBotonLayout.setHorizontalGroup(
+            jd_modificarFuenteBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_modificarFuenteBotonLayout.setVerticalGroup(
+            jd_modificarFuenteBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1880,7 +1874,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crearSout;
     private javax.swing.JDialog jd_crearVariable;
     private javax.swing.JDialog jd_crearWhile;
-    private javax.swing.JFrame jf_ventanaCodigo;
+    private javax.swing.JDialog jd_modificarFuenteBoton;
     private javax.swing.JList<String> jl_variables;
     private javax.swing.JLayeredPane jlp_diagramaClases;
     private javax.swing.JLayeredPane jlp_diagramaFlujo;
