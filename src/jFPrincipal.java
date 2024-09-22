@@ -961,6 +961,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         );
 
         jmi_agregarPropiedad.setText("Agregar Propiedad");
+        jmi_agregarPropiedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_agregarPropiedadActionPerformed(evt);
+            }
+        });
         jpum_opcionesArbol.add(jmi_agregarPropiedad);
 
         jmi_agregarMetodo.setText("Agregar Metodo");
@@ -973,6 +978,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jpum_opcionesArbol.add(jmi_eliminarMetodo);
 
         jmi_eliminarArbol.setText("Eliminar Arbol");
+        jmi_eliminarArbol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarArbolActionPerformed(evt);
+            }
+        });
         jpum_opcionesArbol.add(jmi_eliminarArbol);
 
         jmi_cambiarNombreClase.setText("Cambiar Nombre Clase");
@@ -2032,25 +2042,61 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     private void jb_crearClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearClaseActionPerformed
         String nombreNuevaClase = JOptionPane.showInputDialog("Nombre de la nueva clase:");
+        if (nombreNuevaClase == null) {
 
-        // meter a arbol principal
-        // agregarNodoClaseAlArbolPrincipal(nombreNuevaClase, jt_arbolClasesGeneradas);
-        // nuevo arbol arrastrable y pasar a arreglo
-        JTree nuevoArbol = crearArbolArrastrable(new NodoClase(nombreNuevaClase));
-        listaArboles.add(nuevoArbol);
+        } else {
 
-        // actualizar panel
-        llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+            // meter a arbol principal
+            // agregarNodoClaseAlArbolPrincipal(nombreNuevaClase, jt_arbolClasesGeneradas);
+            // nuevo arbol arrastrable y pasar a arreglo
+            JTree nuevoArbol = crearArbolArrastrable(new NodoClase(nombreNuevaClase));
+            listaArboles.add(nuevoArbol);
 
-        //recargar arbol principal
-        actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+            // actualizar panel
+            llenarJLayeredPane(jlp_diagramaClases, listaArboles);
 
-        // repaints
-        jt_arbolClasesGeneradas.revalidate();
-        jt_arbolClasesGeneradas.repaint();
-        jlp_diagramaClases.revalidate();
-        jlp_diagramaClases.repaint();
+            //recargar arbol principal
+            actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+
+            // repaints
+            jt_arbolClasesGeneradas.revalidate();
+            jt_arbolClasesGeneradas.repaint();
+            jlp_diagramaClases.revalidate();
+            jlp_diagramaClases.repaint();
+        }
     }//GEN-LAST:event_jb_crearClaseActionPerformed
+
+    private void jmi_agregarPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarPropiedadActionPerformed
+
+    }//GEN-LAST:event_jmi_agregarPropiedadActionPerformed
+
+    private void jmi_eliminarArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarArbolActionPerformed
+        // eliminar arbol
+        // eliminar boton
+        //0 = yes
+        //1 = no
+        int index = -1;
+        if (JOptionPane.showConfirmDialog(this, "Seguro?") == 0) {
+
+            for (JTree listaArbole : listaArboles) {
+                if (arbolPop.equals(listaArbole)) {
+                    index = listaArboles.indexOf(listaArbole);
+                }
+            }
+
+            if (index != -1) {
+                listaArboles.remove(index);
+                llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+                actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+                
+                jlp_diagramaClases.revalidate();
+                jlp_diagramaClases.repaint();
+
+                JOptionPane.showMessageDialog(this, "Arbol eliminado.");
+            }
+
+        }  
+    }//GEN-LAST:event_jmi_eliminarArbolActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2236,15 +2282,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         return arbol;
     }
 
-    private void agregarNodoClaseAlArbolPrincipal(String nombreClase, JTree arbol) {
-        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) arbol.getModel().getRoot();
-        NodoClase nuevaClase = new NodoClase(nombreClase);
-        raiz.add(nuevaClase);
 
-        // Recargar el modelo del árbol
-        DefaultTreeModel modelo = (DefaultTreeModel) arbol.getModel();
-        modelo.reload(raiz);
-    }
 
     private JTree crearArbolArrastrable(NodoClase nodoRaiz) {
         JTree nuevoArbol = convertirAArbolArrastrable(new JTree(nodoRaiz));

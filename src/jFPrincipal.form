@@ -1355,6 +1355,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar Propiedad"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_agregarPropiedadActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmi_agregarMetodo">
           <Properties>
@@ -1375,6 +1378,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar Arbol"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_eliminarArbolActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmi_cambiarNombreClase">
           <Properties>
