@@ -2245,6 +2245,12 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     private void jmi_eliminarPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarPropiedadActionPerformed
         // eliminar propiedad
+        DefaultTreeModel modelo = (DefaultTreeModel) arbolPop.getModel();
+        DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) arbolPop.getLastSelectedPathComponent();
+        modelo.removeNodeFromParent(nodo);
+        modelo.reload();
+
+        actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
     }//GEN-LAST:event_jmi_eliminarPropiedadActionPerformed
 
     public static void main(String args[]) {
@@ -2382,7 +2388,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                     //si no hay nada seleccionado o la raiz esta selecionada
                     if (arbolPop.getSelectionPath() == null
                             || arbolPop.getSelectionPath().getLastPathComponent() instanceof NodoClase) {
-                        
+
                         //activar y desactivar botones correspondientes
                         jmi_eliminarPropiedad.setEnabled(false);
                         jmi_eliminarMetodo.setEnabled(false);
