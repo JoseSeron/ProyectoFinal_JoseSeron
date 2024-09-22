@@ -116,9 +116,13 @@ public class jFPrincipal extends javax.swing.JFrame {
         jtf_ejemploFuente = new javax.swing.JTextField();
         jb_aceptarCambioFuente = new javax.swing.JButton();
         jpum_opcionesArbol = new javax.swing.JPopupMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jmi_agregarPropiedad = new javax.swing.JMenuItem();
+        jmi_agregarMetodo = new javax.swing.JMenuItem();
+        jmi_eliminarPropiedad = new javax.swing.JMenuItem();
+        jmi_eliminarMetodo = new javax.swing.JMenuItem();
+        jmi_eliminarArbol = new javax.swing.JMenuItem();
+        jmi_cambiarNombreClase = new javax.swing.JMenuItem();
+        jmi_cambiarNombreMetodo = new javax.swing.JMenuItem();
         jtp_diagramaCodigo = new javax.swing.JTabbedPane();
         jp_Diagrama = new javax.swing.JPanel();
         jp_variables = new javax.swing.JPanel();
@@ -956,14 +960,26 @@ public class jFPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jMenuItem3.setText("jMenuItem3");
-        jpum_opcionesArbol.add(jMenuItem3);
+        jmi_agregarPropiedad.setText("Agregar Propiedad");
+        jpum_opcionesArbol.add(jmi_agregarPropiedad);
 
-        jMenuItem4.setText("jMenuItem4");
-        jpum_opcionesArbol.add(jMenuItem4);
+        jmi_agregarMetodo.setText("Agregar Metodo");
+        jpum_opcionesArbol.add(jmi_agregarMetodo);
 
-        jMenuItem5.setText("jMenuItem5");
-        jpum_opcionesArbol.add(jMenuItem5);
+        jmi_eliminarPropiedad.setText("Eliminar Propiedad");
+        jpum_opcionesArbol.add(jmi_eliminarPropiedad);
+
+        jmi_eliminarMetodo.setText("Eliminar Metodo");
+        jpum_opcionesArbol.add(jmi_eliminarMetodo);
+
+        jmi_eliminarArbol.setText("Eliminar Arbol");
+        jpum_opcionesArbol.add(jmi_eliminarArbol);
+
+        jmi_cambiarNombreClase.setText("Cambiar Nombre Clase");
+        jpum_opcionesArbol.add(jmi_cambiarNombreClase);
+
+        jmi_cambiarNombreMetodo.setText("Cambiar Nombre Metodo");
+        jpum_opcionesArbol.add(jmi_cambiarNombreMetodo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -2018,14 +2034,16 @@ public class jFPrincipal extends javax.swing.JFrame {
         String nombreNuevaClase = JOptionPane.showInputDialog("Nombre de la nueva clase:");
 
         // meter a arbol principal
-        agregarNodoClaseAlArbolPrincipal(nombreNuevaClase, jt_arbolClasesGeneradas);
-
+        // agregarNodoClaseAlArbolPrincipal(nombreNuevaClase, jt_arbolClasesGeneradas);
         // nuevo arbol arrastrable y pasar a arreglo
         JTree nuevoArbol = crearArbolArrastrable(new NodoClase(nombreNuevaClase));
         listaArboles.add(nuevoArbol);
 
         // actualizar panel
         llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+
+        //recargar arbol principal
+        actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
 
         // repaints
         jt_arbolClasesGeneradas.revalidate();
@@ -2155,7 +2173,36 @@ public class jFPrincipal extends javax.swing.JFrame {
                 //mostrar opciones del pop up dependiento de en que nodo se desplego 
                 if (e.getButton() == 3) { //evento para mostrar el popupmenu
                     arbolPop = null;
-                    arbolPop = arbol;
+                    arbolPop = arbol; //guarda el arbol seleccionado para poder usarlo en cualquier lado
+
+                    //activar todos los botones
+                    jmi_agregarPropiedad.setEnabled(true);
+                    jmi_agregarMetodo.setEnabled(true);
+                    jmi_eliminarPropiedad.setEnabled(true);
+                    jmi_eliminarMetodo.setEnabled(true);
+                    jmi_eliminarArbol.setEnabled(true);
+                    jmi_cambiarNombreClase.setEnabled(true);
+                    jmi_cambiarNombreMetodo.setEnabled(true);
+
+                    //si no hay nada seleccionado o la raiz esta selecionada
+                    if (arbolPop.getSelectionPath() == null
+                            || arbolPop.getSelectionPath().getLastPathComponent() instanceof NodoClase) {
+                        System.out.println("instance of nodoclase");
+                        //activar y desactivar botones correspondientes
+                        jmi_eliminarPropiedad.setEnabled(false);
+                        jmi_eliminarMetodo.setEnabled(false);
+                        jmi_cambiarNombreMetodo.setEnabled(false);
+
+                    } //si esta selecionado una propiedad
+                    else if (arbolPop.getSelectionPath().getLastPathComponent() instanceof Propiedad) {
+                        //activar y desactivar botones correspondientes
+                        jmi_eliminarMetodo.setEnabled(false);
+                        jmi_cambiarNombreMetodo.setEnabled(false);
+                    }//si esta seleccionado un metodo 
+                    else if (arbolPop.getSelectionPath().getLastPathComponent() instanceof Metodo) {
+                        //desactivar opciones
+                        jmi_eliminarPropiedad.setEnabled(false);
+                    }
 
                     jpum_opcionesArbol.show(e.getComponent(), e.getX(), e.getY());
 
@@ -2206,6 +2253,25 @@ public class jFPrincipal extends javax.swing.JFrame {
         return nuevoArbol;
     }
 
+    private void actualizarArbolPrincipal(JTree arbolPrincipal, ArrayList<JTree> listaArboles) {
+        // raiz principal
+        DefaultMutableTreeNode raizPrincipal = (DefaultMutableTreeNode) arbolPrincipal.getModel().getRoot();
+
+        // limpiar
+        raizPrincipal.removeAllChildren();
+
+        // cargar clases a la raiz
+        for (JTree arbol : listaArboles) {
+
+            DefaultMutableTreeNode raizDelArbol = (DefaultMutableTreeNode) arbol.getModel().getRoot();
+
+            raizPrincipal.add(raizDelArbol);
+        }
+
+        //actualizar vistar
+        DefaultTreeModel modeloPrincipal = (DefaultTreeModel) arbolPrincipal.getModel();
+        modeloPrincipal.reload(raizPrincipal);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
@@ -2234,9 +2300,6 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -2310,12 +2373,19 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jm_principalArchivo;
     private javax.swing.JMenu jm_principalExportar;
     private javax.swing.JMenuBar jmb_principal;
+    private javax.swing.JMenuItem jmi_agregarMetodo;
+    private javax.swing.JMenuItem jmi_agregarPropiedad;
     private javax.swing.JMenuItem jmi_archivoNuevo;
+    private javax.swing.JMenuItem jmi_cambiarNombreClase;
+    private javax.swing.JMenuItem jmi_cambiarNombreMetodo;
     private javax.swing.JMenuItem jmi_elemDiagFlCopiar;
     private javax.swing.JMenuItem jmi_elemDiagFljCambiarColor;
     private javax.swing.JMenuItem jmi_elemDiagFlujoEditarPropiedades;
     private javax.swing.JMenuItem jmi_elemDiagFlujoEliminarBoton;
     private javax.swing.JMenuItem jmi_elemDiagFlujoModificarFuente;
+    private javax.swing.JMenuItem jmi_eliminarArbol;
+    private javax.swing.JMenuItem jmi_eliminarMetodo;
+    private javax.swing.JMenuItem jmi_eliminarPropiedad;
     private javax.swing.JMenuItem jmi_exportarPDF;
     private javax.swing.JPanel jp_Diagrama;
     private javax.swing.JPanel jp_clases;

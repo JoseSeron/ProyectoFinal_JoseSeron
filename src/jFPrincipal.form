@@ -1351,19 +1351,39 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_agregarPropiedad">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem3"/>
+            <Property name="text" type="java.lang.String" value="Agregar Propiedad"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_agregarMetodo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem4"/>
+            <Property name="text" type="java.lang.String" value="Agregar Metodo"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_eliminarPropiedad">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem5"/>
+            <Property name="text" type="java.lang.String" value="Eliminar Propiedad"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_eliminarMetodo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Eliminar Metodo"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_eliminarArbol">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Eliminar Arbol"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_cambiarNombreClase">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cambiar Nombre Clase"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_cambiarNombreMetodo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cambiar Nombre Metodo"/>
           </Properties>
         </MenuItem>
       </SubComponents>
