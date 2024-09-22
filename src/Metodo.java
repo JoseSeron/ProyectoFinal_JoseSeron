@@ -45,7 +45,7 @@ public class Metodo {
     }
 
     public String getLineaCodigo(){ //se usa para el codigo obviamente
-    return alcance+" "+retorno+" "+nombre+"("+parametro+"){}";
+    return alcance+" "+retorno+" "+nombre+"("+parametro+"){\n}";
     }
     
     @Override

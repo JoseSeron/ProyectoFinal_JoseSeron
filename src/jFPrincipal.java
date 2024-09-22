@@ -1394,70 +1394,39 @@ public class jFPrincipal extends javax.swing.JFrame {
         jta_codigoGenerado.append("\n");
 
         //clases
-        jta_codigoGenerado.append("//Clases Generadas\n");
-        String texto = "";
+        jta_codigoGenerado.append("// Clases Generadas\n\n");
+        StringBuilder textoClases = new StringBuilder();
+
         for (JTree arbol : listaArboles) {
-            /*
-            Public Class nombre
-             */
-            NodoClase nodo = (NodoClase) arbol.getModel().getRoot();
-            DefaultMutableTreeNode nodoPropiedades = (DefaultMutableTreeNode) nodo.getChildAt(0);
-            DefaultMutableTreeNode nodoMetodos = (DefaultMutableTreeNode) nodo.getChildAt(1);
-            if (nodo.isTieneHerencia()) { //texto para los arboles con herencia
+            NodoClase nodoClase = (NodoClase) arbol.getModel().getRoot();
+            DefaultMutableTreeNode nodoPropiedades = (DefaultMutableTreeNode) nodoClase.getChildAt(0);
+            DefaultMutableTreeNode nodoMetodos = (DefaultMutableTreeNode) nodoClase.getChildAt(1);
 
+            //revisar herencias
+            if (nodoClase.isTieneHerencia()) {
+                textoClases.append("public class ").append(nodoClase.getNombreClase()).append(" extends ").append(nodoClase.getClasePadre()).append(" {\n");
             } else {
-                texto.concat("Public Class " + nodo.getNombreClase() + " { \n");
-                texto.concat("//Propiedades\n");
-                //iteracion y concatenacion de las propiedades
-
-                texto.concat("//Metodos\n");
-                //iteracion y concatencacion de los metodos
-
-                texto.concat("}");
+                textoClases.append("public class ").append(nodoClase.getNombreClase()).append(" {\n");
             }
-        }
-        
-        //////////////////////
-        
-         // 3. Generar código para las clases en los árboles
-    jta_codigoGenerado.append("// Clases Generadas\n\n");
-    StringBuilder texto1 = new StringBuilder();
-    
-    for (JTree arbol : listaArboles) {
-        NodoClase nodoClase = (NodoClase) arbol.getModel().getRoot();
-        DefaultMutableTreeNode nodoPropiedades = (DefaultMutableTreeNode) nodoClase.getChildAt(0);
-        DefaultMutableTreeNode nodoMetodos = (DefaultMutableTreeNode) nodoClase.getChildAt(1);
 
-        // Verificar si el nodo tiene herencia
-        if (nodoClase.isTieneHerencia()) {
-            texto1.append("public class ").append(nodoClase.getNombreClase()).append(" extends ").append(nodoClase.getClasePadre()).append(" {\n");
-        } else {
-            texto1.append("public class ").append(nodoClase.getNombreClase()).append(" {\n");
+            // propiedades
+            textoClases.append("// Propiedades\n");
+            for (int i = 0; i < nodoPropiedades.getChildCount(); i++) {
+                Propiedad propiedad = (Propiedad) nodoPropiedades.getChildAt(i);
+                textoClases.append(propiedad.getLineaCodigo() + "\n");
+            }
+
+            // metodos
+            textoClases.append("// Métodos\n");
+            for (int i = 0; i < nodoMetodos.getChildCount(); i++) {
+                Metodo metodo = (Metodo) nodoMetodos.getChildAt(i);
+                textoClases.append(metodo.getLineaCodigo() + "\n");
+            }
+
+            textoClases.append("}\n\n");
         }
 
-        // Agregar las propiedades
-        texto1.append("// Propiedades\n");
-        for (int i = 0; i < nodoPropiedades.getChildCount(); i++) {
-            DefaultMutableTreeNode propiedad = (DefaultMutableTreeNode) nodoPropiedades.getChildAt(i);
-            texto1.append("    ").append(propiedad.getUserObject().toString()).append(";\n");
-        }
-
-        // Agregar los métodos
-        texto1.append("// Métodos\n");
-        for (int i = 0; i < nodoMetodos.getChildCount(); i++) {
-            DefaultMutableTreeNode metodo = (DefaultMutableTreeNode) nodoMetodos.getChildAt(i);
-            texto1.append("    ").append(metodo.getUserObject().toString()).append("() {\n");
-            texto1.append("        // Código del método\n");
-            texto1.append("    }\n");
-        }
-
-        texto1.append("}\n\n");
-    }
-        
-        /////////////////////
-        
-
-        jta_codigoGenerado.append(texto1.toString());
+        jta_codigoGenerado.append(textoClases.toString());
         jd_codigo.setVisible(true);
 
 
