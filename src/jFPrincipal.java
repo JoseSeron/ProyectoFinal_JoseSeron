@@ -1016,6 +1016,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jpum_opcionesArbol.add(jmi_eliminarPropiedad);
 
         jmi_eliminarMetodo.setText("Eliminar Metodo");
+        jmi_eliminarMetodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarMetodoActionPerformed(evt);
+            }
+        });
         jpum_opcionesArbol.add(jmi_eliminarMetodo);
 
         jmi_eliminarArbol.setText("Eliminar Arbol");
@@ -2447,6 +2452,18 @@ public class jFPrincipal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jb_agregarMetodoActionPerformed
+
+    private void jmi_eliminarMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarMetodoActionPerformed
+        // eliminar metodo
+        
+        DefaultTreeModel modelo = (DefaultTreeModel) arbolPop.getModel();
+        DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) arbolPop.getLastSelectedPathComponent();
+        modelo.removeNodeFromParent(nodo);
+        modelo.reload();
+
+        actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+        
+    }//GEN-LAST:event_jmi_eliminarMetodoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
