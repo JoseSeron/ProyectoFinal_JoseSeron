@@ -125,6 +125,21 @@ public class jFPrincipal extends javax.swing.JFrame {
         jmi_eliminarArbol = new javax.swing.JMenuItem();
         jmi_cambiarNombreClase = new javax.swing.JMenuItem();
         jmi_cambiarNombreMetodo = new javax.swing.JMenuItem();
+        jd_agregarMetodo = new javax.swing.JDialog();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jtf_agregarMetodoNombre = new javax.swing.JTextField();
+        jcb_agregarMetodoTipo = new javax.swing.JComboBox<>();
+        jcb_agregarMetodoAlcance = new javax.swing.JComboBox<>();
+        jcb_agregarMetodoParametroTipo = new javax.swing.JComboBox<>();
+        jtf_agregarMetodoParametroNombre = new javax.swing.JTextField();
+        jb_agregarParametro = new javax.swing.JButton();
+        jb_agregarMetodo = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jl_parametros = new javax.swing.JList<>();
         jtp_diagramaCodigo = new javax.swing.JTabbedPane();
         jp_Diagrama = new javax.swing.JPanel();
         jp_variables = new javax.swing.JPanel();
@@ -985,6 +1000,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jpum_opcionesArbol.add(jmi_agregarPropiedad);
 
         jmi_agregarMetodo.setText("Agregar Metodo");
+        jmi_agregarMetodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_agregarMetodoActionPerformed(evt);
+            }
+        });
         jpum_opcionesArbol.add(jmi_agregarMetodo);
 
         jmi_eliminarPropiedad.setText("Eliminar Propiedad");
@@ -1016,6 +1036,122 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jmi_cambiarNombreMetodo.setText("Cambiar Nombre Metodo");
         jpum_opcionesArbol.add(jmi_cambiarNombreMetodo);
+
+        jd_agregarMetodo.setTitle("Agregar Metodo");
+        jd_agregarMetodo.setMinimumSize(new java.awt.Dimension(280, 480));
+        jd_agregarMetodo.setPreferredSize(new java.awt.Dimension(280, 480));
+
+        jPanel10.setMinimumSize(new java.awt.Dimension(300, 350));
+        jPanel10.setPreferredSize(new java.awt.Dimension(300, 350));
+        jPanel10.setRequestFocusEnabled(false);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Nombre:");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("Tipo:");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Alcance:");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setText("Parametros:");
+
+        jcb_agregarMetodoTipo.setModel(jcb_tipoNuevaVariable.getModel());
+
+        jcb_agregarMetodoAlcance.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "public", "protected", "default", "private" }));
+
+        jcb_agregarMetodoParametroTipo.setModel(jcb_agregarMetodoTipo.getModel());
+
+        jtf_agregarMetodoParametroNombre.setText("Nombre");
+
+        jb_agregarParametro.setText("Agregar Parametro");
+        jb_agregarParametro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_agregarParametroActionPerformed(evt);
+            }
+        });
+
+        jb_agregarMetodo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jb_agregarMetodo.setText("Agregar Metodo");
+        jb_agregarMetodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_agregarMetodoActionPerformed(evt);
+            }
+        });
+
+        jl_parametros.setModel(new DefaultListModel<String>());
+        jScrollPane6.setViewportView(jl_parametros);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jb_agregarParametro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                            .addComponent(jcb_agregarMetodoParametroTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jtf_agregarMetodoParametroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel10Layout.createSequentialGroup()
+                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel3))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtf_agregarMetodoNombre)
+                                    .addComponent(jcb_agregarMetodoTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcb_agregarMetodoAlcance, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jb_agregarMetodo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jtf_agregarMetodoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jcb_agregarMetodoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jcb_agregarMetodoAlcance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcb_agregarMetodoParametroTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtf_agregarMetodoParametroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_agregarParametro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_agregarMetodo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+        );
+
+        javax.swing.GroupLayout jd_agregarMetodoLayout = new javax.swing.GroupLayout(jd_agregarMetodo.getContentPane());
+        jd_agregarMetodo.getContentPane().setLayout(jd_agregarMetodoLayout);
+        jd_agregarMetodoLayout.setHorizontalGroup(
+            jd_agregarMetodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 264, Short.MAX_VALUE)
+        );
+        jd_agregarMetodoLayout.setVerticalGroup(
+            jd_agregarMetodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -1431,7 +1567,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             }
 
             // propiedades
-            textoClases.append("// Propiedades\n");
+            textoClases.append("\n// Propiedades\n");
             for (int i = 0; i < nodoPropiedades.getChildCount(); i++) {
                 DefaultMutableTreeNode nodito = (DefaultMutableTreeNode) nodoPropiedades.getChildAt(i);
 
@@ -1440,9 +1576,11 @@ public class jFPrincipal extends javax.swing.JFrame {
             }
 
             // metodos
-            textoClases.append("// Métodos\n");
+            textoClases.append("\n// Métodos\n");
             for (int i = 0; i < nodoMetodos.getChildCount(); i++) {
-                Metodo metodo = (Metodo) nodoMetodos.getChildAt(i);
+                DefaultMutableTreeNode nodito = (DefaultMutableTreeNode) nodoMetodos.getChildAt(i);
+
+                Metodo metodo = (Metodo) nodito.getUserObject();
                 textoClases.append(metodo.getLineaCodigo() + "\n");
             }
 
@@ -2253,6 +2391,63 @@ public class jFPrincipal extends javax.swing.JFrame {
         actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
     }//GEN-LAST:event_jmi_eliminarPropiedadActionPerformed
 
+    private void jmi_agregarMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarMetodoActionPerformed
+        // mostrar ventana agregar metodo
+        jl_parametros.setModel(new DefaultListModel<String>());
+        jd_agregarMetodo.setLocationRelativeTo(this);
+        jd_agregarMetodo.setVisible(true);
+    }//GEN-LAST:event_jmi_agregarMetodoActionPerformed
+
+    private void jb_agregarParametroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarParametroActionPerformed
+        // agregar parametros al jlist
+
+        DefaultListModel<String> modelo = (DefaultListModel<String>) jl_parametros.getModel();
+
+        if (!jtf_agregarMetodoParametroNombre.getText().isBlank()
+                && !jtf_agregarMetodoParametroNombre.getText().isEmpty()) {
+            String parametro = jcb_agregarMetodoParametroTipo.getSelectedItem() + " " + jtf_agregarMetodoParametroNombre.getText();
+            modelo.addElement(parametro);
+
+        }
+
+
+    }//GEN-LAST:event_jb_agregarParametroActionPerformed
+
+    private void jb_agregarMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarMetodoActionPerformed
+        // agregar metodo
+
+        //revisar que todo este lleno
+        if (jtf_agregarMetodoNombre.getText().isBlank()
+                || jtf_agregarMetodoNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Llenar todos los campos");
+        } else {
+            Metodo nuevoMetodo = new Metodo(jtf_agregarMetodoNombre.getText(),
+                    (String) jcb_agregarMetodoTipo.getSelectedItem(),
+                    (String) jcb_agregarMetodoAlcance.getSelectedItem(),
+                    (DefaultListModel<String>) jl_parametros.getModel());
+
+            //obtener y castear raiz
+            NodoClase raiz = (NodoClase) arbolPop.getModel().getRoot();
+            //obtener nodo target
+            DefaultMutableTreeNode nodoMetodos = (DefaultMutableTreeNode) raiz.getChildAt(1);
+            //nuevo nodo para añadir
+            DefaultMutableTreeNode nuevoNodoMetodo = new DefaultMutableTreeNode(nuevoMetodo);
+            //añadir nodo
+            nodoMetodos.add(nuevoNodoMetodo);
+
+            DefaultTreeModel modelo = (DefaultTreeModel) arbolPop.getModel();
+            modelo.reload();
+            llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+            actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+
+            repaintsClases();
+
+            jd_agregarMetodo.setVisible(false);
+        }
+
+
+    }//GEN-LAST:event_jb_agregarMetodoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2445,7 +2640,9 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     private JTree crearArbolArrastrable(NodoClase nodoRaiz) {
         JTree nuevoArbol = convertirAArbolArrastrable(new JTree(nodoRaiz));
+
         JScrollPane scroll = new JScrollPane(nuevoArbol);
+
         nuevoArbol.setBounds(100, 100, 170, 200);
         return nuevoArbol;
     }
@@ -2477,6 +2674,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jlp_diagramaClases.repaint();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2487,6 +2685,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -2496,6 +2695,8 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2504,6 +2705,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2517,7 +2719,10 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JButton jb_aceptarCambioFuente;
+    private javax.swing.JButton jb_agregarMetodo;
+    private javax.swing.JButton jb_agregarParametro;
     private javax.swing.JButton jb_agregarVariable;
     private javax.swing.JButton jb_crearClase;
     private javax.swing.JButton jb_definirHerencia;
@@ -2547,6 +2752,9 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_pegarClase;
     private javax.swing.JButton jb_pegarElementoDiagramaFlujo;
     private javax.swing.JButton jb_salirDialogCodigo;
+    private javax.swing.JComboBox<String> jcb_agregarMetodoAlcance;
+    private javax.swing.JComboBox<String> jcb_agregarMetodoParametroTipo;
+    private javax.swing.JComboBox<String> jcb_agregarMetodoTipo;
     private javax.swing.JComboBox<String> jcb_crearForComparador;
     private javax.swing.JComboBox<String> jcb_crearForFactor;
     private javax.swing.JComboBox<String> jcb_crearIfComparador;
@@ -2563,6 +2771,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcb_estiloFuente;
     private javax.swing.JComboBox<String> jcb_tipoDeFuente;
     private javax.swing.JComboBox<String> jcb_tipoNuevaVariable;
+    private javax.swing.JDialog jd_agregarMetodo;
     private javax.swing.JDialog jd_codigo;
     private javax.swing.JDialog jd_crearFor;
     private javax.swing.JDialog jd_crearIf;
@@ -2571,6 +2780,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crearVariable;
     private javax.swing.JDialog jd_crearWhile;
     private javax.swing.JDialog jd_modificarFuenteBoton;
+    private javax.swing.JList<String> jl_parametros;
     private javax.swing.JList<String> jl_variables;
     private javax.swing.JLayeredPane jlp_diagramaClases;
     private javax.swing.JLayeredPane jlp_diagramaFlujo;
@@ -2600,6 +2810,8 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner js_tamanioFuente;
     private javax.swing.JTree jt_arbolClasesGeneradas;
     private javax.swing.JTextArea jta_codigoGenerado;
+    private javax.swing.JTextField jtf_agregarMetodoNombre;
+    private javax.swing.JTextField jtf_agregarMetodoParametroNombre;
     private javax.swing.JTextField jtf_crearForInicio;
     private javax.swing.JTextField jtf_crearForLimite;
     private javax.swing.JTextField jtf_ejemploFuente;

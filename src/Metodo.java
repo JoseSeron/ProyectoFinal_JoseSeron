@@ -1,12 +1,17 @@
 
-public class Metodo {
-    String nombre, retorno, alcance,parametro;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
-    public Metodo(String nombre, String retorno, String alcance, String parametro) {
+public class Metodo {
+
+    String nombre, retorno, alcance, parametro;
+    DefaultListModel<String> parametros;
+
+    public Metodo(String nombre, String retorno, String alcance, DefaultListModel<String> parametros) {
         this.nombre = nombre;
         this.retorno = retorno;
         this.alcance = alcance;
-        this.parametro = parametro;
+        this.parametros = parametros;
     }
 
     public Metodo() {
@@ -44,15 +49,22 @@ public class Metodo {
         this.parametro = parametro;
     }
 
-    public String getLineaCodigo(){ //se usa para el codigo obviamente
-    return alcance+" "+retorno+" "+nombre+"("+parametro+"){\n}";
+    public String getLineaCodigo() { //se usa para el codigo obviamente
+        StringBuilder textoParametros = new StringBuilder();
+
+        for (int i = 0; i < this.parametros.size(); i++) {
+            textoParametros.append(this.parametros.getElementAt(i));
+            if (i != this.parametros.size() - 1) {
+                textoParametros.append(",");
+            }
+        }
+
+        return this.alcance + " " + this.retorno + " " + this.nombre + " (" + textoParametros.toString() + ") {\n}\n";
     }
-    
+
     @Override
     public String toString() { //el toString se usara para la vista del arbol
-        return "("+alcance+") "+nombre+"()";
+        return "(" + alcance + ") " + nombre + "()";
     }
-    
-    
-    
+
 }
