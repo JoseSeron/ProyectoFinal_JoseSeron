@@ -1386,6 +1386,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cambiar Nombre Clase"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_cambiarNombreClaseActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmi_cambiarNombreMetodo">
           <Properties>
@@ -1988,6 +1991,9 @@
                       <Dimension value="[115, 23]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_generarCodigoClasesActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

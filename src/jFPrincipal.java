@@ -986,6 +986,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jpum_opcionesArbol.add(jmi_eliminarArbol);
 
         jmi_cambiarNombreClase.setText("Cambiar Nombre Clase");
+        jmi_cambiarNombreClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_cambiarNombreClaseActionPerformed(evt);
+            }
+        });
         jpum_opcionesArbol.add(jmi_cambiarNombreClase);
 
         jmi_cambiarNombreMetodo.setText("Cambiar Nombre Metodo");
@@ -1225,6 +1230,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_generarCodigoClases.setMaximumSize(new java.awt.Dimension(115, 23));
         jb_generarCodigoClases.setMinimumSize(new java.awt.Dimension(115, 23));
         jb_generarCodigoClases.setPreferredSize(new java.awt.Dimension(115, 23));
+        jb_generarCodigoClases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_generarCodigoClasesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1367,6 +1377,13 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_codigo.setLocationRelativeTo(this);
         jta_codigoGenerado.setText("");
 
+        //main
+        for (JButton boton : botonesDiagramaFlujo) {
+            jta_codigoGenerado.append(boton.toString());
+        }
+        jta_codigoGenerado.append("\n");
+
+        //declaracion variables
         jta_codigoGenerado.append("//Declaracion Variables\n");
         for (String variable : listaVariables) {
             String tipo = variable.split("\\)")[0].substring(1);
@@ -1374,10 +1391,73 @@ public class jFPrincipal extends javax.swing.JFrame {
             jta_codigoGenerado.append(tipo + " ");
             jta_codigoGenerado.append(nombre + " ;\n");
         }
-        jta_codigoGenerado.append("\n\n");
-        for (JButton boton : botonesDiagramaFlujo) {
-            jta_codigoGenerado.append(boton.toString());
+        jta_codigoGenerado.append("\n");
+
+        //clases
+        jta_codigoGenerado.append("//Clases Generadas\n");
+        String texto = "";
+        for (JTree arbol : listaArboles) {
+            /*
+            Public Class nombre
+             */
+            NodoClase nodo = (NodoClase) arbol.getModel().getRoot();
+            DefaultMutableTreeNode nodoPropiedades = (DefaultMutableTreeNode) nodo.getChildAt(0);
+            DefaultMutableTreeNode nodoMetodos = (DefaultMutableTreeNode) nodo.getChildAt(1);
+            if (nodo.isTieneHerencia()) { //texto para los arboles con herencia
+
+            } else {
+                texto.concat("Public Class " + nodo.getNombreClase() + " { \n");
+                texto.concat("//Propiedades\n");
+                //iteracion y concatenacion de las propiedades
+
+                texto.concat("//Metodos\n");
+                //iteracion y concatencacion de los metodos
+
+                texto.concat("}");
+            }
         }
+        
+        //////////////////////
+        
+         // 3. Generar código para las clases en los árboles
+    jta_codigoGenerado.append("// Clases Generadas\n\n");
+    StringBuilder texto1 = new StringBuilder();
+    
+    for (JTree arbol : listaArboles) {
+        NodoClase nodoClase = (NodoClase) arbol.getModel().getRoot();
+        DefaultMutableTreeNode nodoPropiedades = (DefaultMutableTreeNode) nodoClase.getChildAt(0);
+        DefaultMutableTreeNode nodoMetodos = (DefaultMutableTreeNode) nodoClase.getChildAt(1);
+
+        // Verificar si el nodo tiene herencia
+        if (nodoClase.isTieneHerencia()) {
+            texto1.append("public class ").append(nodoClase.getNombreClase()).append(" extends ").append(nodoClase.getClasePadre()).append(" {\n");
+        } else {
+            texto1.append("public class ").append(nodoClase.getNombreClase()).append(" {\n");
+        }
+
+        // Agregar las propiedades
+        texto1.append("// Propiedades\n");
+        for (int i = 0; i < nodoPropiedades.getChildCount(); i++) {
+            DefaultMutableTreeNode propiedad = (DefaultMutableTreeNode) nodoPropiedades.getChildAt(i);
+            texto1.append("    ").append(propiedad.getUserObject().toString()).append(";\n");
+        }
+
+        // Agregar los métodos
+        texto1.append("// Métodos\n");
+        for (int i = 0; i < nodoMetodos.getChildCount(); i++) {
+            DefaultMutableTreeNode metodo = (DefaultMutableTreeNode) nodoMetodos.getChildAt(i);
+            texto1.append("    ").append(metodo.getUserObject().toString()).append("() {\n");
+            texto1.append("        // Código del método\n");
+            texto1.append("    }\n");
+        }
+
+        texto1.append("}\n\n");
+    }
+        
+        /////////////////////
+        
+
+        jta_codigoGenerado.append(texto1.toString());
         jd_codigo.setVisible(true);
 
 
@@ -2088,15 +2168,46 @@ public class jFPrincipal extends javax.swing.JFrame {
                 listaArboles.remove(index);
                 llenarJLayeredPane(jlp_diagramaClases, listaArboles);
                 actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
-                
+
                 jlp_diagramaClases.revalidate();
                 jlp_diagramaClases.repaint();
 
                 JOptionPane.showMessageDialog(this, "Arbol eliminado.");
             }
 
-        }  
+        }
     }//GEN-LAST:event_jmi_eliminarArbolActionPerformed
+
+    private void jmi_cambiarNombreClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cambiarNombreClaseActionPerformed
+        //cambiar nombre clase
+        String nuevoNombre = JOptionPane.showInputDialog("Nuevo nombre:");
+
+        if (nuevoNombre != null && !nuevoNombre.isBlank() && !nuevoNombre.isEmpty()) {
+            int index = -1;
+            for (JTree arbol : listaArboles) {
+                if (arbolPop.equals(arbol)) {
+                    index = listaArboles.indexOf(arbol);
+                    index = 1;
+                }
+            }
+
+            if (index != -1) {
+                NodoClase nodo = (NodoClase) arbolPop.getModel().getRoot();
+                nodo.setUserObject(nuevoNombre);
+                nodo.setNombreClase(nuevoNombre);
+
+                llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+                actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+            }
+        }
+    }//GEN-LAST:event_jmi_cambiarNombreClaseActionPerformed
+
+    private void jb_generarCodigoClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_generarCodigoClasesActionPerformed
+        // generar codigo clases
+        //llamar mismo metodo de arriba
+
+        jb_generarCodigoFlujoActionPerformed(evt);
+    }//GEN-LAST:event_jb_generarCodigoClasesActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2281,8 +2392,6 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         return arbol;
     }
-
-
 
     private JTree crearArbolArrastrable(NodoClase nodoRaiz) {
         JTree nuevoArbol = convertirAArbolArrastrable(new JTree(nodoRaiz));

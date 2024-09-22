@@ -36,6 +36,22 @@ public class NodoClase extends DefaultMutableTreeNode {
 
     }
 
+    public boolean isTieneHerencia() {
+        return tieneHerencia;
+    }
+
+    public String getNombreClase() {
+        return nombreClase;
+    }
+
+    public NodoClase getClaseHija() {
+        return claseHija;
+    }
+
+    public NodoClase getClasePadre() {
+        return clasePadre;
+    }
+
     public void setHerenciaHija(NodoClase clasePadre) {
         tieneHerencia = true;
         this.clasePadre = clasePadre;
