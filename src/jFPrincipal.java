@@ -3,6 +3,8 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  * ------COMENTARIOS------ Detalles de cosas que se me pueden olvidar
@@ -113,7 +115,10 @@ public class jFPrincipal extends javax.swing.JFrame {
         jcb_estiloFuente = new javax.swing.JComboBox<>();
         jtf_ejemploFuente = new javax.swing.JTextField();
         jb_aceptarCambioFuente = new javax.swing.JButton();
-        jp_opcionesFuente = new javax.swing.JPanel();
+        jpum_opcionesArbol = new javax.swing.JPopupMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jtp_diagramaCodigo = new javax.swing.JTabbedPane();
         jp_Diagrama = new javax.swing.JPanel();
         jp_variables = new javax.swing.JPanel();
@@ -138,11 +143,12 @@ public class jFPrincipal extends javax.swing.JFrame {
         jp_clases = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jt_clases = new javax.swing.JTree();
+        jt_arbolClasesGeneradas = new javax.swing.JTree();
         jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jb_crearClase = new javax.swing.JButton();
+        jb_definirHerencia = new javax.swing.JButton();
+        jb_pegarClase = new javax.swing.JButton();
+        jb_generarCodigoClases = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jlp_diagramaClases = new javax.swing.JLayeredPane();
         jmb_principal = new javax.swing.JMenuBar();
@@ -950,11 +956,17 @@ public class jFPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jMenuItem3.setText("jMenuItem3");
+        jpum_opcionesArbol.add(jMenuItem3);
+
+        jMenuItem4.setText("jMenuItem4");
+        jpum_opcionesArbol.add(jMenuItem4);
+
+        jMenuItem5.setText("jMenuItem5");
+        jpum_opcionesArbol.add(jMenuItem5);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
-
-        jp_opcionesFuente.setBackground(new java.awt.Color(204, 255, 255));
-        jp_opcionesFuente.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jp_variables.setBackground(new java.awt.Color(204, 204, 255));
         jp_variables.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1158,18 +1170,35 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
 
-        jScrollPane2.setViewportView(jt_clases);
+        jt_arbolClasesGeneradas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jt_arbolClasesGeneradas.setForeground(new java.awt.Color(255, 255, 255));
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Clases Generadas");
+        jt_arbolClasesGeneradas.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(jt_arbolClasesGeneradas);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("CLASES");
 
-        jButton3.setText("Generar Codigo");
+        jb_crearClase.setText("Crear Clase");
+        jb_crearClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_crearClaseActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Crear Clase");
+        jb_definirHerencia.setText("Definir Herencia");
 
-        jButton5.setText("Definir Herencia");
+        jb_pegarClase.setText("Pegar");
+        jb_pegarClase.setMaximumSize(new java.awt.Dimension(115, 23));
+        jb_pegarClase.setMinimumSize(new java.awt.Dimension(115, 23));
+        jb_pegarClase.setPreferredSize(new java.awt.Dimension(115, 23));
+
+        jb_generarCodigoClases.setText("Generar Codigo");
+        jb_generarCodigoClases.setMaximumSize(new java.awt.Dimension(115, 23));
+        jb_generarCodigoClases.setMinimumSize(new java.awt.Dimension(115, 23));
+        jb_generarCodigoClases.setPreferredSize(new java.awt.Dimension(115, 23));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1178,11 +1207,12 @@ public class jFPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jb_crearClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_definirHerencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_pegarClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_generarCodigoClases, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -1193,12 +1223,14 @@ public class jFPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jb_crearClase, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jb_definirHerencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addComponent(jb_generarCodigoClases, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_pegarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jlp_diagramaClases.setBackground(new java.awt.Color(204, 255, 204));
@@ -1214,7 +1246,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1106, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jp_clasesLayout.setVerticalGroup(
@@ -1260,14 +1292,12 @@ public class jFPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jp_opcionesFuente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jtp_diagramaCodigo)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jp_opcionesFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(16, 16, 16)
                 .addComponent(jtp_diagramaCodigo)
                 .addContainerGap())
         );
@@ -1984,6 +2014,26 @@ public class jFPrincipal extends javax.swing.JFrame {
         jlp_diagramaFlujo.repaint();
     }//GEN-LAST:event_jb_dialogCrearSoutModPropiedadesActionPerformed
 
+    private void jb_crearClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearClaseActionPerformed
+        String nombreNuevaClase = JOptionPane.showInputDialog("Nombre de la nueva clase:");
+
+        // meter a arbol principal
+        agregarNodoClaseAlArbolPrincipal(nombreNuevaClase, jt_arbolClasesGeneradas);
+
+        // nuevo arbol arrastrable y pasar a arreglo
+        JTree nuevoArbol = crearArbolArrastrable(new NodoClase(nombreNuevaClase));
+        listaArboles.add(nuevoArbol);
+
+        // actualizar panel
+        llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+
+        // repaints
+        jt_arbolClasesGeneradas.revalidate();
+        jt_arbolClasesGeneradas.repaint();
+        jlp_diagramaClases.revalidate();
+        jlp_diagramaClases.repaint();
+    }//GEN-LAST:event_jb_crearClaseActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2043,7 +2093,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     //convertir boton arrastrable
     public JButton convertirABotonArrastrable(JButton boton) {
 
-        final Point[] initialClick = new Point[1];
+        final Point[] ubicacionClick = new Point[1];
 
         boton.addMouseListener(new MouseAdapter() {
 
@@ -2068,7 +2118,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             }
 
             public void mousePressed(MouseEvent e) {
-                initialClick[0] = e.getPoint();
+                ubicacionClick[0] = e.getPoint();
 
             }
         });
@@ -2081,8 +2131,8 @@ public class jFPrincipal extends javax.swing.JFrame {
                 int thisY = boton.getLocation().y;
 
                 // cuanto se mueve
-                int xMoved = e.getX() - initialClick[0].x;
-                int yMoved = e.getY() - initialClick[0].y;
+                int xMoved = e.getX() - ubicacionClick[0].x;
+                int yMoved = e.getY() - ubicacionClick[0].y;
 
                 // setear nueva ubicacion
                 int newX = thisX + xMoved;
@@ -2094,10 +2144,70 @@ public class jFPrincipal extends javax.swing.JFrame {
         return boton;
     }
 
+    public JTree convertirAArbolArrastrable(JTree arbol) {
+
+        final Point[] ubicacionClick = new Point[1];  //forma concisa de guardar x y y
+
+        arbol.addMouseListener(new MouseAdapter() {
+
+            public void mouseClicked(MouseEvent e) {
+
+                //mostrar opciones del pop up dependiento de en que nodo se desplego 
+                if (e.getButton() == 3) { //evento para mostrar el popupmenu
+                    arbolPop = null;
+                    arbolPop = arbol;
+
+                    jpum_opcionesArbol.show(e.getComponent(), e.getX(), e.getY());
+
+                }
+            }
+
+            public void mousePressed(MouseEvent e) {
+                ubicacionClick[0] = e.getPoint();
+
+            }
+        });
+
+        arbol.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                // pos actual
+                int thisX = arbol.getLocation().x;
+                int thisY = arbol.getLocation().y;
+
+                // cuanto se mueve
+                int xMoved = e.getX() - ubicacionClick[0].x;
+                int yMoved = e.getY() - ubicacionClick[0].y;
+
+                // setear nueva ubicacion
+                int newX = thisX + xMoved;
+                int newY = thisY + yMoved;
+                arbol.setLocation(newX, newY);
+            }
+        });
+
+        return arbol;
+    }
+
+    private void agregarNodoClaseAlArbolPrincipal(String nombreClase, JTree arbol) {
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) arbol.getModel().getRoot();
+        NodoClase nuevaClase = new NodoClase(nombreClase);
+        raiz.add(nuevaClase);
+
+        // Recargar el modelo del árbol
+        DefaultTreeModel modelo = (DefaultTreeModel) arbol.getModel();
+        modelo.reload(raiz);
+    }
+
+    private JTree crearArbolArrastrable(NodoClase nodoRaiz) {
+        JTree nuevoArbol = convertirAArbolArrastrable(new JTree(nodoRaiz));
+        JScrollPane scroll = new JScrollPane(nuevoArbol);
+        nuevoArbol.setBounds(100, 100, 170, 200);
+        return nuevoArbol;
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2124,6 +2234,9 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -2140,6 +2253,8 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton jb_aceptarCambioFuente;
     private javax.swing.JButton jb_agregarVariable;
+    private javax.swing.JButton jb_crearClase;
+    private javax.swing.JButton jb_definirHerencia;
     private javax.swing.JButton jb_dialogAgregarFor;
     private javax.swing.JButton jb_dialogAgregarIf;
     private javax.swing.JButton jb_dialogAgregarWhile;
@@ -2150,6 +2265,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_dialogCrearSoutAgregar;
     private javax.swing.JButton jb_dialogCrearSoutModPropiedades;
     private javax.swing.JButton jb_dialogCrearWhileModPropiedades;
+    private javax.swing.JButton jb_generarCodigoClases;
     private javax.swing.JButton jb_generarCodigoFlujo;
     private javax.swing.JButton jb_mostrarDialogAgregarVariable;
     private javax.swing.JButton jb_opcionesConectorX;
@@ -2161,6 +2277,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_opcionesInicio;
     private javax.swing.JButton jb_opcionesSout;
     private javax.swing.JButton jb_opcionesWhile;
+    private javax.swing.JButton jb_pegarClase;
     private javax.swing.JButton jb_pegarElementoDiagramaFlujo;
     private javax.swing.JButton jb_salirDialogCodigo;
     private javax.swing.JComboBox<String> jcb_crearForComparador;
@@ -2203,11 +2320,11 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_Diagrama;
     private javax.swing.JPanel jp_clases;
     private javax.swing.JPanel jp_diagramaOpciones;
-    private javax.swing.JPanel jp_opcionesFuente;
     private javax.swing.JPanel jp_variables;
     private javax.swing.JPopupMenu jpum_elemDiagramaFlujo;
+    private javax.swing.JPopupMenu jpum_opcionesArbol;
     private javax.swing.JSpinner js_tamanioFuente;
-    private javax.swing.JTree jt_clases;
+    private javax.swing.JTree jt_arbolClasesGeneradas;
     private javax.swing.JTextArea jta_codigoGenerado;
     private javax.swing.JTextField jtf_crearForInicio;
     private javax.swing.JTextField jtf_crearForLimite;
@@ -2217,9 +2334,10 @@ public class jFPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private ArrayList<JButton> botonesDiagramaFlujo = new ArrayList();
     private ArrayList<String> listaVariables = new ArrayList();
+    private ArrayList<JTree> listaArboles = new ArrayList();
     private int contBotonesInicio = 0;
     private int contBotonesFin = 0;
-    private JButton botonPop;
+    private JButton botonPop; //se carga el boton para las opciones de popup menu
     private JButton botonParaPegar;
-
+    private JTree arbolPop;
 }
