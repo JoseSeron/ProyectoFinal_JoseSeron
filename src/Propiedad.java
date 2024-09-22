@@ -28,12 +28,12 @@ public class Propiedad {
     }
 
     public String getLineaCodigo() { //para codigo
-        return "(" + tipo + ")" + " " + nombre;
+        return "(" + tipo + ")" + " " + nombre+";";
     }
 
     @Override
     public String toString() { //para vision en el arbol
-        return "(" + tipo + ")" + " " + nombre + ";";
+        return "(" + tipo + ")" + " " + nombre;
     }
 
 }

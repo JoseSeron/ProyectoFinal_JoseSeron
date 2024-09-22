@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
 
 /**
  * ------COMENTARIOS------ Detalles de cosas que se me pueden olvidar
@@ -48,6 +49,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jtf_nombreNuevaVariable = new javax.swing.JTextField();
         jcb_tipoNuevaVariable = new javax.swing.JComboBox<>();
         jb_agregarVariable = new javax.swing.JButton();
+        jb_dialogCrearVariableAgregarPropiedad = new javax.swing.JButton();
         jd_crearOperacion = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -235,24 +237,36 @@ public class jFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jb_dialogCrearVariableAgregarPropiedad.setText("Agregar Propiedad");
+        jb_dialogCrearVariableAgregarPropiedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_dialogCrearVariableAgregarPropiedadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtf_nombreNuevaVariable)
-                            .addComponent(jcb_tipoNuevaVariable, 0, 175, Short.MAX_VALUE)))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtf_nombreNuevaVariable)
+                                    .addComponent(jcb_tipoNuevaVariable, 0, 175, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jb_agregarVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jb_agregarVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(88, 88, 88)
+                        .addComponent(jb_dialogCrearVariableAgregarPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -266,7 +280,9 @@ public class jFPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jcb_tipoNuevaVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jb_dialogCrearVariableAgregarPropiedad)
+                .addGap(18, 18, 18)
                 .addComponent(jb_agregarVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
@@ -1412,7 +1428,9 @@ public class jFPrincipal extends javax.swing.JFrame {
             // propiedades
             textoClases.append("// Propiedades\n");
             for (int i = 0; i < nodoPropiedades.getChildCount(); i++) {
-                Propiedad propiedad = (Propiedad) nodoPropiedades.getChildAt(i);
+                DefaultMutableTreeNode nodito = (DefaultMutableTreeNode) nodoPropiedades.getChildAt(i);
+
+                Propiedad propiedad = (Propiedad) nodito.getUserObject();
                 textoClases.append(propiedad.getLineaCodigo() + "\n");
             }
 
@@ -1468,6 +1486,10 @@ public class jFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_opcionesDeclararActionPerformed
 
     private void jb_mostrarDialogAgregarVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarDialogAgregarVariableActionPerformed
+
+        //juego de botones
+        jb_dialogCrearVariableAgregarPropiedad.setVisible(false);
+        jb_agregarVariable.setVisible(true);
 
         //mostrar ventana de agregar variable
         jd_crearVariable.setLocationRelativeTo(this);
@@ -2116,7 +2138,13 @@ public class jFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_crearClaseActionPerformed
 
     private void jmi_agregarPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarPropiedadActionPerformed
+        //juego botones
+        jb_agregarVariable.setVisible(false);
+        jb_dialogCrearVariableAgregarPropiedad.setVisible(true);
 
+        //mostrar dialog
+        jd_crearVariable.setLocationRelativeTo(this);
+        jd_crearVariable.setVisible(true);
     }//GEN-LAST:event_jmi_agregarPropiedadActionPerformed
 
     private void jmi_eliminarArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarArbolActionPerformed
@@ -2177,6 +2205,38 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jb_generarCodigoFlujoActionPerformed(evt);
     }//GEN-LAST:event_jb_generarCodigoClasesActionPerformed
+
+    private void jb_dialogCrearVariableAgregarPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogCrearVariableAgregarPropiedadActionPerformed
+        // crear nueva propiedad y agregar propiedad al arbolpop
+
+        if (!jtf_nombreNuevaVariable.getText().isBlank()
+                && !jtf_nombreNuevaVariable.getText().isBlank()) {
+
+            //gather datos del dialog
+            Propiedad nuevaPropiedad = new Propiedad((String) jcb_tipoNuevaVariable.getSelectedItem(),
+                    jtf_nombreNuevaVariable.getText());
+
+            //obtener y castear raiz
+            NodoClase raiz = (NodoClase) arbolPop.getModel().getRoot();
+            //obtener nodo target
+            DefaultMutableTreeNode nodoPropiedades = (DefaultMutableTreeNode) raiz.getChildAt(0);
+            //nuevo nodo para añadir
+            DefaultMutableTreeNode nuevoNodoPropiedad = new DefaultMutableTreeNode(nuevaPropiedad);
+            //añadir nodo
+            nodoPropiedades.add(nuevoNodoPropiedad);
+
+            DefaultTreeModel modelo = (DefaultTreeModel) arbolPop.getModel();
+            modelo.reload();
+            llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+            actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+
+            repaintsClases();
+            //cerrar dialog
+            jd_crearVariable.setVisible(false);
+        }
+
+
+    }//GEN-LAST:event_jb_dialogCrearVariableAgregarPropiedadActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2389,6 +2449,12 @@ public class jFPrincipal extends javax.swing.JFrame {
         modeloPrincipal.reload(raizPrincipal);
     }
 
+    private void repaintsClases() {
+        jt_arbolClasesGeneradas.revalidate();
+        jt_arbolClasesGeneradas.repaint();
+        jlp_diagramaClases.revalidate();
+        jlp_diagramaClases.repaint();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2443,6 +2509,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_dialogCrearOperacionModPropiedades;
     private javax.swing.JButton jb_dialogCrearSoutAgregar;
     private javax.swing.JButton jb_dialogCrearSoutModPropiedades;
+    private javax.swing.JButton jb_dialogCrearVariableAgregarPropiedad;
     private javax.swing.JButton jb_dialogCrearWhileModPropiedades;
     private javax.swing.JButton jb_generarCodigoClases;
     private javax.swing.JButton jb_generarCodigoFlujo;
