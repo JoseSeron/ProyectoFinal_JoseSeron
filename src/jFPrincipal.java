@@ -1040,6 +1040,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jpum_opcionesArbol.add(jmi_cambiarNombreClase);
 
         jmi_cambiarNombreMetodo.setText("Cambiar Nombre Metodo");
+        jmi_cambiarNombreMetodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_cambiarNombreMetodoActionPerformed(evt);
+            }
+        });
         jpum_opcionesArbol.add(jmi_cambiarNombreMetodo);
 
         jd_agregarMetodo.setTitle("Agregar Metodo");
@@ -2455,15 +2460,32 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     private void jmi_eliminarMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarMetodoActionPerformed
         // eliminar metodo
-        
+
         DefaultTreeModel modelo = (DefaultTreeModel) arbolPop.getModel();
         DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) arbolPop.getLastSelectedPathComponent();
         modelo.removeNodeFromParent(nodo);
         modelo.reload();
 
         actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
-        
+
     }//GEN-LAST:event_jmi_eliminarMetodoActionPerformed
+
+    private void jmi_cambiarNombreMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cambiarNombreMetodoActionPerformed
+        // cambiar nombre metodo
+
+        //cambiar nombre clase
+        String nuevoNombre = JOptionPane.showInputDialog("Nuevo nombre:");
+
+        DefaultTreeModel modelo = (DefaultTreeModel) arbolPop.getModel();
+        DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) arbolPop.getLastSelectedPathComponent();
+        Metodo metodo = (Metodo) nodo.getUserObject();
+        metodo.setNombre(nuevoNombre);
+
+        modelo.reload();
+        actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+
+
+    }//GEN-LAST:event_jmi_cambiarNombreMetodoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
