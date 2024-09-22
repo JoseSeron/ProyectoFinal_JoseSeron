@@ -988,6 +988,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jpum_opcionesArbol.add(jmi_agregarMetodo);
 
         jmi_eliminarPropiedad.setText("Eliminar Propiedad");
+        jmi_eliminarPropiedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarPropiedadActionPerformed(evt);
+            }
+        });
         jpum_opcionesArbol.add(jmi_eliminarPropiedad);
 
         jmi_eliminarMetodo.setText("Eliminar Metodo");
@@ -2238,6 +2243,10 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jb_dialogCrearVariableAgregarPropiedadActionPerformed
 
+    private void jmi_eliminarPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarPropiedadActionPerformed
+        // eliminar propiedad
+    }//GEN-LAST:event_jmi_eliminarPropiedadActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2373,21 +2382,27 @@ public class jFPrincipal extends javax.swing.JFrame {
                     //si no hay nada seleccionado o la raiz esta selecionada
                     if (arbolPop.getSelectionPath() == null
                             || arbolPop.getSelectionPath().getLastPathComponent() instanceof NodoClase) {
-                        System.out.println("instance of nodoclase");
+                        
                         //activar y desactivar botones correspondientes
                         jmi_eliminarPropiedad.setEnabled(false);
                         jmi_eliminarMetodo.setEnabled(false);
                         jmi_cambiarNombreMetodo.setEnabled(false);
 
-                    } //si esta selecionado una propiedad
-                    else if (arbolPop.getSelectionPath().getLastPathComponent() instanceof Propiedad) {
-                        //activar y desactivar botones correspondientes
-                        jmi_eliminarMetodo.setEnabled(false);
-                        jmi_cambiarNombreMetodo.setEnabled(false);
-                    }//si esta seleccionado un metodo 
-                    else if (arbolPop.getSelectionPath().getLastPathComponent() instanceof Metodo) {
-                        //desactivar opciones
-                        jmi_eliminarPropiedad.setEnabled(false);
+                    } else {
+
+                        DefaultMutableTreeNode nodito = (DefaultMutableTreeNode) arbolPop.getLastSelectedPathComponent();
+
+                        if (nodito.getUserObject() instanceof Propiedad) {
+                            jmi_eliminarMetodo.setEnabled(false);
+                            jmi_cambiarNombreMetodo.setEnabled(false);
+                        } else if (nodito.getUserObject() instanceof Metodo) {
+                            jmi_eliminarPropiedad.setEnabled(false);
+                        } else if (nodito.getUserObject() instanceof String) {
+                            jmi_eliminarPropiedad.setEnabled(false);
+                            jmi_eliminarMetodo.setEnabled(false);
+                            jmi_cambiarNombreMetodo.setEnabled(false);
+                        }
+
                     }
 
                     jpum_opcionesArbol.show(e.getComponent(), e.getX(), e.getY());
