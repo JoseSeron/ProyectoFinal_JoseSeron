@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.io.Serializable;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -9,7 +10,7 @@ import javax.swing.SwingConstants;
  *
  * @author joser
  */
-public class BotonWhile extends JButton {
+public class BotonWhile extends JButton implements Serializable{
     
     private String variable1, variable2, comparador;
     

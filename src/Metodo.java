@@ -1,8 +1,9 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
-public class Metodo {
+public class Metodo implements Serializable{
 
     String nombre, retorno, alcance, parametro;
     DefaultListModel<String> parametros;

@@ -1,12 +1,13 @@
 
 import java.awt.Color;
+import java.io.Serializable;
 import javax.swing.*;
 
 /**
  *
  * @author joser
  */
-public class BotonSout extends JButton {
+public class BotonSout extends JButton implements Serializable{
     
     private String variable;
     
@@ -28,8 +29,9 @@ public class BotonSout extends JButton {
         return "System.out.print(" + variable.split("\\)")[1] + ");\n";
     }
     
+    @Override
     public void setText(String objeto) {
-        this.setText("<html><br>"
+        super.setText("<html><br>"
                 + "SOUT"
                 + "<br>"
                 + variable.split("\\)")[1]

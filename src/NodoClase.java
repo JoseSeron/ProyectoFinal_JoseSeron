@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /*
@@ -12,7 +13,7 @@ El metodo para exportar codigo usara el arraylist
 El guardar/abrir se manejara con 1 solo archivo de los 3 arraylists
  
  */
-public class NodoClase extends DefaultMutableTreeNode {
+public class NodoClase extends DefaultMutableTreeNode implements Serializable{
 
     boolean tieneHerencia, esHija;
     String nombreClase;

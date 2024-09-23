@@ -180,9 +180,9 @@ public class jFPrincipal extends javax.swing.JFrame {
         jlp_diagramaClases = new javax.swing.JLayeredPane();
         jmb_principal = new javax.swing.JMenuBar();
         jm_principalArchivo = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jmi_archivoNuevo = new javax.swing.JMenuItem();
+        jmi_guardarArchivo = new javax.swing.JMenuItem();
+        jmi_abrirArchivo = new javax.swing.JMenuItem();
+        jmi_nuevoArchivo = new javax.swing.JMenuItem();
         jm_principalExportar = new javax.swing.JMenu();
         jmi_exportarPDF = new javax.swing.JMenuItem();
 
@@ -1530,19 +1530,24 @@ public class jFPrincipal extends javax.swing.JFrame {
 
         jm_principalArchivo.setText("Archivo");
 
-        jMenuItem1.setText("Guardar");
-        jm_principalArchivo.add(jMenuItem1);
+        jmi_guardarArchivo.setText("Guardar");
+        jm_principalArchivo.add(jmi_guardarArchivo);
 
-        jMenuItem2.setText("Abrir");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmi_abrirArchivo.setText("Abrir");
+        jmi_abrirArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmi_abrirArchivoActionPerformed(evt);
             }
         });
-        jm_principalArchivo.add(jMenuItem2);
+        jm_principalArchivo.add(jmi_abrirArchivo);
 
-        jmi_archivoNuevo.setText("Nuevo");
-        jm_principalArchivo.add(jmi_archivoNuevo);
+        jmi_nuevoArchivo.setText("Nuevo");
+        jmi_nuevoArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_nuevoArchivoActionPerformed(evt);
+            }
+        });
+        jm_principalArchivo.add(jmi_nuevoArchivo);
 
         jmb_principal.add(jm_principalArchivo);
 
@@ -1574,9 +1579,9 @@ public class jFPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jmi_abrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_abrirArchivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jmi_abrirArchivoActionPerformed
 
     private void jb_opcionesInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesInicioActionPerformed
         // BOTON INICIO
@@ -2608,6 +2613,22 @@ public class jFPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jb_dialogDefinirHerenciaActionPerformed
 
+    private void jmi_nuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_nuevoArchivoActionPerformed
+        //nuevo archivo
+
+        //vaciar todos los arraylists y refrescar las vistas
+        listaVariables.clear();
+        botonesDiagramaFlujo.clear();
+        listaArboles.clear();
+        
+        //llenar vistas
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+        llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+        actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+        llenarJList(jl_variables);
+        
+    }//GEN-LAST:event_jmi_nuevoArchivoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2864,8 +2885,6 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -2953,9 +2972,9 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jm_principalArchivo;
     private javax.swing.JMenu jm_principalExportar;
     private javax.swing.JMenuBar jmb_principal;
+    private javax.swing.JMenuItem jmi_abrirArchivo;
     private javax.swing.JMenuItem jmi_agregarMetodo;
     private javax.swing.JMenuItem jmi_agregarPropiedad;
-    private javax.swing.JMenuItem jmi_archivoNuevo;
     private javax.swing.JMenuItem jmi_cambiarNombreClase;
     private javax.swing.JMenuItem jmi_cambiarNombreMetodo;
     private javax.swing.JMenuItem jmi_elemDiagFlCopiar;
@@ -2967,6 +2986,8 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_eliminarMetodo;
     private javax.swing.JMenuItem jmi_eliminarPropiedad;
     private javax.swing.JMenuItem jmi_exportarPDF;
+    private javax.swing.JMenuItem jmi_guardarArchivo;
+    private javax.swing.JMenuItem jmi_nuevoArchivo;
     private javax.swing.JPanel jp_Diagrama;
     private javax.swing.JPanel jp_clases;
     private javax.swing.JPanel jp_diagramaOpciones;

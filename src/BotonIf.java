@@ -1,12 +1,13 @@
 
 import java.awt.Color;
+import java.io.Serializable;
 import javax.swing.*;
 
 /**
  *
  * @author joser
  */
-public class BotonIf extends JButton {
+public class BotonIf extends JButton implements Serializable{
 
     private String variable1, comparador, variable2;
 

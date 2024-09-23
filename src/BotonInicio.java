@@ -1,9 +1,10 @@
 
 import java.awt.Color;
+import java.io.Serializable;
 import javax.swing.*;
 import javax.swing.JButton;
 
-public class BotonInicio extends JButton {
+public class BotonInicio extends JButton implements Serializable{
     
     public BotonInicio() {
         

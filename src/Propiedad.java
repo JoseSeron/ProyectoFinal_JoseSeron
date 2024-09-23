@@ -1,5 +1,8 @@
 
-public class Propiedad {
+import java.io.Serializable;
+
+
+public class Propiedad implements Serializable{
 
     String tipo, nombre;
 

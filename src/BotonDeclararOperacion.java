@@ -1,8 +1,9 @@
 
 import java.awt.Color;
+import java.io.Serializable;
 import javax.swing.*;
 
-public class BotonDeclararOperacion extends JButton {
+public class BotonDeclararOperacion extends JButton implements Serializable{
 
     private String variable1, variable2, operacion, resultado;
 
