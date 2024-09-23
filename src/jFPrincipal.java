@@ -140,6 +140,12 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_agregarMetodo = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jl_parametros = new javax.swing.JList<>();
+        jd_definirHerencia = new javax.swing.JDialog();
+        jcb_definirHerenciaPadre = new javax.swing.JComboBox<>();
+        jcb_definirHerenciaHija = new javax.swing.JComboBox<>();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jb_dialogDefinirHerencia = new javax.swing.JButton();
         jtp_diagramaCodigo = new javax.swing.JTabbedPane();
         jp_Diagrama = new javax.swing.JPanel();
         jp_variables = new javax.swing.JPanel();
@@ -1163,6 +1169,59 @@ public class jFPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
         );
 
+        jd_definirHerencia.setTitle("DefinirHerencia");
+        jd_definirHerencia.setMinimumSize(new java.awt.Dimension(290, 170));
+        jd_definirHerencia.setModal(true);
+        jd_definirHerencia.setPreferredSize(new java.awt.Dimension(290, 170));
+
+        jLabel26.setText("Clase Padre:");
+
+        jLabel30.setText("Clase Hija:");
+
+        jb_dialogDefinirHerencia.setText("Aceptar");
+        jb_dialogDefinirHerencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_dialogDefinirHerenciaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_definirHerenciaLayout = new javax.swing.GroupLayout(jd_definirHerencia.getContentPane());
+        jd_definirHerencia.getContentPane().setLayout(jd_definirHerenciaLayout);
+        jd_definirHerenciaLayout.setHorizontalGroup(
+            jd_definirHerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_definirHerenciaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_definirHerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_definirHerenciaLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcb_definirHerenciaHija, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_definirHerenciaLayout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcb_definirHerenciaPadre, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_definirHerenciaLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jb_dialogDefinirHerencia, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_definirHerenciaLayout.setVerticalGroup(
+            jd_definirHerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_definirHerenciaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_definirHerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcb_definirHerenciaPadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_definirHerenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcb_definirHerenciaHija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addGap(18, 18, 18)
+                .addComponent(jb_dialogDefinirHerencia)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -1387,6 +1446,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
 
         jb_definirHerencia.setText("Definir Herencia");
+        jb_definirHerencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_definirHerenciaActionPerformed(evt);
+            }
+        });
 
         jb_pegarClase.setText("Pegar");
         jb_pegarClase.setMaximumSize(new java.awt.Dimension(115, 23));
@@ -1570,7 +1634,7 @@ public class jFPrincipal extends javax.swing.JFrame {
             DefaultMutableTreeNode nodoMetodos = (DefaultMutableTreeNode) nodoClase.getChildAt(1);
 
             //revisar herencias
-            if (nodoClase.isTieneHerencia()) {
+            if (nodoClase.isTieneHerencia() && nodoClase.esHija) {
                 textoClases.append("public class ").append(nodoClase.getNombreClase()).append(" extends ").append(nodoClase.getClasePadre()).append(" {\n");
             } else {
                 textoClases.append("public class ").append(nodoClase.getNombreClase()).append(" {\n");
@@ -2487,6 +2551,63 @@ public class jFPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jmi_cambiarNombreMetodoActionPerformed
 
+    private void jb_definirHerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_definirHerenciaActionPerformed
+        if (listaArboles.size() < 2) {
+            JOptionPane.showMessageDialog(this, "No hay sufiencientes clases");
+        } else {
+            jcb_definirHerenciaHija.removeAllItems();
+            jcb_definirHerenciaPadre.removeAllItems();
+
+            jd_definirHerencia.setLocationRelativeTo(this);
+
+            for (JTree arbol : listaArboles) {
+
+                NodoClase nodo = (NodoClase) arbol.getModel().getRoot();
+                jcb_definirHerenciaPadre.addItem((String) nodo.getUserObject());
+                jcb_definirHerenciaHija.addItem((String) nodo.getUserObject());
+
+            }
+
+            jd_definirHerencia.setVisible(true);
+        }
+    }//GEN-LAST:event_jb_definirHerenciaActionPerformed
+
+    private void jb_dialogDefinirHerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_dialogDefinirHerenciaActionPerformed
+        // boton definir herencia
+        if (jcb_definirHerenciaHija.getSelectedItem() != jcb_definirHerenciaPadre.getSelectedItem()) {
+            NodoClase clasePadre = null;
+            NodoClase claseHija = null;
+            for (JTree arbol : listaArboles) {
+                NodoClase clase = (NodoClase) arbol.getModel().getRoot();
+
+                if (clase.getUserObject().equals(jcb_definirHerenciaPadre.getSelectedItem())) {
+                    clasePadre = clase;
+                }
+
+                if (clase.getUserObject().equals(jcb_definirHerenciaHija.getSelectedItem())) {
+                    claseHija = clase;
+
+                }
+            }
+
+            if (clasePadre != null && claseHija != null) {
+                System.out.println("clasepadre" + clasePadre.getNombreClase());
+                System.out.println("clase hija" + claseHija.getNombreClase());
+
+                clasePadre.setTieneHerencia(true);
+                clasePadre.setHerenciaPadre(claseHija);
+                claseHija.setTieneHerencia(true);
+                claseHija.setHerenciaHija(clasePadre);
+
+            }
+            JOptionPane.showMessageDialog(this, "Herencia definida exitosamente");
+            jd_definirHerencia.setVisible(false);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Las clases deben ser distintas");
+        }
+    }//GEN-LAST:event_jb_dialogDefinirHerenciaActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2731,10 +2852,12 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2776,6 +2899,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_dialogCrearSoutModPropiedades;
     private javax.swing.JButton jb_dialogCrearVariableAgregarPropiedad;
     private javax.swing.JButton jb_dialogCrearWhileModPropiedades;
+    private javax.swing.JButton jb_dialogDefinirHerencia;
     private javax.swing.JButton jb_generarCodigoClases;
     private javax.swing.JButton jb_generarCodigoFlujo;
     private javax.swing.JButton jb_mostrarDialogAgregarVariable;
@@ -2807,6 +2931,8 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcb_crearWhileComparador;
     private javax.swing.JComboBox<String> jcb_crearWhileVar1;
     private javax.swing.JComboBox<String> jcb_crearWhileVar2;
+    private javax.swing.JComboBox<String> jcb_definirHerenciaHija;
+    private javax.swing.JComboBox<String> jcb_definirHerenciaPadre;
     private javax.swing.JComboBox<String> jcb_estiloFuente;
     private javax.swing.JComboBox<String> jcb_tipoDeFuente;
     private javax.swing.JComboBox<String> jcb_tipoNuevaVariable;
@@ -2818,6 +2944,7 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crearSout;
     private javax.swing.JDialog jd_crearVariable;
     private javax.swing.JDialog jd_crearWhile;
+    private javax.swing.JDialog jd_definirHerencia;
     private javax.swing.JDialog jd_modificarFuenteBoton;
     private javax.swing.JList<String> jl_parametros;
     private javax.swing.JList<String> jl_variables;

@@ -14,7 +14,7 @@ El guardar/abrir se manejara con 1 solo archivo de los 3 arraylists
  */
 public class NodoClase extends DefaultMutableTreeNode {
 
-    boolean tieneHerencia;
+    boolean tieneHerencia, esHija;
     String nombreClase;
     NodoClase claseHija;
     NodoClase clasePadre;
@@ -33,6 +33,7 @@ public class NodoClase extends DefaultMutableTreeNode {
         this.tieneHerencia = false;
         this.claseHija = null;
         this.clasePadre = null;
+        this.esHija = false;
 
     }
 
@@ -55,6 +56,7 @@ public class NodoClase extends DefaultMutableTreeNode {
     public void setHerenciaHija(NodoClase clasePadre) {
         tieneHerencia = true;
         this.clasePadre = clasePadre;
+        setEsHija();
     }
 
         public void setHerenciaPadre(NodoClase claseHija) {
@@ -76,6 +78,10 @@ public class NodoClase extends DefaultMutableTreeNode {
 
     public void setClasePadre(NodoClase clasePadre) {
         this.clasePadre = clasePadre;
+    }
+
+    public void setEsHija(){
+    this.esHija = true;
     }
 
     @Override
