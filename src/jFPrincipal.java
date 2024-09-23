@@ -163,8 +163,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         jb_opcionesWhile = new javax.swing.JButton();
         jb_opcionesSout = new javax.swing.JButton();
         jb_opcionesFin = new javax.swing.JButton();
-        jb_opcionesConectorX = new javax.swing.JButton();
-        jb_opcionesConectorY = new javax.swing.JButton();
         jb_generarCodigoFlujo = new javax.swing.JButton();
         jb_pegarElementoDiagramaFlujo = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -176,7 +174,6 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jb_crearClase = new javax.swing.JButton();
         jb_definirHerencia = new javax.swing.JButton();
-        jb_pegarClase = new javax.swing.JButton();
         jb_generarCodigoClases = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jlp_diagramaClases = new javax.swing.JLayeredPane();
@@ -1275,6 +1272,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         jp_diagramaOpciones.setBackground(new java.awt.Color(255, 204, 255));
         jp_diagramaOpciones.setMinimumSize(new java.awt.Dimension(1112, 137));
 
+        jb_opcionesInicio.setBackground(Color.red);
         jb_opcionesInicio.setForeground(new java.awt.Color(0, 0, 0));
         jb_opcionesInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/inicio.png"))); // NOI18N
         jb_opcionesInicio.setText("INICIO");
@@ -1287,6 +1285,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
         jp_diagramaOpciones.add(jb_opcionesInicio);
 
+        jb_opcionesDeclarar.setBackground(Color.BLUE);
         jb_opcionesDeclarar.setForeground(new java.awt.Color(0, 0, 0));
         jb_opcionesDeclarar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/declarar.png"))); // NOI18N
         jb_opcionesDeclarar.setText("DECLARAR OP.");
@@ -1299,6 +1298,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
         jp_diagramaOpciones.add(jb_opcionesDeclarar);
 
+        jb_opcionesIf.setBackground(Color.CYAN);
         jb_opcionesIf.setForeground(new java.awt.Color(0, 0, 0));
         jb_opcionesIf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/if.png"))); // NOI18N
         jb_opcionesIf.setText("IF");
@@ -1311,6 +1311,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
         jp_diagramaOpciones.add(jb_opcionesIf);
 
+        jb_opcionesFor.setBackground(Color.GREEN);
         jb_opcionesFor.setForeground(new java.awt.Color(0, 0, 0));
         jb_opcionesFor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/for.png"))); // NOI18N
         jb_opcionesFor.setText("FOR");
@@ -1323,6 +1324,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
         jp_diagramaOpciones.add(jb_opcionesFor);
 
+        jb_opcionesWhile.setBackground(Color.MAGENTA);
         jb_opcionesWhile.setForeground(new java.awt.Color(0, 0, 0));
         jb_opcionesWhile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/while.png"))); // NOI18N
         jb_opcionesWhile.setText("WHILE");
@@ -1335,6 +1337,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
         jp_diagramaOpciones.add(jb_opcionesWhile);
 
+        jb_opcionesSout.setBackground(Color.ORANGE);
         jb_opcionesSout.setForeground(new java.awt.Color(0, 0, 0));
         jb_opcionesSout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/sout.png"))); // NOI18N
         jb_opcionesSout.setText("S.O.U.T");
@@ -1347,6 +1350,7 @@ public class jFPrincipal extends javax.swing.JFrame {
         });
         jp_diagramaOpciones.add(jb_opcionesSout);
 
+        jb_opcionesFin.setBackground(Color.red);
         jb_opcionesFin.setForeground(new java.awt.Color(0, 0, 0));
         jb_opcionesFin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/fin.png"))); // NOI18N
         jb_opcionesFin.setText("FIN");
@@ -1358,19 +1362,6 @@ public class jFPrincipal extends javax.swing.JFrame {
             }
         });
         jp_diagramaOpciones.add(jb_opcionesFin);
-
-        jb_opcionesConectorX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/x.png"))); // NOI18N
-        jb_opcionesConectorX.setText("CONECTOR X");
-        jb_opcionesConectorX.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jb_opcionesConectorX.setPreferredSize(new java.awt.Dimension(118, 118));
-        jb_opcionesConectorX.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jp_diagramaOpciones.add(jb_opcionesConectorX);
-
-        jb_opcionesConectorY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/y.png"))); // NOI18N
-        jb_opcionesConectorY.setText("CONECTOR Y");
-        jb_opcionesConectorY.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jb_opcionesConectorY.setPreferredSize(new java.awt.Dimension(118, 118));
-        jp_diagramaOpciones.add(jb_opcionesConectorY);
 
         jb_generarCodigoFlujo.setText("Generar Codigo");
         jb_generarCodigoFlujo.addActionListener(new java.awt.event.ActionListener() {
@@ -1454,11 +1445,6 @@ public class jFPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jb_pegarClase.setText("Pegar");
-        jb_pegarClase.setMaximumSize(new java.awt.Dimension(115, 23));
-        jb_pegarClase.setMinimumSize(new java.awt.Dimension(115, 23));
-        jb_pegarClase.setPreferredSize(new java.awt.Dimension(115, 23));
-
         jb_generarCodigoClases.setText("Generar Codigo");
         jb_generarCodigoClases.setMaximumSize(new java.awt.Dimension(115, 23));
         jb_generarCodigoClases.setMinimumSize(new java.awt.Dimension(115, 23));
@@ -1480,7 +1466,6 @@ public class jFPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jb_crearClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jb_definirHerencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jb_pegarClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jb_generarCodigoClases, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1497,9 +1482,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 .addComponent(jb_definirHerencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jb_generarCodigoClases, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jb_pegarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         jlp_diagramaClases.setBackground(new java.awt.Color(204, 255, 204));
@@ -2987,8 +2970,6 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_generarCodigoClases;
     private javax.swing.JButton jb_generarCodigoFlujo;
     private javax.swing.JButton jb_mostrarDialogAgregarVariable;
-    private javax.swing.JButton jb_opcionesConectorX;
-    private javax.swing.JButton jb_opcionesConectorY;
     private javax.swing.JButton jb_opcionesDeclarar;
     private javax.swing.JButton jb_opcionesFin;
     private javax.swing.JButton jb_opcionesFor;
@@ -2996,7 +2977,6 @@ public class jFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jb_opcionesInicio;
     private javax.swing.JButton jb_opcionesSout;
     private javax.swing.JButton jb_opcionesWhile;
-    private javax.swing.JButton jb_pegarClase;
     private javax.swing.JButton jb_pegarElementoDiagramaFlujo;
     private javax.swing.JButton jb_salirDialogCodigo;
     private javax.swing.JComboBox<String> jcb_agregarMetodoAlcance;
