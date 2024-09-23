@@ -1072,11 +1072,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Parametros:");
 
-        jcb_agregarMetodoTipo.setModel(jcb_tipoNuevaVariable.getModel());
+        jcb_agregarMetodoTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "void", "int", "char", "string", "short", "double", "boolean" }));
 
         jcb_agregarMetodoAlcance.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "public", "protected", "default", "private" }));
 
-        jcb_agregarMetodoParametroTipo.setModel(jcb_agregarMetodoTipo.getModel());
+        jcb_agregarMetodoParametroTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "int", "char", "string", "short", "double", "boolean" }));
 
         jtf_agregarMetodoParametroNombre.setText("Nombre");
 
@@ -1151,7 +1151,7 @@ public class jFPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jb_agregarParametro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jb_agregarMetodo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
@@ -1161,11 +1161,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jd_agregarMetodo.getContentPane().setLayout(jd_agregarMetodoLayout);
         jd_agregarMetodoLayout.setHorizontalGroup(
             jd_agregarMetodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 264, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 280, Short.MAX_VALUE)
         );
         jd_agregarMetodoLayout.setVerticalGroup(
             jd_agregarMetodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
 
         jd_definirHerencia.setTitle("DefinirHerencia");
