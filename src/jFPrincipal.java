@@ -1,8 +1,10 @@
 
 import java.awt.event.*;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
@@ -1531,6 +1533,11 @@ public class jFPrincipal extends javax.swing.JFrame {
         jm_principalArchivo.setText("Archivo");
 
         jmi_guardarArchivo.setText("Guardar");
+        jmi_guardarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_guardarArchivoActionPerformed(evt);
+            }
+        });
         jm_principalArchivo.add(jmi_guardarArchivo);
 
         jmi_abrirArchivo.setText("Abrir");
@@ -1580,7 +1587,44 @@ public class jFPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmi_abrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_abrirArchivoActionPerformed
-        // TODO add your handling code here:
+        // cargar archivo
+        JFileChooser chooser = new JFileChooser("./");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos .tito", "tito");
+        chooser.setFileFilter(filtro);
+        int seleccion = chooser.showDialog(this, "Cargar");
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File archivoSeleccionado = chooser.getSelectedFile();
+
+            
+            if (!archivoSeleccionado.getName().endsWith(".tito")) {
+                JOptionPane.showMessageDialog(this, "Seleccione un archivo con extensión .tito", "Error", JOptionPane.ERROR_MESSAGE);
+                return; 
+            }
+
+            
+            fileManager.setArchivo(archivoSeleccionado.getName()); 
+            fileManager.cargarDatos(listaVariables, botonesDiagramaFlujo, listaArboles); 
+        }
+        
+        for (JButton jButton : botonesDiagramaFlujo) {
+            jButton = convertirABotonArrastrable(jButton);
+        }
+        
+        for (JTree listaArbole : listaArboles) {
+            convertirAArbolArrastrable(listaArbole);
+        }
+        
+
+        llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+        actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+        llenarJList(jl_variables);
+        
+        repaintsClases();
+        jlp_diagramaFlujo.repaint();
+        jl_variables.repaint();
+        
     }//GEN-LAST:event_jmi_abrirArchivoActionPerformed
 
     private void jb_opcionesInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_opcionesInicioActionPerformed
@@ -2620,14 +2664,35 @@ public class jFPrincipal extends javax.swing.JFrame {
         listaVariables.clear();
         botonesDiagramaFlujo.clear();
         listaArboles.clear();
-        
+
         //llenar vistas
         llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
         llenarJLayeredPane(jlp_diagramaClases, listaArboles);
         actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
         llenarJList(jl_variables);
-        
+
     }//GEN-LAST:event_jmi_nuevoArchivoActionPerformed
+
+    private void jmi_guardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_guardarArchivoActionPerformed
+        // guardar archivo
+        String nombreArchivo = JOptionPane.showInputDialog(this, "Ingrese nombre para archivo:");
+
+        fileManager.setArchivo(nombreArchivo);
+
+        fileManager.guardarDatos(listaVariables, botonesDiagramaFlujo, listaArboles);
+
+        jmi_nuevoArchivoActionPerformed(evt);
+
+        //actualizar vistas
+        actualizarArbolPrincipal(jt_arbolClasesGeneradas, listaArboles);
+        llenarJLayeredPane(jlp_diagramaClases, listaArboles);
+        llenarJLayeredPane(jlp_diagramaFlujo, botonesDiagramaFlujo);
+        llenarJList(jl_variables);
+
+        JOptionPane.showMessageDialog(this, "Archivo Guardado");
+
+
+    }//GEN-LAST:event_jmi_guardarArchivoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -3013,4 +3078,5 @@ public class jFPrincipal extends javax.swing.JFrame {
     private JButton botonPop; //se carga el boton para las opciones de popup menu
     private JButton botonParaPegar;
     private JTree arbolPop;
+    private ManejadorArchivosBinarios fileManager = new ManejadorArchivosBinarios();
 }
