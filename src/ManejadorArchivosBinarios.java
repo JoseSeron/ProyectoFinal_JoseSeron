@@ -17,44 +17,36 @@ public class ManejadorArchivosBinarios {
 
     private File archivo;
 
-    // Constructor vacío: permite elegir el nombre del archivo al guardar
     public ManejadorArchivosBinarios() {
     }
 
-    // Método para especificar el archivo a guardar en el directorio raíz del programa
     public void setArchivo(String nombreArchivo) {
-        // Verificar si el archivo ya tiene la extensión ".tito"
+        // para guardar
         if (!nombreArchivo.endsWith(".tito")) {
             nombreArchivo += ".tito";
         }
-
-        // Crear el archivo en la ruta especificada
+        //para cargar
         String ruta = "./" + nombreArchivo;
         this.archivo = new File(ruta);
     }
 
 
 
-    // Método para guardar los ArrayLists en un archivo binario
     public void guardarDatos(ArrayList<String> listaStrings, ArrayList<JButton> listaBotones, ArrayList<JTree> listaArboles) {
         if (archivo == null) {
-            System.out.println("Debe especificar el nombre del archivo antes de guardar.");
             return;
         }
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo))) {
-            // Serializar los ArrayLists
             oos.writeObject(listaStrings);
             oos.writeObject(listaBotones);
             oos.writeObject(listaArboles);
             oos.flush();
-            System.out.println("Datos guardados correctamente en el archivo binario.");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Método para cargar los ArrayLists desde el archivo binario
     @SuppressWarnings("unchecked")
     public void cargarDatos(ArrayList<String> listaStrings, ArrayList<JButton> listaBotones, ArrayList<JTree> listaArboles) {
         if (archivo == null || !archivo.exists()) {
@@ -63,7 +55,6 @@ public class ManejadorArchivosBinarios {
         }
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
-            // Deserializar los ArrayLists
             listaStrings.clear();
             listaStrings.addAll((ArrayList<String>) ois.readObject());
 
